@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ec.edu.espe.inventorysystem.model;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class System {
+public class ManagementSystem {
     public static Object out;
     private String users;
     private Inventory inventory;
     private String sales;
 
-    public System(String users, Inventory inventory, String sales) {
+    public ManagementSystem(String users, Inventory inventory, String sales) {
         this.users = users;
         this.inventory = inventory;
         this.sales = sales;
