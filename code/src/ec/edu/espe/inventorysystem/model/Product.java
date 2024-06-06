@@ -1,12 +1,14 @@
 
 package ec.edu.espe.inventorysystem.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Product {
-    private int id;
+    private ArrayList<String> id;
     private String name;
     private String description;
     private int quantity;
@@ -15,16 +17,15 @@ public class Product {
     private String size;
     
     public void calculateTotalSale(){
-        
-    }
-    public void updateQuantity(){
-        
-    }
-    public void checkInventory(){
-        
+        float totalSale = getQuantity() * getPrice();
+        System.out.println("Total sale: $" + totalSale);
     }
 
-    public Product(int id, String name, String description, int quantity, String category, float price, String size) {
+    public void checkTotalOfProducts(){
+        System.out.println("Total number of products: " + getId().size());
+    }
+
+    public Product(ArrayList<String> id, String name, String description, int quantity, String category, float price, String size) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -42,14 +43,14 @@ public class Product {
     /**
      * @return the id
      */
-    public int getId() {
+    public ArrayList<String> getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(ArrayList<String> id) {
         this.id = id;
     }
 
@@ -135,6 +136,7 @@ public class Product {
      */
     public void setSize(String size) {
         this.size = size;
-    }    
+    }
     
+   
 }

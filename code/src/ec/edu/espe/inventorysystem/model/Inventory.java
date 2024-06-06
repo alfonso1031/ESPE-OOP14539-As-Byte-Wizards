@@ -9,49 +9,54 @@ import java.util.List;
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Inventory {
-    private List<Product> productList;
+    private List<Product> products;
 
     public Inventory() {
-        this.productList = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
-        getProductList().add(product);
+        getProducts().add(product);
     }
 
-    public void removeProduct() {
-       
+    public void removeProduct(Product product) {
+        getProducts().remove(product);
     }
 
-    public void findProductById() {
-
+    public void findProduct(String name) {
+        for (int i = 0; i < products.size(); i++) {
+            Product product = products.get(i);
+            if (product.getName().equals(name)) {
+                System.out.println("Product found: " + product);
+                return;
+            }
+        }
+        System.out.println("Product not found.");
     }
 
-    public void findProductByName() {
-        
-    }
-
-    public void updateInventory() {
-        
+    public void lookInventory() {
+        for (int i = 0; i < products.size(); i++) {
+            System.out.println(products.get(i));
+        }
     }
 
     @Override
     public String toString() {
-        return "Inventory{" + "productList=" + getProductList() + '}';
+        return "Inventory{" + "productList=" + getProducts() + '}';
     }
 
     /**
      * @return the productList
      */
-    public List<Product> getProductList() {
-        return productList;
+    public List<Product> getProducts() {
+        return products;
     }
 
     /**
      * @param productList the productList to set
      */
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setProductList(List<Product> products) {
+        this.products = products;
     }
     
 }

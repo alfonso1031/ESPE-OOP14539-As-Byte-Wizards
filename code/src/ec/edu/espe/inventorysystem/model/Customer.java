@@ -29,10 +29,10 @@ class Customer {
         this.setPhone(phone);
     }
 
-    public void addPurchaseToHistory() {
-        
+    public void addPurchaseToHistory(String purchase) {
+        this.purchaseHistory += purchase + ", ";
     }
-
+    
     @Override
     public String toString() {
         return "Customer{" + "id=" + getId() + ", name=" + getName() + ", address=" + getAddress() + ", email=" + getEmail() + ", phone=" + getPhone() + ", purchaseHistory=" + getPurchaseHistory() + '}';

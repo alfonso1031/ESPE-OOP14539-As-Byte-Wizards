@@ -10,31 +10,23 @@ public class User {
     private String username;
     private String password;
     private String role;
-    private String permissions;
 
-    public User(String id, String username, String password, String role, String permissions) {
+    public User(String id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.permissions = permissions;
     }
 
-    public void authenticate() {
-        
-    }
-
-    public void changePassword() {
-        
-    }
-
-    public void assignPermissions() {
-        
+    public void updateInformation(String username, String password, String role) {
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setRole(role);
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", role=" + getRole() + ", permissions=" + getPermissions() + '}';
+        return "User{" + "id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", role=" + getRole() +'}';
     }
 
     /**
@@ -91,20 +83,6 @@ public class User {
      */
     public void setRole(String role) {
         this.role = role;
-    }
-
-    /**
-     * @return the permissions
-     */
-    public String getPermissions() {
-        return permissions;
-    }
-
-    /**
-     * @param permissions the permissions to set
-     */
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
     }
     
 }
