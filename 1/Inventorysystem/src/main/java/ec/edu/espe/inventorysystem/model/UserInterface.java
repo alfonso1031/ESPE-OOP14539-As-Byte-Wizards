@@ -9,9 +9,8 @@ import java.util.Scanner;
 public class UserInterface {
     int option;
     ArrayList<Product> products = new ArrayList<>();
-    private Product product;
     private Inventory inventory;
-    
+    Product product = new Product(new ArrayList<String>(), "ProductName", "ProductDescription", 10, "ProductCategory", 99.99f, "ProductSize");
     Scanner scanner = new Scanner(System.in);
         
     public void displayMenu() {

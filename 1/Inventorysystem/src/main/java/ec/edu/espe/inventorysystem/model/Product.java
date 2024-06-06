@@ -42,28 +42,22 @@ public class Product {
         id.add(scanner.nextLine());
         
         System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        setName(name);
+        setName(scanner.nextLine());
         
         System.out.print("Enter description: ");
-        String description = scanner.nextLine();
-        setDescription(description);
+        setDescription(scanner.nextLine());
         
         System.out.print("Enter quantity: ");
-        int quantity = scanner.nextInt();
-        setQuantity(quantity);
+        setQuantity(scanner.nextInt());
         
         System.out.print("Enter category: ");
-        String category = scanner.nextLine();
-        setCategory(category);
+        setCategory(scanner.nextLine());
         
         System.out.print("Enter price: ");
-        float price = scanner.nextFloat();
-        setPrice(price);
+        setPrice(scanner.nextFloat());
         
         System.out.print("Enter size: ");
-        String size = scanner.nextLine();
-        setSize(size);
+        setSize(scanner.nextLine());
         System.out.println("Product added successfully.");
     }	
 
