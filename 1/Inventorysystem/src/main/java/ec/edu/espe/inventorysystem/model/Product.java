@@ -2,6 +2,7 @@
 package ec.edu.espe.inventorysystem.model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,15 +16,7 @@ public class Product {
     private String category;
     private float price;
     private String size;
-    
-    public void calculateTotalSale(){
-        float totalSale = getQuantity() * getPrice();
-        System.out.println("Total sale: $" + totalSale);
-    }
-
-    public void checkTotalOfProducts(){
-        System.out.println("Total number of products: " + getId().size());
-    }
+    Scanner scanner = new Scanner(System.in);
 
     public Product(ArrayList<String> id, String name, String description, int quantity, String category, float price, String size) {
         this.id = id;
@@ -33,6 +26,112 @@ public class Product {
         this.category = category;
         this.price = price;
         this.size = size;
+    }
+    public float calculateTotalSale(){
+        float totalSale = getQuantity() * getPrice();
+        System.out.println("Total sale: $" );
+        return totalSale;
+    }
+
+    public void checkTotalOfProducts(){
+        System.out.println("Total number of products: " + getId().size());
+    }
+    public void addProduct(){
+        System.out.println("Adding product...");
+        System.out.print("Enter ID: ");
+        id.add(scanner.nextLine());
+        
+        System.out.print("Enter name: ");
+        String name = scanner.nextLine();
+        setName(name);
+        
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+        setDescription(description);
+        
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
+        setQuantity(quantity);
+        
+        System.out.print("Enter category: ");
+        String category = scanner.nextLine();
+        setCategory(category);
+        
+        System.out.print("Enter price: ");
+        float price = scanner.nextFloat();
+        setPrice(price);
+        
+        System.out.print("Enter size: ");
+        String size = scanner.nextLine();
+        setSize(size);
+        System.out.println("Product added successfully.");
+    }	
+
+    public void removeProduct(){
+        System.out.println("Removing product...");
+        System.out.print("Enter ID of the product to remove: ");
+        String idToRemove = scanner.nextLine();
+        for (int i = 0; i < getId().size(); i++) {
+            if (getId().get(i).equals(idToRemove)) {
+                getId().remove(i);
+                System.out.println("Product removed successfully.");
+                return;
+            }
+        }
+        System.out.println("Product not found.");
+    }
+
+    public void updateProduct(){
+        System.out.println("Updating product...");
+        System.out.print("Enter ID of the product to update: ");
+        String idToUpdate = scanner.nextLine();
+        for (int i = 0; i < getId().size(); i++) {
+            if (getId().get(i).equals(idToUpdate)) {
+                System.out.print("Enter new ID: ");
+                String newId = scanner.nextLine();
+                getId().set(i, newId);
+                
+                System.out.print("Enter new name: ");
+                String newName = scanner.nextLine();
+                setName(newName);
+                
+                System.out.print("Enter new description: ");
+                String newDescription = scanner.nextLine();
+                setDescription(newDescription);
+                
+                System.out.print("Enter new quantity: ");
+                int newQuantity = scanner.nextInt();
+                setQuantity(newQuantity);
+                
+                System.out.print("Enter new category: ");
+                String newCategory = scanner.nextLine();
+                setCategory(newCategory);
+                
+                System.out.print("Enter new price: ");
+                float newPrice = scanner.nextFloat();
+                setPrice(newPrice);
+                
+                System.out.print("Enter new size: ");
+                String newSize = scanner.nextLine();
+                setSize(newSize);
+                System.out.println("Product updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Product not found.");
+    }
+    public void viewAllProducts(){
+        System.out.println("Viewing all products...");
+        for (int i = 0; i < getId().size(); i++) {
+            System.out.println("Product " + (i + 1));
+            System.out.println("ID: " + getId().get(i));
+            System.out.println("Name: " + getName());
+            System.out.println("Description: " + getDescription());
+            System.out.println("Quantity: " + getQuantity());
+            System.out.println("Category: " + getCategory());
+            System.out.println("Price: " + getPrice());
+            System.out.println("Size: " + getSize());
+        }
     }
 
     @Override

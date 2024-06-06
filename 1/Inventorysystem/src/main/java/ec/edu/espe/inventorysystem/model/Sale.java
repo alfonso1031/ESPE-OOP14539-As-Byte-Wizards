@@ -5,42 +5,37 @@ package ec.edu.espe.inventorysystem.model;
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Sale {
     private String id;
-    private String soldProductsList;
-    private Date saleDate;
-    private double totalSale;
-    private Customer customer;
-    private List<Double> appliedDiscounts;
+    private ArrayList<String> soldProductsList;
+    private Date date;
+    private double total;
+    private float change;
+    private Product product;
 
-    public Sale(String id, String soldProductsList, Date saleDate, double totalSale, Customer customer, List<Double> appliedDiscounts) {
+    public Sale(String id, ArrayList<String> soldProductsList, Date date, double total, float change) {
         this.id = id;
         this.soldProductsList = soldProductsList;
-        this.saleDate = saleDate;
-        this.totalSale = totalSale;
-        this.customer = customer;
-        this.appliedDiscounts = appliedDiscounts;
+        this.date = date;
+        this.total = total;
+        this.change = change;
     }
 
-    public void calculateTotalSale() {
-        
+    public float getChange() {
+        float total= getProduct().calculateTotalSale()-getChange();
+        return total;
     }
 
-    public void applyDiscount() {
-        
-    }
-
-    public void registerSale() {
-
-    }
 
     @Override
     public String toString() {
-        return "Sale{" + "id=" + getId() + ", soldProductsList=" + getSoldProductsList() + ", saleDate=" + getSaleDate() + ", totalSale=" + getTotalSale() + ", customer=" + getCustomer() + ", appliedDiscounts=" + getAppliedDiscounts() + '}';
+        return "Sale{" + "id=" + id + ", soldProductsList=" + soldProductsList + ", date=" + date + ", total=" + getTotal() + ", change=" + change + '}';
     }
+
+    
 
     /**
      * @return the id
@@ -59,71 +54,66 @@ public class Sale {
     /**
      * @return the soldProductsList
      */
-    public String getSoldProductsList() {
+    public ArrayList<String> getSoldProductsList() {
         return soldProductsList;
     }
 
     /**
      * @param soldProductsList the soldProductsList to set
      */
-    public void setSoldProductsList(String soldProductsList) {
+    public void setSoldProductsList(ArrayList<String> soldProductsList) {
         this.soldProductsList = soldProductsList;
     }
 
     /**
-     * @return the saleDate
+     * @return the date
      */
-    public Date getSaleDate() {
-        return saleDate;
+    public Date getDate() {
+        return date;
     }
 
     /**
-     * @param saleDate the saleDate to set
+     * @param date the date to set
      */
-    public void setSaleDate(Date saleDate) {
-        this.saleDate = saleDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /**
-     * @return the totalSale
+     * @param total the total to set
      */
-    public double getTotalSale() {
-        return totalSale;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     /**
-     * @param totalSale the totalSale to set
+     * @param change the change to set
      */
-    public void setTotalSale(double totalSale) {
-        this.totalSale = totalSale;
+    public void setChange(float change) {
+        this.change = change;
     }
 
     /**
-     * @return the customer
+     * @return the total
      */
-    public Customer getCustomer() {
-        return customer;
+    public double getTotal() {
+        return total;
     }
 
     /**
-     * @param customer the customer to set
+     * @return the product
      */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public Product getProduct() {
+        return product;
     }
 
     /**
-     * @return the appliedDiscounts
+     * @param product the product to set
      */
-    public List<Double> getAppliedDiscounts() {
-        return appliedDiscounts;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    /**
-     * @param appliedDiscounts the appliedDiscounts to set
-     */
-    public void setAppliedDiscounts(List<Double> appliedDiscounts) {
-        this.appliedDiscounts = appliedDiscounts;
-    }
+    
     
 }
