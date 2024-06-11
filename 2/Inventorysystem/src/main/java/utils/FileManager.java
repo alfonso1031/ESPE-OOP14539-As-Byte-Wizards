@@ -28,17 +28,13 @@ public class FileManager {
          public static void saveManagerProduct(String id, String name, String description, int quantity, String category, float price, String size) {
         JSONParser parser = new JSONParser();
         JSONArray listProduct = new JSONArray();
-
-        // Try to read the existing file and parse it into a JSONArray
+        
         try (FileReader reader = new FileReader("Product.json")) {
             Object obj = parser.parse(reader);
             listProduct = (JSONArray) obj;
         } catch (IOException | ParseException e) {
-            // If there's an error reading or parsing, we assume the file might not exist or is empty
-            // In this case, we'll start with an empty JSONArray
         }
 
-        // Create the new product JSON object
         JSONObject products = new JSONObject();
         products.put("id", id);
         products.put("name", name);
@@ -48,14 +44,11 @@ public class FileManager {
         products.put("price", price);
         products.put("size", size);
 
-        // Wrap the product object in another JSON object, if needed
         JSONObject dateProduct = new JSONObject();
         dateProduct.put("product", products);
 
-        // Add the new product to the list
         listProduct.add(dateProduct);
 
-        // Write the updated list back to the file
         try (FileWriter file = new FileWriter("Product.json")) {
             file.write(listProduct.toJSONString());
             file.flush();

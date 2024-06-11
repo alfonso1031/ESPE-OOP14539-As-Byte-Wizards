@@ -19,7 +19,7 @@ public class ManagementSystem {
      public boolean logIn() {
         ArrayList<User> listUser = new ArrayList<>();
             listUser.add(new User("1","admin","admin", "PRO"));
-            listUser.add(new User("2","frank","frank123", "PRO"));
+            listUser.add(new User("2","employee","employee", "PRO"));
         
 
         Scanner scanner = new Scanner(System.in);//falta el try catch
