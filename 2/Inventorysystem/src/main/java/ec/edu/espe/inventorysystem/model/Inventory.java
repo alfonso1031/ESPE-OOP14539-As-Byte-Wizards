@@ -53,7 +53,7 @@ public class Inventory {
     }
 
     /**
-     * @param productList the productList to set
+     * @param products
      */
     public void setProductList(List<Product> products) {
         this.products = products;

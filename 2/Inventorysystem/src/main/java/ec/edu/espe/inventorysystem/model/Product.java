@@ -1,9 +1,6 @@
 
 package ec.edu.espe.inventorysystem.model;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE

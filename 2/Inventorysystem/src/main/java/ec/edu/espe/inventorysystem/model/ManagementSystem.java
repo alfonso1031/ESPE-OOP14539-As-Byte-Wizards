@@ -17,23 +17,21 @@ public class ManagementSystem {
    
     
      public boolean logIn() {
-        String user1;
-        String password1;
-            ArrayList <User> listUser = new ArrayList <>();
+        ArrayList<User> listUser = new ArrayList<>();
             listUser.add(new User("1","admin","admin", "PRO"));
             listUser.add(new User("2","frank","frank123", "PRO"));
         
+
         Scanner scanner = new Scanner(System.in);//falta el try catch
         System.out.println("--------------------");
         System.out.println("|      LOGIN       |");
         System.out.println("--------------------");
         
-       
         
         System.out.println("Username:");
-        user1 =scanner.nextLine();
+        String user1 =scanner.nextLine();
         System.out.println("Password:");
-        password1= scanner.nextLine();  
+        String password1= scanner.nextLine();  
                 return user1.equals(listUser.get(0).getUsername()) && password1.equals(listUser.get(0).getPassword()); //esto cambiar tmb
 
         
@@ -57,3 +55,9 @@ public class ManagementSystem {
    
 
 }
+
+       
+
+
+
+

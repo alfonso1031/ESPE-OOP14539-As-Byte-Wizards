@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\view\Main.java
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Sale.java
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Supplier.java
@@ -10,3 +11,17 @@ C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\m
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Customer.java
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\ManagementSystem.java
 C:\Users\frank\Desktop\OPP\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\utils\FileManager.java
+=======
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\ManagementSystem.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Supplier.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Customer.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\UserInterface.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Inventory.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\ListProducts.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Invoice.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Product.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\view\Main.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Sale.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\utils\FileManagr.java
+C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\2\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\User.java
+>>>>>>> b49e0f4d2d4df9c39b87c65a64ebcb865d80617a
