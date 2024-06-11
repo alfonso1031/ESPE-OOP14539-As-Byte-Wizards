@@ -9,17 +9,24 @@ import ec.edu.espe.inventorysystem.model.UserInterface;
 public class Main {
 
     public static void main(String[] args) {
-   
-          ManagementSystem userMana = new ManagementSystem();
+   ManagementSystem userMana = new ManagementSystem();
      UserInterface userInt= new UserInterface();
-    
-        if (userMana.logIn()) {
-            userInt.displayMenu();
-            
-            
+     boolean out = false; 
+                   do {            
+             if (userMana.logIn()) {
+                 
+            userInt.displayMenu();  
         }else{
-            System.out.println("Incorrect password");
-        }
+             System.out.println("Incorrect password");
+         
+            }
+        } while (out);
+            
+        
+           
+        
+      
+        
      
         
         

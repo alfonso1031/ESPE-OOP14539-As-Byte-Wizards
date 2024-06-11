@@ -24,14 +24,36 @@ public class ManagementSystem {
             listUser.add(new User("2","frank","frank123", "PRO"));
         
         Scanner scanner = new Scanner(System.in);//falta el try catch
-        System.out.println("Enter username:");
-        user1 =scanner.nextLine();//cambiar cuando se implemente el username como arraylist
-        System.out.println("Enter password:");
-        password1= scanner.nextLine();//esto tmb cambiar
-        System.out.println(user1);
+        System.out.println("--------------------");
+        System.out.println("|      LOGIN       |");
+        System.out.println("--------------------");
+        
+       
+        
+        System.out.println("Username:");
+        user1 =scanner.nextLine();
+        System.out.println("Password:");
+        password1= scanner.nextLine();  
+                return user1.equals(listUser.get(0).getUsername()) && password1.equals(listUser.get(0).getPassword()); //esto cambiar tmb
+
+        
       
-        return user1.equals(listUser.get(0).getUsername()) && password1.equals(listUser.get(0).getPassword()); //esto cambiar tmb
+    }
+    public boolean logout() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("I'm sure he wants to go out. Write [YES] or [NO]");
+        String yesOurnot = scanner.nextLine();
+        boolean logout = true;
+        
+        if (yesOurnot == "yes"){
+            return logout;
+        } else {
+            return logout = false;
+
+        }
     }
 
+
    
+
 }

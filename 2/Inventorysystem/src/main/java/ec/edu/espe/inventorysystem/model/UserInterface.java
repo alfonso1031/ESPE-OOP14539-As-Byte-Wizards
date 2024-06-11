@@ -2,6 +2,7 @@ package ec.edu.espe.inventorysystem.model;
 
 
 import java.util.Scanner;
+import utils.FileManager;
 
 /**
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
@@ -10,16 +11,16 @@ public class UserInterface {
     int option;
     static ListProducts listProdutc = new ListProducts();
     Scanner scanner = new Scanner(System.in);
-        
+   ManagementSystem userMana = new ManagementSystem();
     public void displayMenu() {
     
              do {
-            System.out.println("Inventory System Menu");
-            System.out.println("1. Add item");
-            System.out.println("2. Remove item");
-            System.out.println("3. Update item");
-            System.out.println("4. View all items");
-            System.out.println("5. Exit");
+            System.out.println("|      Inventory System Menu    |");
+            System.out.println("|         [1] Add item          |");
+            System.out.println("|        [2] Remove item        |");
+            System.out.println("|         [3]Update item        |");
+            System.out.println("|        [4]View all items      |");
+            System.out.println("|           [5]Exit             |");
             System.out.print("Enter your option: ");
             option = scanner.nextInt();
         
@@ -42,20 +43,23 @@ public class UserInterface {
             scanner.nextLine();
             System.out.print("size: ");
             String size = scanner.nextLine();
-            Product product = new Product(id, name, description,quantity, category, price, size);
-            listProdutc.addProduct(product);
+            
+            FileManager.saveManagerProduct(id,name,description,quantity,category,price,size);
+           
             break;
                 case 2:
-                   listProdutc.viewProduct();
+
              break;
                 case 3:
                     // Update product logic
                     break;
                 case 4:
                     // View all items logic
+                    FileManager.readManager();
                     break;
                 case 5:
-                    System.out.println("Exiting...");
+                    userMana.logout();
+                       
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
