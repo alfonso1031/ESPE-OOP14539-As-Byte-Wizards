@@ -8,17 +8,19 @@ import java.util.Scanner;
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class Product {
-    private ArrayList<String> id;
+
+
+public  class Product {
+    private String id;
     private String name;
     private String description;
     private int quantity;
     private String category;
     private float price;
     private String size;
-    Scanner scanner = new Scanner(System.in);
 
-    public Product(ArrayList<String> id, String name, String description, int quantity, String category, float price, String size) {
+
+    public Product(String id, String name, String description, int quantity, String category, float price, String size) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,33 +36,10 @@ public class Product {
     }
 
     public void checkTotalOfProducts(){
-        System.out.println("Total number of products: " + getId().size());
+        System.out.println("Total number of products: " + getId());
     }
-    public void addProduct(){
-        System.out.println("Adding product...");
-        System.out.print("Enter ID: ");
-        id.add(scanner.nextLine());
-        
-        System.out.print("Enter name: ");
-        setName(scanner.nextLine());
-        
-        System.out.print("Enter description: ");
-        setDescription(scanner.nextLine());
-        
-        System.out.print("Enter quantity: ");
-        setQuantity(scanner.nextInt());
-        
-        System.out.print("Enter category: ");
-        setCategory(scanner.nextLine());
-        
-        System.out.print("Enter price: ");
-        setPrice(scanner.nextFloat());
-        
-        System.out.print("Enter size: ");
-        setSize(scanner.nextLine());
-        System.out.println("Product added successfully.");
-    }	
-
+  
+/*
     public void removeProduct(){
         System.out.println("Removing product...");
         System.out.print("Enter ID of the product to remove: ");
@@ -127,23 +106,23 @@ public class Product {
             System.out.println("Size: " + getSize());
         }
     }
-
+*/
     @Override
     public String toString() {
-        return "Product{" + "id=" + getId() + ", name=" + getName() + ", description=" + getDescription() + ", quantity=" + getQuantity() + ", category=" + getCategory() + ", price=" + getPrice() + ", size=" + getSize() + '}';
+        return "Product " + "id : " + getId() + " name: " + getName() + " description: " + getDescription() + " quantity: " + getQuantity() + " category :" + getCategory() + "  price :" + getPrice() + " size: " + getSize();
     }
 
     /**
      * @return the id
      */
-    public ArrayList<String> getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(ArrayList<String> id) {
+    public void setId(String id) {
         this.id = id;
     }
 

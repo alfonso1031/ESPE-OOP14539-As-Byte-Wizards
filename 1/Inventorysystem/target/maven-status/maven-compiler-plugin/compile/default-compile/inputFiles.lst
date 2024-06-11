@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Customer.java
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Report.java
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Inventory.java
@@ -8,3 +9,15 @@ C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Sale.java
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\view\Main.java
 C:\Users\mario\OneDrive\Escritorio\GIT REPOSITORY\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\User.java
+=======
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\UserInterface.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\view\Main.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\ManagementSystem.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Product.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Transaction.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Inventory.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Report.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Sale.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\Customer.java
+C:\Users\Alfonso Alejandro\Desktop\Alfonso\ESPE\Segundo  Semestre\POO\Proyecto Inventory System\InventorySystem\ESPE-OOP14539-As-Byte-Wizards\1\Inventorysystem\src\main\java\ec\edu\espe\inventorysystem\model\User.java
+>>>>>>> 24cac36e0348017ef1c7fdbef38e31e1079118a1
