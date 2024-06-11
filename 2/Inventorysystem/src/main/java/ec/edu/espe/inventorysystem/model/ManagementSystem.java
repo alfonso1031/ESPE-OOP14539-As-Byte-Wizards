@@ -39,7 +39,7 @@ public class ManagementSystem {
     }
     public boolean logout() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("I'm sure he wants to go out. Write [YES] or [NO]");
+        System.out.println("Are you sure you want to go out? Write [YES] or [NO]");
         String yesOurnot = scanner.nextLine();
         boolean logout = true;
         
@@ -50,10 +50,6 @@ public class ManagementSystem {
 
         }
     }
-
-
-   
-
 }
 
        

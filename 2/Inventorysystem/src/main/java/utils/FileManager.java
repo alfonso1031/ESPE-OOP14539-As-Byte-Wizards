@@ -103,7 +103,7 @@ public class FileManager {
              System.out.println("--------------------------");
              System.out.println("|        Produtc          |");
              System.out.println("--------------------------");
-             System.out.println("ID          :"+id);
+             System.out.println("ID          :"+ id);
              System.out.println("Name        : "+ name);
              System.out.println("Description :"+description);
              System.out.println("Category    :"+category);
