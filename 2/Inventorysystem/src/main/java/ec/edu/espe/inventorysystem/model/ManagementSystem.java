@@ -17,21 +17,28 @@ public class ManagementSystem {
    
     
      public boolean logIn() {
-        String user1;
-        String password1;
-            ArrayList <User> listUser = new ArrayList <>();
+        ArrayList<User> listUser = new ArrayList<>();
             listUser.add(new User("1","admin","admin", "PRO"));
             listUser.add(new User("2","frank","frank123", "PRO"));
         
-        Scanner scanner = new Scanner(System.in);//falta el try catch
-        System.out.println("Enter username:");
-        user1 =scanner.nextLine();//cambiar cuando se implemente el username como arraylist
-        System.out.println("Enter password:");
-        password1= scanner.nextLine();//esto tmb cambiar
-        System.out.println(user1);
-      
-        return user1.equals(listUser.get(0).getUsername()) && password1.equals(listUser.get(0).getPassword()); //esto cambiar tmb
+        try (Scanner scanner = new Scanner(System.in) //falta el try catch
+        ) {
+            System.out.println("Enter username: ");
+            String user1 = scanner.nextLine();
+            
+            System.out.println("Enter password: ");
+            String password1 = scanner.nextLine();
+            
+            for (User user:listUser){
+                if (user1.equals(user.getUsername()) && password1.equals(user.getPassword())){
+                return true;    
+                }
+            }
+        }catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return false;
     }
 
-   
+
 }

@@ -14,16 +14,9 @@ public class Main {
      UserInterface userInt= new UserInterface();
     
         if (userMana.logIn()) {
-            userInt.displayMenu();
-            
-            
+            userInt.displayMenu(); 
         }else{
             System.out.println("Incorrect password");
         }
-     
-        
-        
-        
-        
     }
 }
