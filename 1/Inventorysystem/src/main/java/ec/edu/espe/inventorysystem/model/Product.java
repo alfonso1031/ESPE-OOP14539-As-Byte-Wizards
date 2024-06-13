@@ -35,8 +35,8 @@ public class Product {
 
     public void checkTotalOfProducts(){
         System.out.println("Total number of products: " + getId().size());
-    }
-    public void addProduct(){
+        }
+        public void addProduct(){
         System.out.println("Adding product...");
         System.out.print("Enter ID: ");
         id.add(scanner.nextLine());
@@ -49,6 +49,7 @@ public class Product {
         
         System.out.print("Enter quantity: ");
         setQuantity(scanner.nextInt());
+        scanner.nextLine();
         
         System.out.print("Enter category: ");
         setCategory(scanner.nextLine());
@@ -59,9 +60,9 @@ public class Product {
         System.out.print("Enter size: ");
         setSize(scanner.nextLine());
         System.out.println("Product added successfully.");
-    }	
+        }	
 
-    public void removeProduct(){
+        public void removeProduct(){
         System.out.println("Removing product...");
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
