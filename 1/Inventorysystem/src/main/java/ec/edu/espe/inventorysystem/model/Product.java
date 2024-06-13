@@ -56,6 +56,7 @@ public class Product {
         
         System.out.print("Enter price: ");
         setPrice(scanner.nextFloat());
+        scanner.nextFloat();
         
         System.out.print("Enter size: ");
         setSize(scanner.nextLine());
