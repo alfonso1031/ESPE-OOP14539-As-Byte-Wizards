@@ -6,7 +6,7 @@ package ec.edu.espe.inventorysystem.model;
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Date ;
 
 public class Sale {
     private String id;
