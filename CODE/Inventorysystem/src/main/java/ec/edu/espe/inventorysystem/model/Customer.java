@@ -16,7 +16,7 @@ public class Customer {
         this.name = name;
         this.address = address;
         this.email = email;
-        this.phone = phone;
+        this.phone = phone ; 
         this.purchaseHistory = purchaseHistory;
     }
     
