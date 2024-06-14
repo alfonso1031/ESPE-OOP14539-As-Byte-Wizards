@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ManagementSystem {
 
-    private ArrayList<User> listUser;
+    private ArrayList<User> listUser ;
 
     public ManagementSystem() {
         listUser = new ArrayList<>();
