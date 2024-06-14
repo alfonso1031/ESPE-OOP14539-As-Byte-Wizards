@@ -13,7 +13,7 @@ public class ListProducts {
     }
     
     public void addProduct(Product product) {
-        products.add(product);
+        products.add(product) ;
     }
     
     public void viewProduct() {
