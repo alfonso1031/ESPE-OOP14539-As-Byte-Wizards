@@ -12,7 +12,7 @@ public class UserInterface {
     int option;
     static ListProducts listProdutc = new ListProducts();
     Scanner scanner = new Scanner(System.in);
-    ManagementSystem userMana = new ManagementSystem();
+    ManagementSystem userMana = new ManagementSystem() ;
     Product product = new Product("", "", "", 0, "", 0, "size");
 
     public void displayMenu() {
