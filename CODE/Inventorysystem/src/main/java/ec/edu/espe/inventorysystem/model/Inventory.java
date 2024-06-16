@@ -2,7 +2,7 @@
 package ec.edu.espe.inventorysystem.model;
 
 import java.util.ArrayList;
-import java.util.List ; 
+import java.util.List; 
 
 /**
  *
