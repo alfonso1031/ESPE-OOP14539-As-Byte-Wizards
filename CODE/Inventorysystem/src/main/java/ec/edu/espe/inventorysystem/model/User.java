@@ -5,7 +5,7 @@ package ec.edu.espe.inventorysystem.model;
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class User {
+public class User{
     private String id;
     private String username;
     private String password;
