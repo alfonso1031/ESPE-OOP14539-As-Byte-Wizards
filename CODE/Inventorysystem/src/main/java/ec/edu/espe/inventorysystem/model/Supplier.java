@@ -4,7 +4,7 @@
  */
 package ec.edu.espe.inventorysystem.model;
 
-import java.util.Scanner ;
+import java.util.Scanner;
 
 /**
  *
