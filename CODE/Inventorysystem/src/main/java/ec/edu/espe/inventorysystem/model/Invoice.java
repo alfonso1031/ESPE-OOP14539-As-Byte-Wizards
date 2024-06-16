@@ -4,7 +4,7 @@
  */
 package ec.edu.espe.inventorysystem.model;
 
-import java.util.Date ;
+import java.util.Date;
 
 /**
  *
