@@ -8,7 +8,7 @@ package ec.edu.espe.inventorysystem.model;
 import java.util.ArrayList;
 import java.util.Date ;
 
-public class Sale {
+public class Sale{
     private String id;
     private ArrayList<String> soldProductsList;
     private Date date;
