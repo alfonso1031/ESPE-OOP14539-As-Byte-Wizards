@@ -8,7 +8,7 @@ public class ListProducts {
     
     private ArrayList<Product> products;
 
-    public ListProducts() {
+    public ListProducts(){
         products = new ArrayList<>();
     }
     
