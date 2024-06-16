@@ -7,7 +7,7 @@ import utils.FileManager;
 /**
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class UserInterface {
+public class UserInterface{
 
     int option;
     static ListProducts listProdutc = new ListProducts();
