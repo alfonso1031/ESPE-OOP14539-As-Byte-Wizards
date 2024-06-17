@@ -21,11 +21,13 @@ public class ManagementSystem {
             System.out.println("\n--------------------");
             System.out.println("|      LOGIN       |");
             System.out.println("--------------------");
-
             System.out.println("Username:");
+          
             String username = scanner.nextLine();
+             System.out.println("--------------------");
             System.out.println("Password:");
             String password = scanner.nextLine();
+             System.out.println("--------------------");
 
             for (User user : listUser) {
                 if (user.getUsername().equals(username) && user.getPassword().equals(password)) {

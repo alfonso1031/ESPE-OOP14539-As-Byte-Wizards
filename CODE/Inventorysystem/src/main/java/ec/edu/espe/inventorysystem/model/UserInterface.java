@@ -18,7 +18,9 @@ public class UserInterface{
     public void displayMenu() {
 
         do {
+            System.out.println("-----------------------------------");
             System.out.println("\n\n|      Inventory System Menu      |");
+            System.out.println("-----------------------------------");
             System.out.println("|        [1] Add product          |");
             System.out.println("|        [2] Remove product       |");
             System.out.println("|        [3] Update product       |");
