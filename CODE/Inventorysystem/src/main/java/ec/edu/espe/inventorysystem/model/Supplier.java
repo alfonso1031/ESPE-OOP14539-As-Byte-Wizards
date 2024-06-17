@@ -27,27 +27,27 @@ public class Supplier {
     }
     
     public void updateInformation(){
-        System.out.println("Updating supplier information...");
-        System.out.print("Enter new ID: ");
+        System.out.println("UPDATING SUPPLIER INFORMATION...");
+        System.out.print("ENTER NEW ID: ");
         String newId = scanner.nextLine();
         setId(newId);
         
-        System.out.print("Enter new name: ");
+        System.out.print("ENTER NEW NAME: ");
         String newName = scanner.nextLine();
         setName(newName);
         
-        System.out.print("Enter new contact: ");
+        System.out.print("ENTER NEW CONTACT: ");
         String newContact = scanner.nextLine();
         setContact(newContact);
         
-        System.out.print("Enter new supplied products list: ");
+        System.out.print("ENTER NEW SUPPLIED PRODUCTS LIST: ");
         String newSuppliedProductsList = scanner.nextLine();
         setSuppliedProductsList(newSuppliedProductsList);
         
-        System.out.print("Enter new address: ");
+        System.out.print("ENTER NEW ADDRESS: ");
         String newAddress = scanner.nextLine();
         setAddress(newAddress);
-        System.out.println("Supplier information updated successfully.");
+        System.out.println("SUPPLIER INFORMATION UPDATED SUCCESSFULLY.");
     }
     
     @Override
