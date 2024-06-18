@@ -3,7 +3,7 @@ package ec.edu.espe.inventorysystem.model;
 
 import java.util.Scanner;
 
-import utils.FileManager;
+import ec.edu.espe.inventorysystem.utils.FileManager;
 
 /**
  *

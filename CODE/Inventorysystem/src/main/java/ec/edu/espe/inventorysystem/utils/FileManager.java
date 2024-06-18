@@ -1,4 +1,4 @@
-package utils;
+package ec.edu.espe.inventorysystem.utils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
