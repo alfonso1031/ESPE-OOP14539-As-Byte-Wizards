@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.espe.inventorysystem.model;
 
 import java.time.LocalDate;
@@ -27,6 +23,14 @@ public class Invoice {
         this.amountDue = amountDue;
         this.status = status;
         this.paymentMethod = paymentMethod;
+    }
+
+    public void calculateAmountDue() {
+        this.amountDue = sale.getTotalAmount(); // Suponiendo que `Sale` tiene un método getTotalAmount()
+    }
+
+    public boolean isOverdue() {
+        return LocalDate.now().isAfter(dueDate);
     }
 
     @Override

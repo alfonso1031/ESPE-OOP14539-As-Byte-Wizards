@@ -2,7 +2,7 @@ package ec.edu.espe.inventorysystem.model;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import ec.edu.espe.inventorysystem.utils.FileManager;
+import ec.edu.espe.inventorysystem.utils.ProductManager;
 
 /**
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
@@ -44,7 +44,7 @@ public class UserInterface {
                         product.editProduct();
                         break;
                     case 4:
-                        FileManager.readManager();
+                        ProductManager.readManager();
                         break;
                     case 5:
                         product.checkTotalOfProducts();

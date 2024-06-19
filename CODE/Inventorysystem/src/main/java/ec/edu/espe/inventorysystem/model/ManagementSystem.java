@@ -29,11 +29,16 @@ public class ManagementSystem {
             String password = scanner.nextLine();
             System.out.println("--------------------");
 
-            for (User user : listUser) {
-                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                    loggedIn = true;
-                    break;
+            try {
+                for (User user : listUser) {
+                    if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                        loggedIn = true;
+                        break;
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("An error occurred while logging in.");
+                e.printStackTrace();
             }
 
             if (!loggedIn) {

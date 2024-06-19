@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class FileManager {
+public class ProductManager {
 
     private static ArrayList<JSONObject> productList = new ArrayList<>();
 

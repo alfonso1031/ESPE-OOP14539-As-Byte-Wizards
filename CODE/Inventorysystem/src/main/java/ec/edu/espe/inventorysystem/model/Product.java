@@ -2,7 +2,7 @@ package ec.edu.espe.inventorysystem.model;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import ec.edu.espe.inventorysystem.utils.FileManager;
+import ec.edu.espe.inventorysystem.utils.ProductManager;
 
 public class Product {
 
@@ -32,7 +32,7 @@ public class Product {
     }
 
     public void checkTotalOfProducts() {
-        int productCount = FileManager.countProducts();
+        int productCount = ProductManager.countProducts();
         System.out.println("Total number of products: " + productCount);
     }
 
@@ -55,7 +55,7 @@ public class Product {
             System.out.print("size: ");
             String size = scanner.nextLine();
 
-            FileManager.saveManagerProduct(id, name, description, quantity, category, price, size);
+            ProductManager.saveManagerProduct(id, name, description, quantity, category, price, size);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();
@@ -65,7 +65,7 @@ public class Product {
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
-        FileManager.removeProduct(idToRemove);
+        ProductManager.removeProduct(idToRemove);
     }
 
     public void editProduct() {
@@ -93,7 +93,7 @@ public class Product {
             System.out.print("Enter new size: ");
             String size = scanner.nextLine();
 
-            FileManager.editProduct(id, name, description, quantity, category, price, size);
+            ProductManager.editProduct(id, name, description, quantity, category, price, size);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-class Supplier {
+public class Supplier {
     private int id;
     private String name;
     private String address;

@@ -6,20 +6,19 @@ package ec.edu.espe.inventorysystem.model;
  */
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 
-class Sale {
+public class Sale {
     private int id;
     private Customer customer; 
     private LocalDate date; 
-    private List<Product> sellProduct; 
+    private ArrayList<Product> sellProduct; 
     private float totalAmount; 
     private String paymentMethod;
     private String shippingAddress;
     private String status;
 
-    public Sale(int id, Customer customer, LocalDate date, List<Product> sellProduct, float totalAmount, String paymentMethod, String shippingAddress, String status) {
+    public Sale(int id, Customer customer, LocalDate date, ArrayList<Product> sellProduct, float totalAmount, String paymentMethod, String shippingAddress, String status) {
         this.id = id;
         this.customer = customer;
         this.date = date;
@@ -28,6 +27,14 @@ class Sale {
         this.paymentMethod = paymentMethod;
         this.shippingAddress = shippingAddress;
         this.status = status;
+    }
+
+    public void calculateTotalAmount() {
+        float sum = 0;
+        for (Product product : sellProduct) {
+            sum += product.getPrice() * product.getQuantity(); 
+        }
+        this.totalAmount = sum;
     }
 
     @Override
@@ -80,14 +87,14 @@ class Sale {
     /**
      * @return the sellProduct
      */
-    public List<Product> getSellProduct() {
+    public ArrayList<Product> getSellProduct() {
         return sellProduct;
     }
 
     /**
      * @param sellProduct the sellProduct to set
      */
-    public void setSellProduct(List<Product> sellProduct) {
+    public void setSellProduct(ArrayList<Product> sellProduct) {
         this.sellProduct = sellProduct;
     }
 

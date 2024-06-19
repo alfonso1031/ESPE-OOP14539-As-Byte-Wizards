@@ -1,8 +1,12 @@
 package ec.edu.espe.inventorysystem.model;
 
+import static ec.edu.espe.inventorysystem.utils.BillManager.readCustomersFromFile;
+import static ec.edu.espe.inventorysystem.utils.BillManager.writeCustomersToFile;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
-class Customer {
+public class Customer {
     private int id;
     private String name;
     private String address;
@@ -21,6 +25,40 @@ class Customer {
         this.registrationDate = registrationDate;
         this.category = category;
         this.creditLimit = creditLimit;
+    }
+    
+    public void addCustomer(){
+        try {
+            List<Customer> customers = readCustomersFromFile();
+            customers.forEach(System.out::println); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void modifyCustomer(){
+        try {
+            List<Customer> customers = readCustomersFromFile();
+            customers.add(new Customer(4, "Nuevo Cliente", "Dirección Nueva", "555-1234", "nuevo@cliente.com", LocalDate.now(), "Categoria", 1000.0f));
+            writeCustomersToFile(customers);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+            
+
+    public boolean hasCreditLimitExceeded(float amount) {
+        return creditLimit < amount;
+    }
+
+    public void increaseCreditLimit(float amount) {
+        creditLimit += amount;
+    }
+
+    public void decreaseCreditLimit(float amount) {
+        creditLimit -= amount;
     }
 
     @Override
