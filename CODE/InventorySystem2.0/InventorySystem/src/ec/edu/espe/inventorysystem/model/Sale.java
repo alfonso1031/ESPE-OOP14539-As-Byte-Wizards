@@ -2,7 +2,7 @@ package ec.edu.espe.inventorysystem.model;
 
 /**
  *
- * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
+ * @author <As-Byte Wizards> DDCC ESPE
  */
 import java.time.LocalDate;
 import java.util.ArrayList;

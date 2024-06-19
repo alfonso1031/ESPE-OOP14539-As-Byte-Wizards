@@ -1,11 +1,9 @@
 ec\edu\espe\inventorysystem\model\Product.class
-ec\edu\espe\inventorysystem\model\Invoice.class
-ec\edu\espe\inventorysystem\model\ManagementSystem.class
-ec\edu\espe\inventorysystem\model\User.class
-ec\edu\espe\inventorysystem\model\Inventory.class
-ec\edu\espe\inventorysystem\model\Sale.class
-ec\edu\espe\inventorysystem\model\Supplier.class
 ec\edu\espe\inventorysystem\model\ListProducts.class
+ec\edu\espe\inventorysystem\model\ManagementSystem.class
 ec\edu\espe\inventorysystem\model\UserInterface.class
 ec\edu\espe\inventorysystem\view\Main.class
-ec\edu\espe\inventorysystem\model\Customer.class
+ec\edu\espe\inventorysystem\model\User.class
+ec\edu\espe\inventorysystem\model\Inventory.class
+ec\edu\espe\inventorysystem\utils\ProductManager.class
+ec\edu\espe\inventorysystem\model\Supplier.class

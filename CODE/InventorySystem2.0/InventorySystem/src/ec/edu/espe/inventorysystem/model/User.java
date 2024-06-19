@@ -3,7 +3,7 @@ package ec.edu.espe.inventorysystem.model;
 
 /**
  *
- * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
+ * @author <As-Byte Wizards> DDCC ESPE
  */
 public class User{
     private String id;

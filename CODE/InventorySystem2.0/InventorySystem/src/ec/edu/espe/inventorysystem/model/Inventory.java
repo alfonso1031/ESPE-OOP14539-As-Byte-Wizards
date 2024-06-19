@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
+ * @author <As-Byte Wizards> DDCC ESPE
  */
 public class Inventory {
     private List<Product> products;

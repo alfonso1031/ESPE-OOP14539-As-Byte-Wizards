@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
+ * @author<As-Byte Wizards> DDCC ESPE
  */
 public class Invoice {
     private int id;

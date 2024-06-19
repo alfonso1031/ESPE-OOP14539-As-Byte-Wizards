@@ -6,7 +6,7 @@ import java.util.Scanner;
 import utils.ProductManager;
 
 /**
- * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
+ * @author <As-Byte Wizards> DDCC ESPE
  */
 public class UserInterface {
 
@@ -36,20 +36,35 @@ public class UserInterface {
                 scanner.nextLine();
 
                 switch (option) {
-                    case 1 -> product.addProduct();
-                    case 2 -> product.removeProduct();
-                    case 3 -> product.editProduct();
-                    case 4 -> ProductManager.readManager();
-                    case 5 -> product.checkTotalOfProducts();
-                    case 6 -> userMana.logIn();
-                    case 7 -> userMana.logout();
-                    default -> System.out.println("Invalid option. Please try again.");
+                    case 1:
+                        product.addProduct();
+                        break;
+                    case 2:
+                        product.removeProduct();
+                        break;
+                    case 3:
+                        product.editProduct();
+                        break;
+                    case 4:
+                        ProductManager.readManager();
+                        break;
+                    case 5:
+                        product.checkTotalOfProducts();
+                        break;
+                    case 6:
+                        userMana.logIn();
+                        break;
+                    case 7:
+                        userMana.logout();
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please try again.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid integer option.");
                 scanner.nextLine();
             }
-        } while (option != 7);
+        } while (option!=7);
     }
 
 }
