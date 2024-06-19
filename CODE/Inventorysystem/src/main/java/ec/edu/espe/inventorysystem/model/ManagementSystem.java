@@ -52,11 +52,7 @@ public class ManagementSystem {
         return loggedIn;
     }
 
-    public boolean logout() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Are you sure you want to log out? Write [YES] or [NO]");
-        String confirmation = scanner.nextLine();
-
-        return confirmation.equalsIgnoreCase("yes");
+    public void logout() {
+        System.out.println("Leaving the system...");
     }
 }

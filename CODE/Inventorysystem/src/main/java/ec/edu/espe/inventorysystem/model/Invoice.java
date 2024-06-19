@@ -26,7 +26,7 @@ public class Invoice {
     }
 
     public void calculateAmountDue() {
-        this.amountDue = sale.getTotalAmount(); // Suponiendo que `Sale` tiene un método getTotalAmount()
+        this.amountDue = sale.getTotalAmount(); 
     }
 
     public boolean isOverdue() {

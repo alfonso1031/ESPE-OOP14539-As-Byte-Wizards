@@ -93,7 +93,7 @@ public class Product {
             System.out.print("Enter new size: ");
             String size = scanner.nextLine();
 
-            ProductManager.editProduct(id, name, description, quantity, category, price, size);
+            ProductManager.editProduct();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();
