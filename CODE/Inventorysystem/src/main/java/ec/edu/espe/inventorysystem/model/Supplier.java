@@ -1,68 +1,48 @@
 package ec.edu.espe.inventorysystem.model;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class Supplier {
-
-    private String id;
+class Supplier {
+    private int id;
     private String name;
-    private String contact;
-    private String suppliedProductsList;
     private String address;
-    Scanner scanner = new Scanner(System.in);
+    private String phone;
+    private String email;
+    private ArrayList<String> productsSupplied; 
+    private String paymentTerms;
+    private String deliveryTerms;
 
-    public Supplier(String id, String name, String contact, String suppliedProductsList, String address) {
+    public Supplier(int id, String name, String address, String phone, String email, ArrayList<String> productsSupplied, String paymentTerms, String deliveryTerms) {
         this.id = id;
         this.name = name;
-        this.contact = contact;
-        this.suppliedProductsList = suppliedProductsList;
         this.address = address;
-    }
-
-    public void updateInformation() {
-        System.out.println("UPDATING SUPPLIER INFORMATION...");
-        System.out.print("ENTER NEW ID: ");
-        String newId = scanner.nextLine();
-        setId(newId);
-
-        System.out.print("ENTER NEW NAME: ");
-        String newName = scanner.nextLine();
-        setName(newName);
-
-        System.out.print("ENTER NEW CONTACT: ");
-        String newContact = scanner.nextLine();
-        setContact(newContact);
-
-        System.out.print("ENTER NEW SUPPLIED PRODUCTS LIST: ");
-        String newSuppliedProductsList = scanner.nextLine();
-        setSuppliedProductsList(newSuppliedProductsList);
-
-        System.out.print("ENTER NEW ADDRESS: ");
-        String newAddress = scanner.nextLine();
-        setAddress(newAddress);
-        System.out.println("SUPPLIER INFORMATION UPDATED SUCCESSFULLY.");
+        this.phone = phone;
+        this.email = email;
+        this.productsSupplied = productsSupplied;
+        this.paymentTerms = paymentTerms;
+        this.deliveryTerms = deliveryTerms;
     }
 
     @Override
     public String toString() {
-        return "Supplier{" + "id=" + getId() + ", name=" + getName() + ", contact=" + getContact() + ", suppliedProductsList=" + getSuppliedProductsList() + ", address=" + getAddress() + '}';
+        return "Supplier{" + "id=" + getId() + ", name=" + getName() + ", address=" + getAddress() + ", phone=" + getPhone() + ", email=" + getEmail() + ", productsSupplied=" + getProductsSupplied() + ", paymentTerms=" + getPaymentTerms() + ", deliveryTerms=" + getDeliveryTerms() + '}';
     }
 
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -81,34 +61,6 @@ public class Supplier {
     }
 
     /**
-     * @return the contact
-     */
-    public String getContact() {
-        return contact;
-    }
-
-    /**
-     * @param contact the contact to set
-     */
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    /**
-     * @return the suppliedProductsList
-     */
-    public String getSuppliedProductsList() {
-        return suppliedProductsList;
-    }
-
-    /**
-     * @param suppliedProductsList the suppliedProductsList to set
-     */
-    public void setSuppliedProductsList(String suppliedProductsList) {
-        this.suppliedProductsList = suppliedProductsList;
-    }
-
-    /**
      * @return the address
      */
     public String getAddress() {
@@ -121,5 +73,78 @@ public class Supplier {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the productsSupplied
+     */
+    public ArrayList<String> getProductsSupplied() {
+        return productsSupplied;
+    }
+
+    /**
+     * @param productsSupplied the productsSupplied to set
+     */
+    public void setProductsSupplied(ArrayList<String> productsSupplied) {
+        this.productsSupplied = productsSupplied;
+    }
+
+    /**
+     * @return the paymentTerms
+     */
+    public String getPaymentTerms() {
+        return paymentTerms;
+    }
+
+    /**
+     * @param paymentTerms the paymentTerms to set
+     */
+    public void setPaymentTerms(String paymentTerms) {
+        this.paymentTerms = paymentTerms;
+    }
+
+    /**
+     * @return the deliveryTerms
+     */
+    public String getDeliveryTerms() {
+        return deliveryTerms;
+    }
+
+    /**
+     * @param deliveryTerms the deliveryTerms to set
+     */
+    public void setDeliveryTerms(String deliveryTerms) {
+        this.deliveryTerms = deliveryTerms;
+    }
+    
+    
+    
 
 }

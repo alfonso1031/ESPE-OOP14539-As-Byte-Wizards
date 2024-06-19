@@ -4,101 +4,48 @@
  */
 package ec.edu.espe.inventorysystem.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Invoice {
+    private int id;
+    private Sale sale; 
+    private LocalDate date; 
+    private LocalDate dueDate; 
+    private float amountDue; 
+    private String status;
+    private String paymentMethod;
 
-    private Customer customer;
-    private String id;
-    private Date date;
-    private Sale sale;
-    private Product product;
-
-    public Invoice(Customer customer, String id, Date date, Sale sale, Product product) {
-        this.customer = customer;
+    public Invoice(int id, Sale sale, LocalDate date, LocalDate dueDate, float amountDue, String status, String paymentMethod) {
         this.id = id;
-        this.date = date;
         this.sale = sale;
-        this.product = product;
-    }
-
-    public void displayCustomerInformation() {
-        System.out.println("Customer information: ");
-        System.out.println("Name: " + getCustomer().getName());
-        System.out.println("ID: " + getCustomer().getId());
-        System.out.println("Address: " + getCustomer().getAddress());
-        System.out.println("Phone: " + getCustomer().getPhone());
-    }
-
-    public void displayProductInformation() {
-        System.out.println("Product information: ");
-        System.out.println("ID: " + getProduct().getId());
-        System.out.println("Name: " + getProduct().getName());
-        System.out.println("Description: " + getProduct().getDescription());
-        System.out.println("Quantity: " + getProduct().getQuantity());
-        System.out.println("Category: " + getProduct().getCategory());
-        System.out.println("Price: " + getProduct().getPrice());
-        System.out.println("Size: " + getProduct().getSize());
-    }
-
-    public void displaySaleInformation() {
-        System.out.println("Sale information: ");
-        System.out.println("ID: " + getSale().getId());
-        System.out.println("Sold products list: " + getSale().getSoldProductsList());
-        System.out.println("Date: " + getSale().getDate());
-        System.out.println("Total: " + getSale().getTotal());
-        System.out.println("Change: " + getSale().getChange());
+        this.date = date;
+        this.dueDate = dueDate;
+        this.amountDue = amountDue;
+        this.status = status;
+        this.paymentMethod = paymentMethod;
     }
 
     @Override
     public String toString() {
-        return "Invoice{" + "customer=" + getCustomer() + ", id=" + getId() + ", date=" + getDate() + ", sale=" + getSale() + '}';
-    }
-
-    /**
-     * @return the customer
-     */
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    /**
-     * @param customer the customer to set
-     */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+        return "Invoice{" + "id=" + getId() + ", sale=" + getSale() + ", date=" + getDate() + ", dueDate=" + getDueDate() + ", amountDue=" + getAmountDue() + ", status=" + getStatus() + ", paymentMethod=" + getPaymentMethod() + '}';
     }
 
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * @return the date
-     */
-    public Date getDate() {
-        return date;
-    }
-
-    /**
-     * @param date the date to set
-     */
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     /**
@@ -116,17 +63,74 @@ public class Invoice {
     }
 
     /**
-     * @return the product
+     * @return the date
      */
-    public Product getProduct() {
-        return product;
+    public LocalDate getDate() {
+        return date;
     }
 
     /**
-     * @param product the product to set
+     * @param date the date to set
      */
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
+    /**
+     * @return the dueDate
+     */
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    /**
+     * @param dueDate the dueDate to set
+     */
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    /**
+     * @return the amountDue
+     */
+    public float getAmountDue() {
+        return amountDue;
+    }
+
+    /**
+     * @param amountDue the amountDue to set
+     */
+    public void setAmountDue(float amountDue) {
+        this.amountDue = amountDue;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the paymentMethod
+     */
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    /**
+     * @param paymentMethod the paymentMethod to set
+     */
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+    
+     
 }
