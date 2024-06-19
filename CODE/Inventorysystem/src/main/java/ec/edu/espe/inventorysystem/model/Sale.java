@@ -1,119 +1,151 @@
-
 package ec.edu.espe.inventorysystem.model;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date ;
+import java.util.List;
 
-public class Sale{
-    private String id;
-    private ArrayList<String> soldProductsList;
-    private Date date;
-    private double total;
-    private float change;
-    private Product product;
 
-    public Sale(String id, ArrayList<String> soldProductsList, Date date, double total, float change) {
+class Sale {
+    private int id;
+    private Customer customer; 
+    private LocalDate date; 
+    private List<Product> sellProduct; 
+    private float totalAmount; 
+    private String paymentMethod;
+    private String shippingAddress;
+    private String status;
+
+    public Sale(int id, Customer customer, LocalDate date, List<Product> sellProduct, float totalAmount, String paymentMethod, String shippingAddress, String status) {
         this.id = id;
-        this.soldProductsList = soldProductsList;
+        this.customer = customer;
         this.date = date;
-        this.total = total;
-        this.change = change;
+        this.sellProduct = sellProduct;
+        this.totalAmount = totalAmount;
+        this.paymentMethod = paymentMethod;
+        this.shippingAddress = shippingAddress;
+        this.status = status;
     }
-
-    public float getChange() {
-        float total= getProduct().calculateTotalSale()-getChange();
-        return total;
-    }
-
 
     @Override
     public String toString() {
-        return "Sale{" + "id=" + id + ", soldProductsList=" + soldProductsList + ", date=" + date + ", total=" + getTotal() + ", change=" + change + '}';
+        return "Sale{" + "id=" + getId() + ", customer=" + getCustomer() + ", date=" + getDate() + ", sellProduct=" + getSellProduct() + ", totalAmount=" + getTotalAmount() + ", paymentMethod=" + getPaymentMethod() + ", shippingAddress=" + getShippingAddress() + ", status=" + getStatus() + '}';
     }
-
-    
 
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * @return the soldProductsList
+     * @return the customer
      */
-    public ArrayList<String> getSoldProductsList() {
-        return soldProductsList;
+    public Customer getCustomer() {
+        return customer;
     }
 
     /**
-     * @param soldProductsList the soldProductsList to set
+     * @param customer the customer to set
      */
-    public void setSoldProductsList(ArrayList<String> soldProductsList) {
-        this.soldProductsList = soldProductsList;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     /**
      * @return the date
      */
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
     /**
-     * @param total the total to set
+     * @return the sellProduct
      */
-    public void setTotal(double total) {
-        this.total = total;
+    public List<Product> getSellProduct() {
+        return sellProduct;
     }
 
     /**
-     * @param change the change to set
+     * @param sellProduct the sellProduct to set
      */
-    public void setChange(float change) {
-        this.change = change;
+    public void setSellProduct(List<Product> sellProduct) {
+        this.sellProduct = sellProduct;
     }
 
     /**
-     * @return the total
+     * @return the totalAmount
      */
-    public double getTotal() {
-        return total;
+    public float getTotalAmount() {
+        return totalAmount;
     }
 
     /**
-     * @return the product
+     * @param totalAmount the totalAmount to set
      */
-    public Product getProduct() {
-        return product;
+    public void setTotalAmount(float totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     /**
-     * @param product the product to set
+     * @return the paymentMethod
      */
-    public void setProduct(Product product) {
-        this.product = product;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
+    /**
+     * @param paymentMethod the paymentMethod to set
+     */
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    /**
+     * @return the shippingAddress
+     */
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    /**
+     * @param shippingAddress the shippingAddress to set
+     */
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
     
 }

@@ -1,15 +1,15 @@
-
 package ec.edu.espe.inventorysystem.model;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
-public class User{
+public class User {
+
     private String id;
     private String username;
     private String password;
-    private String role ;
+    private String role;
 
     public User(String id, String username, String password, String role) {
         this.id = id;
@@ -26,7 +26,7 @@ public class User{
 
     @Override
     public String toString() {
-        return "User{" + "id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", role=" + getRole() +'}';
+        return "User{" + "id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", role=" + getRole() + '}';
     }
 
     /**
@@ -84,5 +84,5 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
-    
+
 }
