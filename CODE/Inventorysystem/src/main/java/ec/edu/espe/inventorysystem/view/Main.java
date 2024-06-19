@@ -12,12 +12,12 @@ public class Main {
         boolean out = false;
         do {
             if (userMana.logIn()) {
-                System.out.println("\nWelcome!!\n");
+
                 userInt.displayMenu();
             } else {
                 System.out.println("Incorrect password");
             }
         } while (out);
-        
+
     }
 }

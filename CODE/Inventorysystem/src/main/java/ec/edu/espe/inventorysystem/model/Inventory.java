@@ -1,14 +1,14 @@
-
 package ec.edu.espe.inventorysystem.model;
 
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
 
 /**
  *
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Inventory {
+
     private List<Product> products;
 
     public Inventory() {
@@ -58,6 +58,5 @@ public class Inventory {
     public void setProductList(List<Product> products) {
         this.products = products;
     }
-    
-}
 
+}

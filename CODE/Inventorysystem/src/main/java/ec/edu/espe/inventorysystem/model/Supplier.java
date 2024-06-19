@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.espe.inventorysystem.model;
 
 import java.util.Scanner;
@@ -11,6 +7,7 @@ import java.util.Scanner;
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Supplier {
+
     private String id;
     private String name;
     private String contact;
@@ -25,31 +22,31 @@ public class Supplier {
         this.suppliedProductsList = suppliedProductsList;
         this.address = address;
     }
-    
-    public void updateInformation(){
+
+    public void updateInformation() {
         System.out.println("UPDATING SUPPLIER INFORMATION...");
         System.out.print("ENTER NEW ID: ");
         String newId = scanner.nextLine();
         setId(newId);
-        
+
         System.out.print("ENTER NEW NAME: ");
         String newName = scanner.nextLine();
         setName(newName);
-        
+
         System.out.print("ENTER NEW CONTACT: ");
         String newContact = scanner.nextLine();
         setContact(newContact);
-        
+
         System.out.print("ENTER NEW SUPPLIED PRODUCTS LIST: ");
         String newSuppliedProductsList = scanner.nextLine();
         setSuppliedProductsList(newSuppliedProductsList);
-        
+
         System.out.print("ENTER NEW ADDRESS: ");
         String newAddress = scanner.nextLine();
         setAddress(newAddress);
         System.out.println("SUPPLIER INFORMATION UPDATED SUCCESSFULLY.");
     }
-    
+
     @Override
     public String toString() {
         return "Supplier{" + "id=" + getId() + ", name=" + getName() + ", contact=" + getContact() + ", suppliedProductsList=" + getSuppliedProductsList() + ", address=" + getAddress() + '}';
@@ -124,6 +121,5 @@ public class Supplier {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
+
 }

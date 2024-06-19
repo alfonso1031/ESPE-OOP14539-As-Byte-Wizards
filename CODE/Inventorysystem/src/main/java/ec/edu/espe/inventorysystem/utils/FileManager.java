@@ -1,16 +1,21 @@
 package ec.edu.espe.inventorysystem.utils;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class FileManager {
+
+    private static ArrayList<JSONObject> productList = new ArrayList<>();
+
+    static {
+        loadProductsFromFile();
+    }
 
     public static void saveFile(String data, String fileName, String type) throws IOException {
         try (FileWriter writer = new FileWriter(fileName + "." + type, true)) {
@@ -19,63 +24,51 @@ public class FileManager {
     }
 
     public static void saveManagerProduct(String id, String name, String description, int quantity, String category,
-                                          float price, String size) {
-        JSONParser parser = new JSONParser();
-        JSONArray listProduct = new JSONArray();
+            float price, String size) {
+        boolean productExists = false;
 
-        try (FileReader reader = new FileReader("Product.json")) {
-            Object obj = parser.parse(reader);
-            listProduct = (JSONArray) obj;
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
+        for (JSONObject productObj : productList) {
+            JSONObject product = (JSONObject) productObj.get("product");
+            if (product.get("id").equals(id)) {
+                int currentQuantity = ((Long) product.get("quantity")).intValue();
+                product.put("quantity", currentQuantity + quantity);
+                productExists = true;
+                break;
+            }
         }
 
-        JSONObject products = new JSONObject();
-        products.put("id", id);
-        products.put("name", name);
-        products.put("description", description);
-        products.put("quantity", quantity);
-        products.put("category", category);
-        products.put("price", price);
-        products.put("size", size);
+        if (!productExists) {
+            JSONObject products = new JSONObject();
+            products.put("id", id);
+            products.put("name", name);
+            products.put("description", description);
+            products.put("quantity", quantity);
+            products.put("category", category);
+            products.put("price", price);
+            products.put("size", size);
 
-        JSONObject dateProduct = new JSONObject();
-        dateProduct.put("product", products);
+            JSONObject dateProduct = new JSONObject();
+            dateProduct.put("product", products);
 
-        listProduct.add(dateProduct);
-
-        try (FileWriter file = new FileWriter("Product.json")) {
-            file.write(listProduct.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
+            productList.add(dateProduct);
         }
+
+        saveProductsToFile();
+        System.out.println("Product saved. Current product quantities:");
+        displayProductQuantities();
     }
 
     public static void readManager() {
-        JSONParser jsonParser = new JSONParser();
-
-        try (FileReader reader = new FileReader("Product.json")) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray listProduct = (JSONArray) obj;
-
-            if (listProduct.isEmpty()) {
-                System.out.println("No products available.");
-                return;
-            }
-
-            for (Object product : listProduct) {
-                viewManager((JSONObject) product);
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Product.json file not found.");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (productList.isEmpty()) {
+            System.out.println("No products available.");
+            return;
         }
+
+        for (JSONObject product : productList) {
+            viewManager(product);
+        }
+        System.out.println("Current product quantities:");
+        displayProductQuantities();
     }
 
     public static void viewManager(JSONObject jsonObject) {
@@ -88,6 +81,7 @@ public class FileManager {
         String description = (String) product.get("description");
         String id = (String) product.get("id");
         String category = (String) product.get("category");
+
         System.out.println("--------------------------");
         System.out.println("|        Product         |");
         System.out.println("--------------------------");
@@ -100,118 +94,81 @@ public class FileManager {
         System.out.println("Quantity    :" + quantity);
     }
 
-    public static void editProduct() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the ID of the product you want to edit: ");
-        String id = scanner.nextLine();
-
-        JSONParser parser = new JSONParser();
-        JSONArray listProduct = new JSONArray();
+    public static void editProduct(String id, String name, String description, int quantity, String category,
+            float price, String size) {
         boolean found = false;
 
-        try (FileReader reader = new FileReader("Product.json")) {
-            Object obj = parser.parse(reader);
-            listProduct = (JSONArray) obj;
-
-            for (Object productObj : listProduct) {
-                JSONObject product = (JSONObject) ((JSONObject) productObj).get("product");
-                if (product.get("id").equals(id)) {
-                    found = true;
-
-                    System.out.print("Enter new name: ");
-                    String name = scanner.nextLine();
-
-                    System.out.print("Enter new description: ");
-                    String description = scanner.nextLine();
-
-                    System.out.print("Enter new quantity: ");
-                    int quantity = scanner.nextInt();
-                    scanner.nextLine();
-
-                    System.out.print("Enter new category: ");
-                    String category = scanner.nextLine();
-
-                    System.out.print("Enter new price: ");
-                    float price = scanner.nextFloat();
-                    scanner.nextLine();
-
-                    System.out.print("Enter new size: ");
-                    String size = scanner.nextLine();
-
-                    product.put("name", name);
-                    product.put("description", description);
-                    product.put("quantity", quantity);
-                    product.put("category", category);
-                    product.put("price", price);
-                    product.put("size", size);
-                    break;
-                }
+        for (JSONObject productObj : productList) {
+            JSONObject product = (JSONObject) productObj.get("product");
+            if (product.get("id").equals(id)) {
+                found = true;
+                product.put("name", name);
+                product.put("description", description);
+                product.put("quantity", quantity);
+                product.put("category", category);
+                product.put("price", price);
+                product.put("size", size);
+                break;
             }
+        }
 
-            if (!found) {
-                System.out.println("Product with ID " + id + " not found.");
-            } else {
-                try (FileWriter file = new FileWriter("Product.json")) {
-                    file.write(listProduct.toJSONString());
-                    file.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
+        if (!found) {
+            System.out.println("Product with ID " + id + " not found.");
+        } else {
+            saveProductsToFile();
+            System.out.println("Product edited. Current product quantities:");
+            displayProductQuantities();
         }
     }
 
     public static void removeProduct(String id) {
-        JSONParser parser = new JSONParser();
-        JSONArray listProduct = new JSONArray();
-        boolean found = false;
+        boolean found = productList.removeIf(productObj -> {
+            JSONObject product = (JSONObject) productObj.get("product");
+            return product.get("id").equals(id);
+        });
 
+        if (found) {
+            saveProductsToFile();
+            System.out.println("Product has been removed. Current product quantities:");
+            displayProductQuantities();
+        } else {
+            System.out.println("Product with ID " + id + " not found.");
+        }
+    }
+
+    public static int countProducts() {
+        return productList.size();
+    }
+
+    private static void loadProductsFromFile() {
+        JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("Product.json")) {
             Object obj = parser.parse(reader);
-            listProduct = (JSONArray) obj;
-
-            found = listProduct.removeIf(productObj -> {
-                JSONObject product = (JSONObject) ((JSONObject) productObj).get("product");
-                return product.get("id").equals(id);
-            });
-
-            if (found) {
-                try (FileWriter file = new FileWriter("Product.json")) {
-                    file.write(listProduct.toJSONString());
-                    file.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Product has been removed.");
-            } else {
-                System.out.println("Product with ID " + id + " not found.");
-            }
-
+            JSONArray listProduct = (JSONArray) obj;
+            productList = new ArrayList<>(listProduct);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    public static int countProducts() {
-        JSONParser parser = new JSONParser();
-        JSONArray listProduct = new JSONArray();
-
-        try (FileReader reader = new FileReader("Product.json")) {
-            Object obj = parser.parse(reader);
-            listProduct = (JSONArray) obj;
-        } catch (IOException | ParseException e) {
+    private static void saveProductsToFile() {
+        try (FileWriter file = new FileWriter("Product.json")) {
+            JSONArray listProduct = new JSONArray();
+            listProduct.addAll(productList);
+            file.write(listProduct.toJSONString());
+            file.flush();
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        int count = listProduct.size();
-        if (count == 0) {
-            System.out.println("No products available.");
+    private static void displayProductQuantities() {
+        for (JSONObject productObj : productList) {
+            JSONObject product = (JSONObject) productObj.get("product");
+            String id = (String) product.get("id");
+            String name = (String) product.get("name");
+            long quantity = (long) product.get("quantity");
+            System.out.println("ID: " + id + ", Name: " + name + ", Quantity: " + quantity);
         }
-
-        return count;
     }
 }

@@ -11,6 +11,7 @@ import java.util.Date;
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 public class Invoice {
+
     private Customer customer;
     private String id;
     private Date date;
@@ -24,16 +25,16 @@ public class Invoice {
         this.sale = sale;
         this.product = product;
     }
-    
-    public void displayCustomerInformation(){
+
+    public void displayCustomerInformation() {
         System.out.println("Customer information: ");
         System.out.println("Name: " + getCustomer().getName());
         System.out.println("ID: " + getCustomer().getId());
         System.out.println("Address: " + getCustomer().getAddress());
-        System.out.println("Phone: " + getCustomer().getPhone());        
+        System.out.println("Phone: " + getCustomer().getPhone());
     }
 
-    public void displayProductInformation(){
+    public void displayProductInformation() {
         System.out.println("Product information: ");
         System.out.println("ID: " + getProduct().getId());
         System.out.println("Name: " + getProduct().getName());
@@ -44,7 +45,7 @@ public class Invoice {
         System.out.println("Size: " + getProduct().getSize());
     }
 
-    public void displaySaleInformation(){
+    public void displaySaleInformation() {
         System.out.println("Sale information: ");
         System.out.println("ID: " + getSale().getId());
         System.out.println("Sold products list: " + getSale().getSoldProductsList());
@@ -52,12 +53,12 @@ public class Invoice {
         System.out.println("Total: " + getSale().getTotal());
         System.out.println("Change: " + getSale().getChange());
     }
-    
+
     @Override
     public String toString() {
         return "Invoice{" + "customer=" + getCustomer() + ", id=" + getId() + ", date=" + getDate() + ", sale=" + getSale() + '}';
     }
-    
+
     /**
      * @return the customer
      */
@@ -127,6 +128,5 @@ public class Invoice {
     public void setProduct(Product product) {
         this.product = product;
     }
-    
-    
+
 }

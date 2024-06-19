@@ -22,17 +22,17 @@ public class ManagementSystem {
             System.out.println("|      LOGIN       |");
             System.out.println("--------------------");
             System.out.println("Username:");
-          
+
             String username = scanner.nextLine();
-             System.out.println("--------------------");
+            System.out.println("--------------------");
             System.out.println("Password:");
             String password = scanner.nextLine();
-             System.out.println("--------------------");
+            System.out.println("--------------------");
 
             for (User user : listUser) {
                 if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                     loggedIn = true;
-                    break; 
+                    break;
                 }
             }
 
@@ -40,7 +40,9 @@ public class ManagementSystem {
                 System.out.println("Incorrect username or password. Please try again.");
             }
 
-        } while (!loggedIn); 
+        } while (!loggedIn);
+
+        System.out.println("\nWelcome!!\n");
 
         return loggedIn;
     }

@@ -1,4 +1,3 @@
-
 package ec.edu.espe.inventorysystem.model;
 
 /**
@@ -6,9 +5,10 @@ package ec.edu.espe.inventorysystem.model;
  * @author Alfonso Arroyo <As-Byte Wizards> DDCC ESPE
  */
 import java.util.ArrayList;
-import java.util.Date ;
+import java.util.Date;
 
-public class Sale{
+public class Sale {
+
     private String id;
     private ArrayList<String> soldProductsList;
     private Date date;
@@ -25,17 +25,14 @@ public class Sale{
     }
 
     public float getChange() {
-        float total= getProduct().calculateTotalSale()-getChange();
+        float total = getProduct().calculateTotalSale() - getChange();
         return total;
     }
-
 
     @Override
     public String toString() {
         return "Sale{" + "id=" + id + ", soldProductsList=" + soldProductsList + ", date=" + date + ", total=" + getTotal() + ", change=" + change + '}';
     }
-
-    
 
     /**
      * @return the id
@@ -114,6 +111,4 @@ public class Sale{
         this.product = product;
     }
 
-    
-    
 }
