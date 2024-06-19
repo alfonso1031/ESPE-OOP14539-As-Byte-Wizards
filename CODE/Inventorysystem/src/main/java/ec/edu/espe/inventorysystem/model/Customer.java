@@ -47,7 +47,7 @@ public class Customer {
         }
         
     }
-            
+
 
     public boolean hasCreditLimitExceeded(float amount) {
         return creditLimit < amount;
