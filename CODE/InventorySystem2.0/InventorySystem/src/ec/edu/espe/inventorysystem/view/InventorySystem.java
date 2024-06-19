@@ -13,7 +13,7 @@ public class InventorySystem {
         do {
             if (userMana.logIn()) {
                 System.out.println("\nWelcome!!\n");
-                userInt.displayMenu();
+                userInt.displayMenuAdmin();
             } else {
                 System.out.println("Incorrect password");
             }

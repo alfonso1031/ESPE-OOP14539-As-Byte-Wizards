@@ -172,12 +172,10 @@ public static void readManager() {
                     file.write(listProduct.toJSONString());
                     file.flush();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
 
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
         }
     }
 
@@ -200,7 +198,6 @@ public static void readManager() {
                     file.write(listProduct.toJSONString());
                     file.flush();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
                 System.out.println("Product has been removed.");
                 System.out.println("Current product quantities:");
@@ -210,7 +207,7 @@ public static void readManager() {
             }
 
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -222,7 +219,7 @@ public static void readManager() {
             Object obj = parser.parse(reader);
             listProduct = (JSONArray) obj;
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());;
         }
 
         int count = listProduct.size();
