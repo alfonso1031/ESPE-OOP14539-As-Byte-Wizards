@@ -126,7 +126,7 @@ public static void readManager() {
         JSONArray listProduct = new JSONArray();
         boolean found = false;
 
-        try (FileReader reader = new FileReader("C:\\Users\\frank\\Desktop\\OPP\\ESPE-OOP14539-As-Byte-Wizards\\FILES\\Product.json")) {
+        try (FileReader reader = new FileReader("Product.json")) {
             Object obj = parser.parse(reader);
             listProduct = (JSONArray) obj;
 
@@ -184,7 +184,7 @@ public static void readManager() {
         JSONArray listProduct = new JSONArray();
         boolean found = false;
 
-        try (FileReader reader = new FileReader("C:\\Users\\frank\\Desktop\\OPP\\ESPE-OOP14539-As-Byte-Wizards\\FILES\\Product.json")) {
+        try (FileReader reader = new FileReader("Product.json")) {
             Object obj = parser.parse(reader);
             listProduct = (JSONArray) obj;
 
@@ -194,7 +194,7 @@ public static void readManager() {
             });
 
             if (found) {
-                try (FileWriter file = new FileWriter("C:\\Users\\frank\\Desktop\\OPP\\ESPE-OOP14539-As-Byte-Wizards\\FILES\\Product.json")) {
+                try (FileWriter file = new FileWriter("Product.json")) {
                     file.write(listProduct.toJSONString());
                     file.flush();
                 } catch (IOException e) {
