@@ -6,7 +6,7 @@ import org.json.simple.parser.ParseException;
 
 public class InventorySystem {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, java.text.ParseException {
         ManagementSystem userMana = new ManagementSystem();
         UserInterface userInt = new UserInterface();
 

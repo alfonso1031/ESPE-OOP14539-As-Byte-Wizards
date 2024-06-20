@@ -1,8 +1,8 @@
 package ec.edu.espe.inventorysystem.model;
 
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import org.json.simple.parser.ParseException;
 
 
 import utils.ProductManager;
