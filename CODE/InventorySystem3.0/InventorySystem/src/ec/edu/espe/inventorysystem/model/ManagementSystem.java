@@ -58,6 +58,7 @@ public class ManagementSystem {
 
     public void logout() {
         System.out.println("Leaving the system...");
+        System.out.println("Goodbye, see later.");
     }
     
     public static String readPassword(String prompt) {

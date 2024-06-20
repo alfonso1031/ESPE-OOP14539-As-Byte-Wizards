@@ -32,12 +32,12 @@ public class UserInterface {
                 System.out.println("|        [4] View all products    |");
                 System.out.println("|        [5] Count product        |");
                 System.out.println("|        [6] Change User          |");
-                System.out.println("|        [8] Create Invoice       |");
-                System.out.println("|        [9] Prinf Invoice        |");
+                System.out.println("|        [7] Create Invoice       |");
+                System.out.println("|        [8] Prinf Invoice        |");
                
                 System.out.println("                                   ");
                
-                System.out.println("|        [7] Exit                 |");
+                System.out.println("|        [9] Exit                 |");
                 
                 System.out.println("\n");
                 System.out.print("Enter your option: ");
@@ -64,13 +64,13 @@ public class UserInterface {
                         userMana.logIn();
                         break;
                     case 7:
-                        userMana.logout();
-                        break;
-                    case 8:
                         ProductManager.createInvoice();
                         break;
-                         case 9:
+                    case 8:
                         ProductManager.printInvoice();
+                        break;
+                    case 9:
+                        userMana.logout();
                         break;
                     default:
                         System.out.println("Invalid option. Please try again.");
@@ -79,7 +79,7 @@ public class UserInterface {
                 System.out.println("Invalid input. Please enter a valid integer option.");
                 scanner.nextLine();
             }
-        } while (option!=7);
+        } while (option!=9);
     }
 
 }
