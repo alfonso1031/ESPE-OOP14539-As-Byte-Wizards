@@ -3,7 +3,7 @@ package ec.edu.espe.inventorysystem.model;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import utils.ProductManager;
+import utils.ProductAndInvoiceManager;
 
 public class Product {
 
@@ -33,7 +33,7 @@ public class Product {
     }
 
     public void checkTotalOfProducts() {
-        int productCount = ProductManager.countProducts();
+        int productCount = ProductAndInvoiceManager.countProducts();
         System.out.println("Total number of products: " + productCount);
     }
 
@@ -56,7 +56,7 @@ public class Product {
             System.out.print("size: ");
             String size = scanner.nextLine();
 
-            ProductManager.saveManagerProduct(id, name, description, quantity, category, price, size);
+            ProductAndInvoiceManager.saveManagerProduct(id, name, description, quantity, category, price, size);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();
@@ -66,7 +66,7 @@ public class Product {
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
-        ProductManager.removeProduct(idToRemove);
+        ProductAndInvoiceManager.removeProduct(idToRemove);
     }
 
     public void editProduct() {
@@ -94,7 +94,7 @@ public class Product {
             System.out.print("Enter new size: ");
             String size = scanner.nextLine();
 
-            ProductManager.editProduct();
+            ProductAndInvoiceManager.editProduct();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();

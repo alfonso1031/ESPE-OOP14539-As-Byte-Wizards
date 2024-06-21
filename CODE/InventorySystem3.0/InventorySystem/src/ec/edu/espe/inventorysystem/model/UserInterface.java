@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-import utils.ProductManager;
+import utils.ProductAndInvoiceManager;
 
 /**
  * @author <As-Byte Wizards> DDCC ESPE
@@ -55,7 +55,7 @@ public class UserInterface {
                         product.editProduct();
                         break;
                     case 4:
-                        ProductManager.readManager();
+                        ProductAndInvoiceManager.readManager();
                         break;
                     case 5:
                         product.checkTotalOfProducts();
@@ -64,10 +64,10 @@ public class UserInterface {
                         userMana.logIn();
                         break;
                     case 7:
-                        ProductManager.createInvoice();
+                        ProductAndInvoiceManager.createInvoice();
                         break;
                     case 8:
-                        ProductManager.printInvoice();
+                        ProductAndInvoiceManager.printInvoice();
                         break;
                     case 9:
                         userMana.logout();
