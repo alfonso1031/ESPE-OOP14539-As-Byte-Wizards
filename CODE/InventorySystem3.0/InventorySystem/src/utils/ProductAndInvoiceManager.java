@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ProductManager {
+public class ProductAndInvoiceManager {
 
     public static void saveFile(String data, String fileName, String type) throws IOException {
         try (FileWriter writer = new FileWriter(fileName + "." + type, true)) {
@@ -224,16 +225,6 @@ public class ProductManager {
         return count;
     }
 
-    private static void loadProductsFromFile() {
-        JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("Product.json")) {
-            Object obj = parser.parse(reader);
-            JSONArray listProduct = (JSONArray) obj;
-            new ArrayList<>(listProduct);
-        } catch (IOException | ParseException e) {
-            e.getMessage();
-        }
-    }
       public static void createInvoice() {
         Scanner scanner = new Scanner(System.in);
 
@@ -327,6 +318,7 @@ public class ProductManager {
     }
 
     public static void printInvoice() {
+        DecimalFormat df = new DecimalFormat("#.00");
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("Invoice.json")) {
             JSONObject invoiceJson = (JSONObject) parser.parse(reader);
@@ -354,8 +346,10 @@ public class ProductManager {
             System.out.println("  Email: " + invoice.getCustomer().getEmail());
             System.out.println("Products:");
 
+            double subtotal = 0;
             double total = 0;
-            System.out.printf("%-10s %-10s %-10s %-15s %-15s %-10s %-15s\n", "Quantity", "Size", "Price", "Name", "Description", "ID", "Category");
+            double iva = 0;
+            System.out.printf("%-10s %-10s %-10s %-15s %-25s %-15s %-15s\n", "Quantity", "Size", "Price", "Name", "Description", "ID", "Category");
             for (Object productObj : invoice.getProducts()) {
                 JSONObject productWrapper = (JSONObject) productObj;
                 JSONObject product = (JSONObject) productWrapper.get("product");
@@ -368,12 +362,20 @@ public class ProductManager {
                     String id = (String) product.get("id");
                     String category = (String) product.get("category");
 
-                    System.out.printf("%-10d %-10s %-10.2f %-15s %-15s %-10s %-15s\n",
+                    System.out.printf("%-10d %-10s %-10.2f %-15s %-25s %-15s %-15s\n",
                             quantity, size, price, name, description, id, category);
-                    total += price * quantity;
+                    
+                    
+                    subtotal += price * quantity;
+                    
                 }
+                
             }
-            System.out.println("Total: $" + total);
+            iva=subtotal * 0.15;
+            total=subtotal-iva;
+            System.out.println("Total parcial: $" + df.format(subtotal));
+            System.out.println("Iva: $" + df.format(iva));
+            System.out.println("Total: $" +  df.format(total));
 
         } catch (FileNotFoundException e) {
             System.out.println("Invoice.json file not found.");
