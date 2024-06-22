@@ -336,7 +336,6 @@ public class ProductAndInvoiceManager {
 
             Invoice invoice = new Invoice(customer, date, productsJson);
 
-            // Print the invoice
             System.out.println("Invoice");
             System.out.println("Date: " + invoice.getDate());
             System.out.println("Customer:");
@@ -372,7 +371,7 @@ public class ProductAndInvoiceManager {
                 
             }
             iva=subtotal * 0.15;
-            total=subtotal-iva;
+            total=subtotal+iva;
             System.out.println("Total parcial: $" + df.format(subtotal));
             System.out.println("Iva: $" + df.format(iva));
             System.out.println("Total: $" +  df.format(total));
