@@ -34,12 +34,8 @@ public class UserInterface {
                 System.out.println("|        [6] Change User          |");
                 System.out.println("|        [7] Create Invoice       |");
                 System.out.println("|        [8] Prinf Invoice        |");
-               
-                System.out.println("                                   ");
-               
-                System.out.println("|        [9] Exit                 |");
-                
-                System.out.println("\n");
+                System.out.println("|        [9] Exit                 |\n");
+
                 System.out.print("Enter your option: ");
                 option = scanner.nextInt();
                 scanner.nextLine();
@@ -71,12 +67,13 @@ public class UserInterface {
                         break;
                     case 9:
                         userMana.logout();
+                        System.exit(0);
                         break;
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer option.");
+                System.out.println("Invalid input. Please enter a valid option.");
                 scanner.nextLine();
             }
         } while (option!=9);

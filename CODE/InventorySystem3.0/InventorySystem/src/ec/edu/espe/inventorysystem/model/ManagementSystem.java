@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class ManagementSystem {
 
@@ -26,7 +27,7 @@ public class ManagementSystem {
             System.out.println("--------------------");
             System.out.println("Username:");
 
-            String username = scanner.nextLine();
+            String username = readUsername("Username");
             System.out.println("--------------------");
             System.out.println("Password:");
             String password = readPassword("Password");  
@@ -76,6 +77,23 @@ public class ManagementSystem {
             char[] password = passwordField.getPassword();
             return new String(password) ;
             
+        } else {
+            return null;
+        }
+    }
+    public static String readUsername(String prompt) {
+        JTextField textField = new JTextField();
+        Object[] obj = {prompt, textField};
+        Object[] options = {"OK", "Cancelar"};
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+
+        int option = JOptionPane.showOptionDialog(frame, obj, "",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+
+        if (option == JOptionPane.OK_OPTION) {
+            return textField.getText();
         } else {
             return null;
         }
