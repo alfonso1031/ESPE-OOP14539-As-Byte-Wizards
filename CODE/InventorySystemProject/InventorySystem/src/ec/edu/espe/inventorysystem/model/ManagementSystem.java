@@ -17,21 +17,31 @@ public class ManagementSystem {
         listUser.add(new User("2", "employee", "employee", "PRO"));
     }
 
-     public boolean logIn() {
+    public boolean logIn() {
         Scanner scanner = new Scanner(System.in);
         boolean loggedIn = false;
 
-        do {
+        while (true) {
             System.out.println("\n--------------------");
             System.out.println("|      LOGIN       |");
             System.out.println("--------------------");
+            
             System.out.println("Username:");
-
             String username = readUsername("Username");
+            
+            if (username == null) {
+                System.out.println("Login canceled.");
+                System.exit(0);
+            }
+
             System.out.println("--------------------");
             System.out.println("Password:");
-            String password = readPassword("Password");  
-            
+            String password = readPassword("Password");
+            if (password == null) {
+                System.out.println("Login canceled.");
+                System.exit(0);
+            }
+
             System.out.println("--------------------");
 
             try {
@@ -46,31 +56,40 @@ public class ManagementSystem {
                 e.printStackTrace();
             }
 
-            if (!loggedIn) {
+            if (loggedIn) {
+                System.out.println("\nWelcome!!\n");
+                return true;
+            } else {
                 System.err.println("Incorrect username or password. Please try again.");
             }
-
-        } while (!loggedIn);
-
-        System.out.println("\nWelcome!!\n");
-
-        return loggedIn;
+        }
     }
 
     public void logout() {
         System.out.println("Leaving the system...");
         System.out.println("Goodbye, see later.");
     }
+<<<<<<< HEAD
     
 public static String readPassword(String prompt) {
     JPasswordField passwordField = new JPasswordField();
     Object[] obj = {prompt, passwordField};
     Object[] options = {"OK", "Cancelar"};
+=======
+
+    public static String readPassword(String prompt) {
+        JPasswordField passwordField = new JPasswordField();
+        Object[] obj = {prompt, passwordField};
+        Object[] options = {"OK", "Cancelar"};
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+>>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
 
     int option = JOptionPane.showOptionDialog(null, obj, "",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
             null, options, options[0]);
 
+<<<<<<< HEAD
     if (option == JOptionPane.OK_OPTION) {
         char[] password = passwordField.getPassword();
         return new String(password);
@@ -78,6 +97,22 @@ public static String readPassword(String prompt) {
         return null;  // Retorna null cuando se cancela el diálogo
     }
 }
+=======
+        if (option == JOptionPane.OK_OPTION) {
+            char[] password = passwordField.getPassword();
+            return new String(password);
+        } else {
+            return null;
+        }
+    }
+
+    public static String readUsername(String prompt) {
+        JTextField textField = new JTextField();
+        Object[] obj = {prompt, textField};
+        Object[] options = {"OK", "Cancelar"};
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+>>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
 
 public static String readUsername(String prompt) {
     JTextField textField = new JTextField();
@@ -93,6 +128,9 @@ public static String readUsername(String prompt) {
     } else {
         return null;  // Retorna null cuando se cancela el diálogo
     }
+<<<<<<< HEAD
 }
 
+=======
+>>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
 }
