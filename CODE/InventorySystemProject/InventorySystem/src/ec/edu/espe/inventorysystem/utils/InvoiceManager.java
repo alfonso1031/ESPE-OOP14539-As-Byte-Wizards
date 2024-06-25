@@ -114,6 +114,7 @@ public static void createInvoice() {
     // Crear el objeto Invoice
     Invoice invoice = new Invoice(customer, "2024-06-18", selectedProducts);
 
+    // Crear objeto JSON para la nueva factura
     JSONObject invoiceJson = new JSONObject();
     invoiceJson.put("customer", customerToJson(customer));
     invoiceJson.put("date", invoice.getDate());
@@ -122,12 +123,23 @@ public static void createInvoice() {
     invoiceJson.put("iva", iva);
     invoiceJson.put("total", total);
 
-    try (FileWriter file = new FileWriter("Invoice.json")) {
-        file.write(invoiceJson.toJSONString());
+    // Guardar la nueva factura en el archivo de facturas
+    JSONArray invoicesArray;
+    try (FileReader fileReader = new FileReader("Invoices.json")) {
+        Object obj = parser.parse(fileReader);
+        invoicesArray = (JSONArray) obj;
+    } catch (IOException | ParseException e) {
+        invoicesArray = new JSONArray();
+    }
+
+    invoicesArray.add(invoiceJson);
+
+    try (FileWriter file = new FileWriter("Invoices.json")) {
+        file.write(invoicesArray.toJSONString());
         file.flush();
-        System.out.println("Invoice saved to Invoice.json");
+        System.out.println("Invoice saved successfully to Invoices.json");
     } catch (IOException e) {
-        System.err.println("Error saving Invoice.json: " + e.getMessage());
+        System.err.println("Error saving Invoice to Invoices.json: " + e.getMessage());
     }
 
     // Actualizar Product.json con las cantidades ajustadas
@@ -139,77 +151,137 @@ public static void createInvoice() {
         System.err.println("Error updating Product.json: " + e.getMessage());
     }
 }
-public static void printInvoice() {
-    DecimalFormat df = new DecimalFormat("#.00");
+public static void viewInvoice(int invoiceIndex) {
     JSONParser parser = new JSONParser();
 
-    try (FileReader reader = new FileReader("Invoice.json")) {
+    try (FileReader reader = new FileReader("Invoices.json")) {
         Object obj = parser.parse(reader);
-        JSONObject invoiceJson = (JSONObject) obj;
+        JSONArray invoicesArray = (JSONArray) obj;
 
-        JSONObject customerJson = (JSONObject) invoiceJson.get("customer");
-        String customerName = (String) customerJson.get("name");
-        String customerAddress = (String) customerJson.get("address");
-        String customerPhone = (String) customerJson.get("phone");
-        String customerEmail = (String) customerJson.get("email");
+        if (invoiceIndex >= 0 && invoiceIndex < invoicesArray.size()) {
+            JSONObject invoiceJson = (JSONObject) invoicesArray.get(invoiceIndex);
 
-        Customer customer = new Customer(customerName, customerAddress, customerPhone, customerEmail);
+            JSONObject customerJson = (JSONObject) invoiceJson.get("customer");
+            String customerName = (String) customerJson.get("name");
+            String customerAddress = (String) customerJson.get("address");
+            String customerPhone = (String) customerJson.get("phone");
+            String customerEmail = (String) customerJson.get("email");
 
-        String invoiceDate = (String) invoiceJson.get("date");
-        JSONArray productsJson = (JSONArray) invoiceJson.get("products");
+            Customer customer = new Customer(customerName, customerAddress, customerPhone, customerEmail);
 
-        System.out.println("Invoice");
-        System.out.println("Date: " + invoiceDate);
-        System.out.println("Customer:");
-        System.out.println("  Name: " + customer.getName());
-        System.out.println("  Address: " + customer.getAddress());
-        System.out.println("  Phone: " + customer.getPhone());
-        System.out.println("  Email: " + customer.getEmail());
-        System.out.println("Products:");
+            String invoiceDate = (String) invoiceJson.get("date");
+            JSONArray productsJson = (JSONArray) invoiceJson.get("products");
 
-        System.out.printf("%-10s %-10s %-10s %-15s %-25s %-15s %-15s\n",
-                "Quantity", "Size", "Price", "Name", "Description", "ID", "Category");
+            System.out.println("Invoice");
+            System.out.println("Date: " + invoiceDate);
+            System.out.println("Customer:");
+            System.out.println("  Name: " + customer.getName());
+            System.out.println("  Address: " + customer.getAddress());
+            System.out.println("  Phone: " + customer.getPhone());
+            System.out.println("  Email: " + customer.getEmail());
+            System.out.println("Products:");
 
-        for (Object productObj : productsJson) {
-            JSONObject product = (JSONObject) productObj;
+            System.out.printf("%-10s %-10s %-10s %-15s %-25s %-15s %-15s\n",
+                    "Quantity", "Size", "Price", "Name", "Description", "ID", "Category");
 
-            if (product != null) {
-                String name = (String) product.get("Name");
-                String description = (String) product.get("Description");
-                String category = (String) product.get("Category");
-                String id = (String) product.get("Id");
-                String size = (String) product.get("Size");
-                double price = ((Number) product.get("Price")).doubleValue();
+            for (Object productObj : productsJson) {
+                JSONObject product = (JSONObject) productObj;
 
-                // Obtener cantidad vendida
-                long quantity = ((Number) product.get("Quantity")).longValue();
+                if (product != null) {
+                    String name = (String) product.get("Name");
+                    String description = (String) product.get("Description");
+                    String category = (String) product.get("Category");
+                    String id = (String) product.get("Id");
+                    String size = (String) product.get("Size");
+                    double price = ((Number) product.get("Price")).doubleValue();
 
-                System.out.printf("%-10d %-10s $%-9.2f %-15s %-25s %-15s %-15s\n",
-                        quantity, size, price, name, description, id, category);
+                    // Obtener cantidad vendida
+                    long quantity = ((Number) product.get("Quantity")).longValue();
+
+                    System.out.printf("%-10d %-10s $%-9.2f %-15s %-25s %-15s %-15s\n",
+                            quantity, size, price, name, description, id, category);
+                }
             }
+
+            double subtotal = ((Number) invoiceJson.get("subtotal")).doubleValue();
+            double iva = ((Number) invoiceJson.get("iva")).doubleValue();
+            double total = ((Number) invoiceJson.get("total")).doubleValue();
+
+            DecimalFormat df = new DecimalFormat("#.00");
+
+            System.out.println("Subtotal: $" + df.format(subtotal));
+            System.out.println("IVA (15%): $" + df.format(iva));
+            System.out.println("Total: $" + df.format(total));
+        } else {
+            System.err.println("Invoice index out of bounds.");
         }
 
-        double subtotal = ((Number) invoiceJson.get("subtotal")).doubleValue();
-        double iva = ((Number) invoiceJson.get("iva")).doubleValue();
-        double total = ((Number) invoiceJson.get("total")).doubleValue();
-
-        System.out.println("Subtotal: $" + df.format(subtotal));
-        System.out.println("IVA (15%): $" + df.format(iva));
-        System.out.println("Total: $" + df.format(total));
-
     } catch (IOException e) {
-        System.err.println("Error reading Invoice.json file: " + e.getMessage());
+        System.err.println("Error reading Invoices.json file: " + e.getMessage());
     } catch (ParseException e) {
-        System.err.println("Error parsing Invoice.json file: " + e.getMessage());
+        System.err.println("Error parsing Invoices.json file: " + e.getMessage());
     }
 }
-private static JSONObject customerToJson(Customer customer) {
-    JSONObject jsonObject = new JSONObject();
-    jsonObject.put("name", customer.getName());
-    jsonObject.put("address", customer.getAddress());
-    jsonObject.put("phone", customer.getPhone());
-    jsonObject.put("email", customer.getEmail());
-    return jsonObject;
-}
+    private static JSONObject customerToJson(Customer customer) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", customer.getName());
+        jsonObject.put("address", customer.getAddress());
+        jsonObject.put("phone", customer.getPhone());
+        jsonObject.put("email", customer.getEmail());
+        return jsonObject;
+    }
+    public static void displayInvoiceList() {
+        JSONParser parser = new JSONParser();
 
+        try (FileReader reader = new FileReader("Invoices.json")) {
+            Object obj = parser.parse(reader);
+            JSONArray invoicesArray = (JSONArray) obj;
+
+            for (int i = 0; i < invoicesArray.size(); i++) {
+                JSONObject invoiceJson = (JSONObject) invoicesArray.get(i);
+
+                JSONObject customerJson = (JSONObject) invoiceJson.get("customer");
+                String customerName = (String) customerJson.get("name");
+                String invoiceDate = (String) invoiceJson.get("date");
+
+                System.out.println((i + 1) + ". Date: " + invoiceDate + " | Customer: " + customerName);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading Invoices.json file: " + e.getMessage());
+        } catch (ParseException e) {
+            System.err.println("Error parsing Invoices.json file: " + e.getMessage());
+        }
+    }
+      public static void deleteInvoice(int invoiceIndex) {
+        JSONParser parser = new JSONParser();
+
+        try {
+            FileReader reader = new FileReader("Invoices.json");
+            Object obj = parser.parse(reader);
+            JSONArray invoicesArray = (JSONArray) obj;
+
+            if (invoiceIndex >= 0 && invoiceIndex < invoicesArray.size()) {
+                // Eliminar la factura del JSONArray
+                invoicesArray.remove(invoiceIndex);
+
+                // Escribir el JSONArray actualizado de nuevo en el archivo Invoices.json
+                try (FileWriter file = new FileWriter("Invoices.json")) {
+                    file.write(invoicesArray.toJSONString());
+                    file.flush();
+                    System.out.println("Invoice at index " + invoiceIndex + " deleted successfully.");
+                } catch (IOException e) {
+                    System.err.println("Error updating Invoices.json: " + e.getMessage());
+                }
+
+            } else {
+                System.err.println("Invoice index out of bounds.");
+            }
+
+            reader.close();
+
+        } catch (IOException | ParseException e) {
+            System.err.println("Error handling Invoices.json: " + e.getMessage());
+        }
+    }
 }

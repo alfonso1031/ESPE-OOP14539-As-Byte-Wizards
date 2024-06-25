@@ -34,9 +34,9 @@ public class UserInterface {
                 System.out.println("|        [5] Edit Quantity        |");
                 System.out.println("|        [6] Change User          |");
                 System.out.println("|        [7] Create Invoice       |");
-                System.out.println("|        [8] Prinf Invoice        |");
-                System.out.println("|        [9] Exit                 |\n");
-
+                System.out.println("|        [8] Prinf Invoice        |");     
+                System.out.println("|        [9] Delate Invoice       |");
+                System.out.println("|        [10] Exit                 |\n");
                 System.out.print("Enter your option: ");
                 option = scanner.nextInt();
                 scanner.nextLine();
@@ -64,9 +64,19 @@ public class UserInterface {
                         InvoiceManager.createInvoice();
                         break;
                     case 8:
-                        InvoiceManager.printInvoice();
+                        InvoiceManager.displayInvoiceList();
+                        System.out.println("Enter the invoice number you want to view");
+                        int numberInvoice = scanner.nextInt();
+                        InvoiceManager.viewInvoice(numberInvoice-1);
                         break;
                     case 9:
+                        InvoiceManager.displayInvoiceList();
+                        System.out.println("Enter the invoice delate");
+                        int numberInvoiceDelate = scanner.nextInt();
+                        InvoiceManager.deleteInvoice(numberInvoiceDelate-1);
+   
+                        break;
+                    case 10:
                         userMana.logout();
                         System.exit(0);
                         break;
@@ -77,7 +87,7 @@ public class UserInterface {
                 System.out.println("Invalid input. Please enter a valid option.");
                 scanner.nextLine();
             }
-        } while (option!=9);
+        } while (option!=10);
     }
 
 }
