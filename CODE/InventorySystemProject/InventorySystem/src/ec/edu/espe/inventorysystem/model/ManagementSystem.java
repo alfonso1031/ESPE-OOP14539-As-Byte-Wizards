@@ -17,21 +17,31 @@ public class ManagementSystem {
         listUser.add(new User("2", "employee", "employee", "PRO"));
     }
 
-     public boolean logIn() {
+    public boolean logIn() {
         Scanner scanner = new Scanner(System.in);
         boolean loggedIn = false;
 
-        do {
+        while (true) {
             System.out.println("\n--------------------");
             System.out.println("|      LOGIN       |");
             System.out.println("--------------------");
+            
             System.out.println("Username:");
-
             String username = readUsername("Username");
+            
+            if (username == null) {
+                System.out.println("Login canceled.");
+                System.exit(0);
+            }
+
             System.out.println("--------------------");
             System.out.println("Password:");
-            String password = readPassword("Password");  
-            
+            String password = readPassword("Password");
+            if (password == null) {
+                System.out.println("Login canceled.");
+                System.exit(0);
+            }
+
             System.out.println("--------------------");
 
             try {
@@ -46,22 +56,20 @@ public class ManagementSystem {
                 e.printStackTrace();
             }
 
-            if (!loggedIn) {
+            if (loggedIn) {
+                System.out.println("\nWelcome!!\n");
+                return true;
+            } else {
                 System.err.println("Incorrect username or password. Please try again.");
             }
-
-        } while (!loggedIn);
-
-        System.out.println("\nWelcome!!\n");
-
-        return loggedIn;
+        }
     }
 
     public void logout() {
         System.out.println("Leaving the system...");
         System.out.println("Goodbye, see later.");
     }
-    
+
     public static String readPassword(String prompt) {
         JPasswordField passwordField = new JPasswordField();
         Object[] obj = {prompt, passwordField};
@@ -75,12 +83,12 @@ public class ManagementSystem {
 
         if (option == JOptionPane.OK_OPTION) {
             char[] password = passwordField.getPassword();
-            return new String(password) ;
-            
+            return new String(password);
         } else {
             return null;
         }
     }
+
     public static String readUsername(String prompt) {
         JTextField textField = new JTextField();
         Object[] obj = {prompt, textField};
@@ -98,5 +106,4 @@ public class ManagementSystem {
             return null;
         }
     }
-
 }
