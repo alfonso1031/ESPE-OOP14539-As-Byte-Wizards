@@ -37,32 +37,91 @@ public class Product {
         System.out.println("Total number of products: " + productCount);
     }
 
-    public void addProduct() {
+     public  void addProduct() {
         try {
             System.out.print("Id: ");
-            String id = scanner.nextLine();
+            String id = readAlphanumericInput();
+
             System.out.print("Name: ");
-            String name = scanner.nextLine();
+            String name = readLettersWithSpacesInput();
+
             System.out.print("Description: ");
-            String description = scanner.nextLine();
+            String description = readLettersWithSpacesInput();
+
             System.out.print("Quantity: ");
-            int quantity = scanner.nextInt();
-            scanner.nextLine();
+            int quantity = readIntegerInput();
+
             System.out.print("Category: ");
             String category = scanner.nextLine();
+
             System.out.print("Price: ");
-            float price = scanner.nextFloat();
-            scanner.nextLine();
+            float price = readFloatInput();
+
             System.out.print("Size: ");
-            String size = scanner.nextLine();
+            String size = readNonEmptyStringInput();
 
             ProductManager.saveProduct(id, name, description, quantity, category, price, size);
             System.out.println("Product Saved");
         } catch (InputMismatchException e) {
-            System.err.println("Invalid input. Please enter a valid digit.");
-            scanner.nextLine();
+            System.err.println(e.getMessage());
+            scanner.nextLine();  // Limpiar el búfer del escáner
         }
     }
+     private  String readAlphanumericInput() {
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (input.matches("^[a-zA-Z0-9]+$")) {
+                return input;
+            } else {
+                System.err.println("Invalid input. Please enter alphanumeric characters only.");
+            }
+        }
+    }
+
+    private  String readLettersWithSpacesInput() {
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (input.matches("^[a-zA-Z ]+$")) {
+                return input;
+            } else {
+                System.err.println("Invalid input. Please enter letters and spaces only.");
+            }
+        }
+    }
+
+    private  int readIntegerInput() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.err.println("Invalid input. Please enter an integer.");
+                scanner.nextLine();  // Limpiar el búfer del escáner
+            }
+        }
+    }
+
+    private  float readFloatInput() {
+        while (true) {
+            try {
+                return scanner.nextFloat();
+            } catch (InputMismatchException e) {
+                System.err.println("Invalid input. Please enter a valid float number.");
+                scanner.nextLine();  // Limpiar el búfer del escáner
+            }
+        }
+    }
+
+    private  String readNonEmptyStringInput() {
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (!input.isEmpty()) {
+                return input;
+            } else {
+                System.err.println("Input cannot be empty. Please enter again.");
+            }
+        }
+    }
+
 
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
