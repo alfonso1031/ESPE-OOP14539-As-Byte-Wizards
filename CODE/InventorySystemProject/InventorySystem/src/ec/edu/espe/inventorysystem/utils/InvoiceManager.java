@@ -203,7 +203,6 @@ public static void printInvoice() {
         System.err.println("Error parsing Invoice.json file: " + e.getMessage());
     }
 }
-
 private static JSONObject customerToJson(Customer customer) {
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("name", customer.getName());
