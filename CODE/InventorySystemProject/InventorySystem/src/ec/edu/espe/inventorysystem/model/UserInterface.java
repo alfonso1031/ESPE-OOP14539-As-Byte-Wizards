@@ -1,11 +1,12 @@
 package ec.edu.espe.inventorysystem.model;
 
+import ec.edu.espe.inventorysystem.utils.InvoiceManager;
 import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-import ec.edu.espe.inventorysystem.utils.ProductAndInvoiceManager;
+import ec.edu.espe.inventorysystem.utils.ProductManager;
 
 /**
  * @author <As-Byte Wizards> DDCC ESPE
@@ -30,7 +31,7 @@ public class UserInterface {
                 System.out.println("|        [2] Remove product       |");
                 System.out.println("|        [3] Update product       |");
                 System.out.println("|        [4] View all products    |");
-                System.out.println("|        [5] Count product        |");
+                System.out.println("|        [5] Edit Quantity        |");
                 System.out.println("|        [6] Change User          |");
                 System.out.println("|        [7] Create Invoice       |");
                 System.out.println("|        [8] Prinf Invoice        |");
@@ -51,26 +52,26 @@ public class UserInterface {
                         product.editProduct();
                         break;
                     case 4:
-                        ProductAndInvoiceManager.readManager();
+                        ProductManager.readProducts();
                         break;
                     case 5:
-                        product.checkTotalOfProducts();
+                        product.editQuantity();
                         break;
                     case 6:
                         userMana.logIn();
                         break;
                     case 7:
-                        ProductAndInvoiceManager.createInvoice();
+                        InvoiceManager.createInvoice();
                         break;
                     case 8:
-                        ProductAndInvoiceManager.printInvoice();
+                        InvoiceManager.printInvoice();
                         break;
                     case 9:
                         userMana.logout();
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Invalid option. Please try again.");
+                        System.err.println("Invalid option. Please try again.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid option.");

@@ -1,9 +1,9 @@
 package ec.edu.espe.inventorysystem.model;
 
+import ec.edu.espe.inventorysystem.utils.ProductManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ec.edu.espe.inventorysystem.utils.ProductAndInvoiceManager;
 
 public class Product {
 
@@ -33,7 +33,7 @@ public class Product {
     }
 
     public void checkTotalOfProducts() {
-        int productCount = ProductAndInvoiceManager.countProducts();
+        int productCount = ProductManager.getProductCount();
         System.out.println("Total number of products: " + productCount);
     }
 
@@ -56,7 +56,7 @@ public class Product {
             System.out.print("Size: ");
             String size = scanner.nextLine();
 
-            ProductAndInvoiceManager.saveManagerProduct(id, name, description, quantity, category, price, size);
+            ProductManager.saveProduct(id, name, description, quantity, category, price, size);
             System.out.println("Product Saved");
         } catch (InputMismatchException e) {
             System.err.println("Invalid input. Please enter a valid digit.");
@@ -67,19 +67,37 @@ public class Product {
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
-        ProductAndInvoiceManager.removeProduct(idToRemove);
+        ProductManager.removeProduct(idToRemove);
     }
 
     public void editProduct() {
         try {
-           ProductAndInvoiceManager.editProduct();
+           ProductManager.editProduct();
             
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
             scanner.nextLine();
         }
     }
+    
+     public void editQuantity() {
+        Scanner scanner = new Scanner(System.in);
+        ProductManager productManager = new ProductManager();
+        
+        try {
+            System.out.print("Enter product ID to add quantity: ");
+            String productId = scanner.nextLine();
 
+            System.out.print("Enter quantity to add: ");
+            int quantityToAdd = Integer.parseInt(scanner.nextLine());
+
+            productManager.addQuantityToProduct(productId, quantityToAdd);
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Please enter a valid number for quantity.");
+        }
+    }
+
+    
     @Override
     public String toString() {
         return "Product id: " + getId() + " name: " + getName() + " description: " + getDescription() + " quantity: " + getQuantity() + " category: " + getCategory() + " price: " + getPrice() + " size: " + getSize();

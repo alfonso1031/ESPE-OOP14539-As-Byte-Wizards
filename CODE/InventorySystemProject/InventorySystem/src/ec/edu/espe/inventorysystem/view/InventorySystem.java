@@ -16,7 +16,7 @@ public class InventorySystem {
 
                 userInt.displayMenuAdmin();
             } else {
-                System.out.println("Incorrect password");
+                System.err.println("Incorrect password");
             }
         } while (out);
 
