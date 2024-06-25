@@ -1,1 +1,1 @@
-{"date":"2024-06-18","customer":{"address":"213","phone":"1231","name":"adasd","email":"12321"},"products":[{"Description":"Toalla","Category":"Fomix","Price":1.65,"Size":"A4","Quantity":2,"Id":"09A4R2","Name":"Red Fomix"}]}
+{"date":"2024-06-18","total":48.3,"iva":6.3,"subtotal":42.0,"customer":{"address":"san roque","phone":"099977212","name":"frank","email":"frankmarc@fasjas.com"},"products":[{"Description":"Llano","Category":"Small","Price":1.4,"Size":"Small","Quantity":30,"Id":"5AS214","Name":"Yellow Fomix"}]}
