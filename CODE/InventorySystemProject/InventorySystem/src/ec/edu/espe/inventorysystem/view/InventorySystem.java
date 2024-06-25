@@ -11,14 +11,14 @@ public class InventorySystem {
         UserInterface userInt = new UserInterface();
 
         boolean out = false;
-        do {
+       
             if (userMana.logIn()) {
 
                 userInt.displayMenuAdmin();
             } else {
                 System.err.println("Incorrect password");
             }
-        } while (out);
+  
 
     }
 }

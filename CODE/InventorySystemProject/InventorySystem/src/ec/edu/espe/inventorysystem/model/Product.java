@@ -38,7 +38,7 @@ public class Product {
     }
 
      public  void addProduct() {
-        try {
+       
             System.out.print("Id: ");
             String id = readAlphanumericInput();
 
@@ -50,6 +50,7 @@ public class Product {
 
             System.out.print("Quantity: ");
             int quantity = readIntegerInput();
+            scanner.nextLine();
 
             System.out.print("Category: ");
             String category = scanner.nextLine();
@@ -62,10 +63,7 @@ public class Product {
 
             ProductManager.saveProduct(id, name, description, quantity, category, price, size);
             System.out.println("Product Saved");
-        } catch (InputMismatchException e) {
-            System.err.println(e.getMessage());
-            scanner.nextLine();  // Limpiar el búfer del escáner
-        }
+       
     }
      private  String readAlphanumericInput() {
         while (true) {
@@ -100,16 +98,21 @@ public class Product {
         }
     }
 
-    private  float readFloatInput() {
-        while (true) {
-            try {
-                return scanner.nextFloat();
-            } catch (InputMismatchException e) {
-                System.err.println("Invalid input. Please enter a valid float number.");
-                scanner.nextLine();  // Limpiar el búfer del escáner
+private float readFloatInput() {
+    while (true) {
+        try {
+            String input = scanner.nextLine().trim();
+            float price = Float.parseFloat(input);
+            if (price <= 0) {
+                System.err.println("Price must be greater than zero.");
+            } else {
+                return price;
             }
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid input. Please enter a valid float number for price.");
         }
     }
+}
 
     private  String readNonEmptyStringInput() {
         while (true) {

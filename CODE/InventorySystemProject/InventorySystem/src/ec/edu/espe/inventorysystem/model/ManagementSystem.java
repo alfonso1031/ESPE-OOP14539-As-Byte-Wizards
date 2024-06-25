@@ -62,41 +62,37 @@ public class ManagementSystem {
         System.out.println("Goodbye, see later.");
     }
     
-    public static String readPassword(String prompt) {
-        JPasswordField passwordField = new JPasswordField();
-        Object[] obj = {prompt, passwordField};
-        Object[] options = {"OK", "Cancelar"};
-        JFrame frame = new JFrame();
-        frame.setAlwaysOnTop(true);
+public static String readPassword(String prompt) {
+    JPasswordField passwordField = new JPasswordField();
+    Object[] obj = {prompt, passwordField};
+    Object[] options = {"OK", "Cancelar"};
 
-        int option = JOptionPane.showOptionDialog(frame, obj, "",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, options, options[0]);
+    int option = JOptionPane.showOptionDialog(null, obj, "",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+            null, options, options[0]);
 
-        if (option == JOptionPane.OK_OPTION) {
-            char[] password = passwordField.getPassword();
-            return new String(password) ;
-            
-        } else {
-            return null;
-        }
+    if (option == JOptionPane.OK_OPTION) {
+        char[] password = passwordField.getPassword();
+        return new String(password);
+    } else {
+        return null;  // Retorna null cuando se cancela el diálogo
     }
-    public static String readUsername(String prompt) {
-        JTextField textField = new JTextField();
-        Object[] obj = {prompt, textField};
-        Object[] options = {"OK", "Cancelar"};
-        JFrame frame = new JFrame();
-        frame.setAlwaysOnTop(true);
+}
 
-        int option = JOptionPane.showOptionDialog(frame, obj, "",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, options, options[0]);
+public static String readUsername(String prompt) {
+    JTextField textField = new JTextField();
+    Object[] obj = {prompt, textField};
+    Object[] options = {"OK", "Cancelar"};
 
-        if (option == JOptionPane.OK_OPTION) {
-            return textField.getText();
-        } else {
-            return null;
-        }
+    int option = JOptionPane.showOptionDialog(null, obj, "",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+            null, options, options[0]);
+
+    if (option == JOptionPane.OK_OPTION) {
+        return textField.getText();
+    } else {
+        return null;  // Retorna null cuando se cancela el diálogo
     }
+}
 
 }
