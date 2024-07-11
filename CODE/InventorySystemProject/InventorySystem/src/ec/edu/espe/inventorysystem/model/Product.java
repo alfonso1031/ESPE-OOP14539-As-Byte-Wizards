@@ -1,6 +1,6 @@
 package ec.edu.espe.inventorysystem.model;
 
-import ec.edu.espe.inventorysystem.utils.ProductManager;
+import ec.edu.espe.inventorysystem.utils.JSONProductManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -33,7 +33,7 @@ public class Product {
     }
 
     public void checkTotalOfProducts() {
-        int productCount = ProductManager.getProductCount();
+        int productCount = JSONProductManager.getProductCount();
         System.out.println("Total number of products: " + productCount);
     }
 
@@ -61,7 +61,7 @@ public class Product {
             System.out.print("Size: ");
             String size = readNonEmptyStringInput();
 
-            ProductManager.saveProduct(id, name, description, quantity, category, price, size);
+            JSONProductManager.saveProduct(id, name, description, quantity, category, price, size);
             System.out.println("Product Saved");
        
     }
@@ -129,12 +129,12 @@ private float readFloatInput() {
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
-        ProductManager.removeProduct(idToRemove);
+        JSONProductManager.removeProduct(idToRemove);
     }
 
     public void editProduct() {
         try {
-           ProductManager.editProduct();
+           JSONProductManager.editProduct();
             
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
@@ -144,7 +144,7 @@ private float readFloatInput() {
     
      public void editQuantity() {
         Scanner scanner = new Scanner(System.in);
-        ProductManager productManager = new ProductManager();
+        JSONProductManager productManager = new JSONProductManager();
         
         try {
             System.out.print("Enter product ID to add quantity: ");

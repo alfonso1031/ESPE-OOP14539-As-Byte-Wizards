@@ -8,7 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.Scanner;
 
-public class ProductManager {
+public class JSONProductManager {
 
     public static void saveProduct(String id, String name, String description, int quantity, String category, float price, String size) {
         JSONParser parser = new JSONParser();

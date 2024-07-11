@@ -27,7 +27,7 @@ public class ManagementSystem {
             System.out.println("--------------------");
             
             System.out.println("Username:");
-            String username = readUsername("Username");
+            String username = scanner.nextLine();
             
             if (username == null) {
                 System.out.println("Login canceled.");
@@ -36,7 +36,7 @@ public class ManagementSystem {
 
             System.out.println("--------------------");
             System.out.println("Password:");
-            String password = readPassword("Password");
+            String password = scanner.nextLine();
             if (password == null) {
                 System.out.println("Login canceled.");
                 System.exit(0);
@@ -69,68 +69,6 @@ public class ManagementSystem {
         System.out.println("Leaving the system...");
         System.out.println("Goodbye, see later.");
     }
-<<<<<<< HEAD
-    
-public static String readPassword(String prompt) {
-    JPasswordField passwordField = new JPasswordField();
-    Object[] obj = {prompt, passwordField};
-    Object[] options = {"OK", "Cancelar"};
-=======
 
-    public static String readPassword(String prompt) {
-        JPasswordField passwordField = new JPasswordField();
-        Object[] obj = {prompt, passwordField};
-        Object[] options = {"OK", "Cancelar"};
-        JFrame frame = new JFrame();
-        frame.setAlwaysOnTop(true);
->>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
-
-    int option = JOptionPane.showOptionDialog(null, obj, "",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-            null, options, options[0]);
-
-<<<<<<< HEAD
-    if (option == JOptionPane.OK_OPTION) {
-        char[] password = passwordField.getPassword();
-        return new String(password);
-    } else {
-        return null;  // Retorna null cuando se cancela el diálogo
-    }
-}
-=======
-        if (option == JOptionPane.OK_OPTION) {
-            char[] password = passwordField.getPassword();
-            return new String(password);
-        } else {
-            return null;
-        }
-    }
-
-    public static String readUsername(String prompt) {
-        JTextField textField = new JTextField();
-        Object[] obj = {prompt, textField};
-        Object[] options = {"OK", "Cancelar"};
-        JFrame frame = new JFrame();
-        frame.setAlwaysOnTop(true);
->>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
-
-public static String readUsername(String prompt) {
-    JTextField textField = new JTextField();
-    Object[] obj = {prompt, textField};
-    Object[] options = {"OK", "Cancelar"};
-
-    int option = JOptionPane.showOptionDialog(null, obj, "",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-            null, options, options[0]);
-
-    if (option == JOptionPane.OK_OPTION) {
-        return textField.getText();
-    } else {
-        return null;  // Retorna null cuando se cancela el diálogo
-    }
-<<<<<<< HEAD
 }
 
-=======
->>>>>>> 89c9c9872e81447bdc1fb34395a13cf453c65de3
-}

@@ -1,12 +1,12 @@
 package ec.edu.espe.inventorysystem.model;
 
-import ec.edu.espe.inventorysystem.utils.InvoiceManager;
+import ec.edu.espe.inventorysystem.utils.JSONInvoiceManager;
 import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-import ec.edu.espe.inventorysystem.utils.ProductManager;
+import ec.edu.espe.inventorysystem.utils.JSONProductManager;
 
 /**
  * @author <As-Byte Wizards> DDCC ESPE
@@ -52,7 +52,7 @@ public class UserInterface {
                         product.editProduct();
                         break;
                     case 4:
-                        ProductManager.readProducts();
+                        JSONProductManager.readProducts();
                         break;
                     case 5:
                         product.editQuantity();
@@ -61,19 +61,19 @@ public class UserInterface {
                         userMana.logIn();
                         break;
                     case 7:
-                        InvoiceManager.createInvoice();
+                        JSONInvoiceManager.createInvoice();
                         break;
                     case 8:
-                        InvoiceManager.displayInvoiceList();
+                        JSONInvoiceManager.displayInvoiceList();
                         System.out.println("Enter the invoice number you want to view");
                         int numberInvoice = scanner.nextInt();
-                        InvoiceManager.viewInvoice(numberInvoice-1);
+                        JSONInvoiceManager.viewInvoice(numberInvoice-1);
                         break;
                     case 9:
-                        InvoiceManager.displayInvoiceList();
+                        JSONInvoiceManager.displayInvoiceList();
                         System.out.println("Enter the invoice delate");
                         int numberInvoiceDelate = scanner.nextInt();
-                        InvoiceManager.deleteInvoice(numberInvoiceDelate-1);
+                        JSONInvoiceManager.deleteInvoice(numberInvoiceDelate-1);
    
                         break;
                     case 10:
