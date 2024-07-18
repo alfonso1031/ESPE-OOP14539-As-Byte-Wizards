@@ -1,6 +1,6 @@
 package ec.edu.espe.inventorysystem.model;
 
-import ec.edu.espe.inventorysystem.utils.ProductManager;
+import ec.edu.espe.inventorysystem.utils.JSONProductManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -33,12 +33,12 @@ public class Product {
     }
 
     public void checkTotalOfProducts() {
-        int productCount = ProductManager.getProductCount();
+        int productCount = JSONProductManager.getProductCount();
         System.out.println("Total number of products: " + productCount);
     }
 
      public  void addProduct() {
-        try {
+       
             System.out.print("Id: ");
             String id = readAlphanumericInput();
 
@@ -50,6 +50,7 @@ public class Product {
 
             System.out.print("Quantity: ");
             int quantity = readIntegerInput();
+            scanner.nextLine();
 
             System.out.print("Category: ");
             String category = scanner.nextLine();
@@ -60,12 +61,9 @@ public class Product {
             System.out.print("Size: ");
             String size = readNonEmptyStringInput();
 
-            ProductManager.saveProduct(id, name, description, quantity, category, price, size);
+            JSONProductManager.saveProduct(id, name, description, quantity, category, price, size);
             System.out.println("Product Saved");
-        } catch (InputMismatchException e) {
-            System.err.println(e.getMessage());
-            scanner.nextLine();  // Limpiar el búfer del escáner
-        }
+       
     }
      private  String readAlphanumericInput() {
         while (true) {
@@ -100,16 +98,21 @@ public class Product {
         }
     }
 
-    private  float readFloatInput() {
-        while (true) {
-            try {
-                return scanner.nextFloat();
-            } catch (InputMismatchException e) {
-                System.err.println("Invalid input. Please enter a valid float number.");
-                scanner.nextLine();  // Limpiar el búfer del escáner
+private float readFloatInput() {
+    while (true) {
+        try {
+            String input = scanner.nextLine().trim();
+            float price = Float.parseFloat(input);
+            if (price <= 0) {
+                System.err.println("Price must be greater than zero.");
+            } else {
+                return price;
             }
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid input. Please enter a valid float number for price.");
         }
     }
+}
 
     private  String readNonEmptyStringInput() {
         while (true) {
@@ -126,12 +129,12 @@ public class Product {
     public void removeProduct() {
         System.out.print("Enter ID of the product to remove: ");
         String idToRemove = scanner.nextLine();
-        ProductManager.removeProduct(idToRemove);
+        JSONProductManager.removeProduct(idToRemove);
     }
 
     public void editProduct() {
         try {
-           ProductManager.editProduct();
+           JSONProductManager.editProduct();
             
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid digit.");
@@ -141,7 +144,7 @@ public class Product {
     
      public void editQuantity() {
         Scanner scanner = new Scanner(System.in);
-        ProductManager productManager = new ProductManager();
+        JSONProductManager productManager = new JSONProductManager();
         
         try {
             System.out.print("Enter product ID to add quantity: ");
