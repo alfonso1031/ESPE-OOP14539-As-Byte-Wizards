@@ -49,7 +49,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         jLabel3.setText("(c) 2024 Copyright by A Byte Wizards");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel4.setText("(R) Mario Anrrango");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
