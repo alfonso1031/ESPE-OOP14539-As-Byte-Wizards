@@ -4,6 +4,9 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
@@ -75,6 +78,18 @@ public class FrmLogin extends javax.swing.JFrame {
         txtUserText.setText("Usuario:");
 
         txtPasswordText.setText("Contraseña:");
+
+        txtUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtUserNameMousePressed(evt);
+            }
+        });
+
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtPasswordMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -163,16 +178,42 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(true){ //read users from database and compare
-        FrmPrincipalScreen frmPrincipalScreen = new FrmPrincipalScreen();
-        this.setVisible(false);
-        frmPrincipalScreen.setVisible(true);   
-        }
+        String user = "Admin";
+        String password = "admin";
+        String pass = new String(txtPassword.getPassword());
+       if(txtUserName.getText().equals(user)&& pass.equals(password)){  
+        FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
+        frmUniversoDelFomix.setVisible(true);
+        }else{
+           JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectos por favor intentelo de nuevo");
+       }   
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMousePressed
+        if (txtUserName.getText().equals("Ingress username")) {
+            txtUserName.setText("");
+            txtUserName.setForeground(Color.black);
+        }
+        if (String.valueOf(txtPassword.getPassword()).isEmpty()) {
+            txtPassword.setText("********");
+            txtPassword.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtUserNameMousePressed
+
+    private void txtPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMousePressed
+        if (String.valueOf(txtPassword.getPassword()).equals("********")){
+        txtPassword.setText("");
+        txtPassword.setForeground(Color.black);
+        }
+        if(txtUserName.getText().isEmpty()){
+        txtUserName.setText("Ingress username");
+        txtUserName.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtPasswordMousePressed
 
     /**
      * @param args the command line arguments
