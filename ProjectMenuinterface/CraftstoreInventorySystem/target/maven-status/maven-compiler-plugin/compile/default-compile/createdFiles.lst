@@ -1,16 +1,30 @@
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$6.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$11.class
+<<<<<<< HEAD
+ec\edu\espe\CraftStoreInventory\model\Product.class
+=======
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$4.class
+>>>>>>> 714a0885a6548ff28036d32266f46d91f7d7025b
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteProduct$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$3.class
+<<<<<<< HEAD
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$3.class
+=======
+<<<<<<< HEAD
+ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$3.class
+=======
+>>>>>>> 714a0885a6548ff28036d32266f46d91f7d7025b
+>>>>>>> 878eaf964e03b51ff14a8ffd8ea63d32d2fbd82e
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInvoice.class
+<<<<<<< HEAD
+=======
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$5.class
+>>>>>>> 714a0885a6548ff28036d32266f46d91f7d7025b
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$7.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$2.class
@@ -24,6 +38,10 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$14.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUser$1.class
+<<<<<<< HEAD
+ec\edu\espe\CraftStoreInventory\utils\CloudDB.class
+=======
+>>>>>>> 714a0885a6548ff28036d32266f46d91f7d7025b
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory$1.class
