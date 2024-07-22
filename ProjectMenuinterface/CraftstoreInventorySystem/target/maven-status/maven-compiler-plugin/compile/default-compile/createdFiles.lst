@@ -7,10 +7,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$3.class
-<<<<<<< HEAD
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$5.class
-=======
->>>>>>> 7764276402188ef23b8d19ba77b3b56a698b29aa
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen.class

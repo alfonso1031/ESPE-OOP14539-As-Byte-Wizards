@@ -178,11 +178,12 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String user = "Admin";
+        String user = "admin";
         String password = "admin";
         String pass = new String(txtPassword.getPassword());
-       if(txtUserName.getText().equals(user)&& pass.equals(password)){  
         FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
+       if(txtUserName.getText().equals(user)&& pass.equals(password)){  
+        this.setVisible(false);
         frmUniversoDelFomix.setVisible(true);
         }else{
            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectos por favor intentelo de nuevo");
@@ -194,7 +195,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMousePressed
-        if (txtUserName.getText().equals("Ingress username")) {
+        if (txtUserName.getText().equals("Ingrese username")) {
             txtUserName.setText("");
             txtUserName.setForeground(Color.black);
         }

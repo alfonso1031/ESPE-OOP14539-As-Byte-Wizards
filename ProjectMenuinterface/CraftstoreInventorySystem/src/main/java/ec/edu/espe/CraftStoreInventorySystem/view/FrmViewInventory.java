@@ -19,7 +19,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
      * Creates new form FrmViewInventory
      */
     private CloudDB cloudDB;
-private DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
     public FrmViewInventory() {
         initComponents();
         
