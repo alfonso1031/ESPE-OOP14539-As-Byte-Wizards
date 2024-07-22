@@ -26,6 +26,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$14.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash$1.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUser$1.class
 ec\edu\espe\CraftStoreInventory\utils\CloudDB.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice.class

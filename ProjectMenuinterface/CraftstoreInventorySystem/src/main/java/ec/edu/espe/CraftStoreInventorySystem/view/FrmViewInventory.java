@@ -42,6 +42,8 @@ public class FrmViewInventory extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ID = new javax.swing.JTable();
+        lblBuscar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnUniversoFomix = new javax.swing.JButton();
 
@@ -62,6 +64,13 @@ public class FrmViewInventory extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ID);
 
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -75,17 +84,25 @@ public class FrmViewInventory extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jButton1)))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(txtEnterInventory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -102,7 +119,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(472, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUniversoFomix)
                 .addContainerGap())
         );
@@ -142,6 +159,35 @@ public class FrmViewInventory extends javax.swing.JFrame {
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_btnUniversoFomixActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        searchProduct(lblBuscar.getText());
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+      private void searchProduct(String searchCriteria) {
+        tableModel.setRowCount(0); // Limpiar tabla
+        List<Document> products = cloudDB.getAllProducts();
+        for (Document doc : products) {
+            if (doc.getString("name").toLowerCase().contains(searchCriteria.toLowerCase()) || 
+                doc.getString("id").toLowerCase().contains(searchCriteria.toLowerCase())) {
+                Object[] rowData = {
+                    doc.getString("id"),
+                    doc.getString("name"),
+                    doc.getString("description"),
+                    doc.getInteger("quantity"),
+                    doc.getString("size"),
+                    doc.getDouble("price"),
+                    doc.getString("category")
+                };
+                tableModel.addRow(rowData);
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -171,6 +217,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrmViewInventory().setVisible(true);
             }
@@ -180,10 +227,12 @@ public class FrmViewInventory extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ID;
     private javax.swing.JButton btnUniversoFomix;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lblBuscar;
     private javax.swing.JLabel txtEnterInventory;
     // End of variables declaration//GEN-END:variables
 
