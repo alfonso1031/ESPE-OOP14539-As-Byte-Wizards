@@ -4,6 +4,10 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import ec.edu.espe.CraftStoreInventory.model.Product;
+import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
@@ -43,8 +47,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
         textFldSize = new javax.swing.JTextField();
         textFldQuantity = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnUniversoFomix = new javax.swing.JButton();
+        btnAddProduct = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,9 +135,14 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Universo del Fomix");
+        btnUniversoFomix.setText("Universo del Fomix");
 
-        jButton2.setText("Añadir");
+        btnAddProduct.setText("Añadir");
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,9 +150,9 @@ public class FrmAddProduct extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addComponent(jButton2)
+                .addComponent(btnAddProduct)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnUniversoFomix)
                 .addGap(83, 83, 83))
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,8 +160,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnUniversoFomix)
+                    .addComponent(btnAddProduct))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -173,6 +182,45 @@ public class FrmAddProduct extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        String id = textFldId.getText();
+        String name = textFldName.getText();
+        String description = textFldDescription.getText();
+        String quantityString = textFldQuantity.getText(); // Obtén el valor como String
+        String category = textFldCategory.getText();
+        String priceString = textFldPrice.getText(); // Obtén el valor como String
+        String size = textFldSize.getText();
+
+        // Convertir los valores a los tipos apropiados
+        int quantity;
+        float price;
+
+        try {
+            quantity = Integer.parseInt(quantityString); // Convertir a int
+        } catch (NumberFormatException e) {
+            quantity = 0; // Manejar el error de conversión si el valor no es un entero válido
+            e.printStackTrace();
+        // Mostrar un mensaje al usuario o manejar el error de otra forma
+    }
+
+        try {
+            price = Float.parseFloat(priceString); // Convertir a float
+    } catch (NumberFormatException e) {
+            price = 0.0f; // Manejar el error de conversión si el valor no es un float válido
+            e.printStackTrace();
+        // Mostrar un mensaje al usuario o manejar el error de otra forma
+}
+
+        // Crear el objeto Product
+        Product product = new Product(id, name, description, quantity, category, price, size);
+        try {
+            CloudDB.uploadProductlData(product);
+            JOptionPane.showMessageDialog(this, "Producto añadido exitosamente!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al añadir producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,8 +258,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnUniversoFomix;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
