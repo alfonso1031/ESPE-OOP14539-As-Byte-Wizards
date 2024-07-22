@@ -136,6 +136,11 @@ public class FrmAddProduct extends javax.swing.JFrame {
         );
 
         btnUniversoFomix.setText("Universo del Fomix");
+        btnUniversoFomix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUniversoFomixActionPerformed(evt);
+            }
+        });
 
         btnAddProduct.setText("Añadir");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +226,12 @@ public class FrmAddProduct extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al añadir producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddProductActionPerformed
+
+    private void btnUniversoFomixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniversoFomixActionPerformed
+        FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
+        this.setVisible(false);
+        frmUniversoDelFomix.setVisible(true);
+    }//GEN-LAST:event_btnUniversoFomixActionPerformed
 
     /**
      * @param args the command line arguments
