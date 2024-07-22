@@ -6,17 +6,18 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.model.Product;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.bson.Document;
 
-/**
- *
- * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
- */
+
 public class FrmAddProduct extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmAddProduct
      */
+    
+    
     public FrmAddProduct() {
         initComponents();
     }
@@ -189,6 +190,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+      Product product;
+      
         String id = textFldId.getText();
         String name = textFldName.getText();
         String description = textFldDescription.getText();
@@ -218,13 +221,15 @@ public class FrmAddProduct extends javax.swing.JFrame {
 }
 
         // Crear el objeto Product
-        Product product = new Product(id, name, description, quantity, category, price, size);
+        product = new Product(id, name, description, quantity, category, price, size);
         try {
             CloudDB.uploadProductlData(product);
             JOptionPane.showMessageDialog(this, "Producto añadido exitosamente!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al añadir producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+        FrmEditProduct fr1 =new FrmEditProduct();
+        
     }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnUniversoFomixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniversoFomixActionPerformed

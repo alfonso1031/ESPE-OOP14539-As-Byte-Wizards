@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ec.edu.espe.CraftStoreInventory.utils;
 
 import com.mongodb.ConnectionString;
@@ -12,17 +9,21 @@ import com.mongodb.ServerApiVersion;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.CraftStoreInventory.model.Product;
+import ec.edu.espe.CraftStoreInventorySystem.view.FrmEditProduct;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.Document;
 
-import java.util.List;
+
 
 public class CloudDB {
 
     private static MongoClient createMongoClient() {
-        String connectionString = "mongodb+srv://ffalvarado:12345678@databsas.tuxhrit.mongodb.net/?appName=DatabsAs";
+        String connectionString = "mongodb+srv://ffalvarado:frank123@databsas.tuxhrit.mongodb.net/?appName=DatabsAs";
 
         ServerApi serverApi = ServerApi.builder()
                 .version(ServerApiVersion.V1)
@@ -34,6 +35,29 @@ public class CloudDB {
                 .build();
 
         return MongoClients.create(settings);
+        
+    }
+
+    
+   private MongoClient mongoClient;
+    private MongoDatabase database;
+
+    public CloudDB() {
+        mongoClient = createMongoClient();
+        database = mongoClient.getDatabase("CraftStoreDB");
+    }
+      public MongoCollection<Document> getCollection(String collectionName) {
+        return database.getCollection(collectionName);
+    }
+    public List<Document> getAllProducts() {
+        MongoCollection<Document> collection = getCollection("product");
+        List<Document> products = new ArrayList<>();
+        try (var cursor = collection.find().iterator()) {
+            while (cursor.hasNext()) {
+                products.add(cursor.next());
+            }
+        }
+        return products;
     }
 
     public static void uploadProductlData(Product product) {
@@ -48,7 +72,7 @@ public class CloudDB {
     }
 
     private static void saveProductToDatabase(Product product, MongoDatabase database) {
-        MongoCollection<Document> collection = database.getCollection("Product");
+        MongoCollection<Document> collection = database.getCollection("product");
 
         Document productDocument = new Document("id", product.getId())
                 .append("description", product.getDescription())
@@ -66,5 +90,8 @@ public class CloudDB {
             e.printStackTrace();
         }
     }
+    
+    
+    
 }
 

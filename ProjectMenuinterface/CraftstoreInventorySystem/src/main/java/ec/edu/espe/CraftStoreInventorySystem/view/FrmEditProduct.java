@@ -4,6 +4,16 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import ec.edu.espe.CraftStoreInventory.model.Product;
+import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import java.util.List;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
+
+
+
 /**
  *
  * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
@@ -13,8 +23,46 @@ public class FrmEditProduct extends javax.swing.JFrame {
     /**
      * Creates new form FrmEditProduct
      */
+    private CloudDB cloudDB;
+private DefaultTableModel tableModel;
     public FrmEditProduct() {
         initComponents();
+        cloudDB = new CloudDB();
+         tableModel = (DefaultTableModel) ID1.getModel();
+    loadProducts();
+    ID1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    int selectedRow = ID1.getSelectedRow();
+                    if (selectedRow != -1) {
+                        jTextField1.setText(tableModel.getValueAt(selectedRow, 0).toString());
+                        jTextField2.setText(tableModel.getValueAt(selectedRow, 1).toString());
+                        jTextField6.setText(tableModel.getValueAt(selectedRow, 2).toString());
+                        jTextField3.setText(tableModel.getValueAt(selectedRow, 3).toString());
+                        jTextField4.setText(tableModel.getValueAt(selectedRow, 5).toString());
+                        jTextField5.setText(tableModel.getValueAt(selectedRow, 4).toString());
+                        jTextField7.setText(tableModel.getValueAt(selectedRow, 6).toString());
+                    }
+                }
+            }
+        });
+    }
+ private void saveProduct() {
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String description = jTextField6.getText();
+        int quantity = Integer.parseInt(jTextField3.getText());
+        String size = jTextField7.getText();  // Ajustar según sea necesario
+        double price = Double.parseDouble(jTextField4.getText());
+        String category = jTextField5.getText();
+
+        Product product = new Product(id, name, description, quantity, size, (float) price, category);
+        CloudDB.uploadProductlData(product);
+
+        // Limpiar tabla y recargar productos
+        tableModel.setRowCount(0);
+        loadProducts();
     }
 
     /**
@@ -44,6 +92,8 @@ public class FrmEditProduct extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ID1 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -55,8 +105,18 @@ public class FrmEditProduct extends javax.swing.JFrame {
         jLabel2.setText("ID");
 
         jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("CANCELAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("NOMBRE");
 
@@ -70,16 +130,15 @@ public class FrmEditProduct extends javax.swing.JFrame {
 
         ID1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "NOMBRE", "DESCRIPCIÓN", "CANTIDAD", "TAMAÑO", "PRECIO", "CATEGORIA"
+                "ID", "NOMBRE", "DESCRIPCIÓN", "CANTIDAD", "CATEGORIA", "PRECIO", "TAMAÑO"
             }
         ));
         jScrollPane1.setViewportView(ID1);
+
+        jLabel8.setText("TAMAÑO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,6 +155,9 @@ public class FrmEditProduct extends javax.swing.JFrame {
                         .addGap(155, 155, 155)
                         .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
@@ -103,7 +165,8 @@ public class FrmEditProduct extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,10 +176,8 @@ public class FrmEditProduct extends javax.swing.JFrame {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,7 +209,11 @@ public class FrmEditProduct extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,6 +273,14 @@ public class FrmEditProduct extends javax.swing.JFrame {
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+     saveProduct();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+     this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +316,7 @@ public class FrmEditProduct extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ID1;
     private javax.swing.JButton jButton1;
@@ -255,6 +329,7 @@ public class FrmEditProduct extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -264,5 +339,23 @@ public class FrmEditProduct extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+    private void loadProducts() {
+List<Document> products = cloudDB.getAllProducts();
+    for (Document doc : products) {
+        Object[] rowData = {
+            doc.getString("id"),
+            doc.getString("name"),
+            doc.getString("description"),
+            doc.getInteger("quantity"),
+            doc.getString("size"),
+            doc.getDouble("price"),
+            doc.getString("category")
+          
+        };
+        tableModel.addRow(rowData);
+    }
+    }
 }

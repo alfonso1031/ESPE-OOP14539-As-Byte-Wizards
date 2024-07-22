@@ -4,6 +4,11 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
+
 /**
  *
  * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
@@ -13,8 +18,14 @@ public class FrmViewInventory extends javax.swing.JFrame {
     /**
      * Creates new form FrmViewInventory
      */
+    private CloudDB cloudDB;
+private DefaultTableModel tableModel;
     public FrmViewInventory() {
         initComponents();
+        
+        cloudDB = new CloudDB();
+         tableModel = (DefaultTableModel) ID.getModel();
+    loadProducts();
     }
 
     /**
@@ -43,10 +54,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
 
         ID.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "NOMBRE", "DESCRIPCIÓN", "CANTIDAD", "TAMAÑO", "PRECIO", "CATEGORIA"
@@ -178,4 +186,22 @@ public class FrmViewInventory extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel txtEnterInventory;
     // End of variables declaration//GEN-END:variables
+
+    private void loadProducts() {
+        List<Document> products = cloudDB.getAllProducts();
+    for (Document doc : products) {
+        Object[] rowData = {
+            doc.getString("id"),
+            doc.getString("name"),
+            doc.getString("description"),
+            doc.getInteger("quantity"),
+            doc.getString("size"),
+            doc.getDouble("price"),
+            doc.getString("category")
+          
+        };
+        tableModel.addRow(rowData);
+    }
 }
+
+    }

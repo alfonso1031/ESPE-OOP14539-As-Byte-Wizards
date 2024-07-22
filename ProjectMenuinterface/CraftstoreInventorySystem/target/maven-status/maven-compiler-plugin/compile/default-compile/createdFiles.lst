@@ -6,6 +6,8 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteProduct$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$5.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen.class
@@ -20,12 +22,14 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice$2.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$14.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUser$1.class
 ec\edu\espe\CraftStoreInventory\utils\CloudDB.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUser.class
