@@ -145,4 +145,19 @@ public class CloudDB {
     } catch (MongoException e) {
         System.err.println("Error inserting document: " + e.getMessage());
     }    }
+    public void saveInvoice(Document invoice) {
+    if (database == null) {
+        throw new IllegalStateException("MongoDB database is not initialized.");
+    }
+
+    MongoCollection<Document> invoiceCollection = database.getCollection("invoice");
+
+    try {
+        invoiceCollection.insertOne(invoice);
+        System.out.println("Invoice data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting invoice document: " + e.getMessage());
+    }
 }
+}
+
