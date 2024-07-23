@@ -36,16 +36,21 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         mnuItemHelp = new javax.swing.JMenuItem();
         mnuItemLogOut = new javax.swing.JMenuItem();
         mnuItemExit = new javax.swing.JMenuItem();
+        mnuInvoice = new javax.swing.JMenu();
+        mnuItemInvoice = new javax.swing.JMenuItem();
+        mnuItemDeleteInvoice = new javax.swing.JMenuItem();
+        mnuItemNewInvoice = new javax.swing.JMenuItem();
         mnuInventory = new javax.swing.JMenu();
         submnuManagementInventory = new javax.swing.JMenu();
         subMnuItemAddProduct = new javax.swing.JMenuItem();
         subMnuItemEditProduct = new javax.swing.JMenuItem();
         subMnuItemDeleteProduct = new javax.swing.JMenuItem();
         mnuItemInventory = new javax.swing.JMenuItem();
-        mnuInvoice = new javax.swing.JMenu();
-        mnuItemInvoice = new javax.swing.JMenuItem();
-        mnuItemDeleteInvoice = new javax.swing.JMenuItem();
-        mnuItemNewInvoice = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -97,6 +102,34 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuUniversoDelFomix);
 
+        mnuInvoice.setText("Factura");
+
+        mnuItemInvoice.setText("Facturas");
+        mnuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemInvoiceActionPerformed(evt);
+            }
+        });
+        mnuInvoice.add(mnuItemInvoice);
+
+        mnuItemDeleteInvoice.setText("Eliminar Factura");
+        mnuItemDeleteInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDeleteInvoiceActionPerformed(evt);
+            }
+        });
+        mnuInvoice.add(mnuItemDeleteInvoice);
+
+        mnuItemNewInvoice.setText("Nueva Factura");
+        mnuItemNewInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemNewInvoiceActionPerformed(evt);
+            }
+        });
+        mnuInvoice.add(mnuItemNewInvoice);
+
+        jMenuBar1.add(mnuInvoice);
+
         mnuInventory.setText("Inventario");
         mnuInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,33 +180,21 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuInventory);
 
-        mnuInvoice.setText("Factura");
+        jMenu1.setText("Clientes");
 
-        mnuItemInvoice.setText("Facturas");
-        mnuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemInvoiceActionPerformed(evt);
-            }
-        });
-        mnuInvoice.add(mnuItemInvoice);
+        jMenuItem1.setText("Añadir Cliente");
+        jMenu1.add(jMenuItem1);
 
-        mnuItemDeleteInvoice.setText("Eliminar Factura");
-        mnuItemDeleteInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemDeleteInvoiceActionPerformed(evt);
-            }
-        });
-        mnuInvoice.add(mnuItemDeleteInvoice);
+        jMenuItem2.setText("Editar Cliente");
+        jMenu1.add(jMenuItem2);
 
-        mnuItemNewInvoice.setText("Nueva Factura");
-        mnuItemNewInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemNewInvoiceActionPerformed(evt);
-            }
-        });
-        mnuInvoice.add(mnuItemNewInvoice);
+        jMenuItem3.setText("Borrar Cliente");
+        jMenu1.add(jMenuItem3);
 
-        jMenuBar1.add(mnuInvoice);
+        jMenuItem4.setText("Ver Clientes");
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -298,8 +319,13 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenu mnuInventory;
