@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.CraftStoreInventorySystem.view;
+
+import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import org.bson.Document;
 
 /**
  *
@@ -13,8 +16,13 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     /**
      * Creates new form FrmNewInvoice
      */
+    private CloudDB cloudDB;
+    
+
     public FrmNewInvoice() {
         initComponents();
+          cloudDB = new CloudDB();
+        loadProductsIntoComboBox();
     }
 
     /**
@@ -85,6 +93,11 @@ public class FrmNewInvoice extends javax.swing.JFrame {
         jLabel8.setText("CANTIDAD");
 
         jButton2.setText("AÑADIR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("BUSCAR PRODUCTO");
 
@@ -198,9 +211,9 @@ public class FrmNewInvoice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -270,6 +283,10 @@ public class FrmNewInvoice extends javax.swing.JFrame {
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,4 +352,11 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
+    private void loadProductsIntoComboBox() {
+  List<Document> products = cloudDB.getAllProducts();
+        for (Document doc : products) {
+            jComboBox1.addItem(doc.getString("name"));
+        }
+    }
 }
