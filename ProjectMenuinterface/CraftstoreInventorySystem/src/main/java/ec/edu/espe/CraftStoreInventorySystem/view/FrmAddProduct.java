@@ -6,6 +6,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.model.Product;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -46,6 +47,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
         textFldSize = new javax.swing.JTextField();
         textFldQuantity = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnUniversoFomix = new javax.swing.JButton();
         btnAddProduct = new javax.swing.JButton();
@@ -69,6 +71,14 @@ public class FrmAddProduct extends javax.swing.JFrame {
 
         jLabel8.setText("Cantidad:");
 
+        textFldId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textFldIdMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textFldIdMouseExited(evt);
+            }
+        });
         textFldId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFldIdActionPerformed(evt);
@@ -83,6 +93,9 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 jLabel10MouseExited(evt);
             }
         });
+
+        jLabel9.setText("Ingrese el Id añadiendo un 0 primero y seguido el numero de producto");
+        jLabel9.setVisible(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,8 +128,12 @@ public class FrmAddProduct extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 207, Short.MAX_VALUE))
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +144,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -176,9 +194,9 @@ public class FrmAddProduct extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(btnAddProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUniversoFomix)
-                .addGap(83, 83, 83))
+                .addGap(128, 128, 128))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,16 +280,24 @@ public class FrmAddProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUniversoFomixActionPerformed
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-        jLabel10.setVisible(true);
+
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
-        jLabel10.setVisible(true);
+ 
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void textFldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFldIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFldIdActionPerformed
+
+    private void textFldIdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFldIdMouseEntered
+        jLabel9.setVisible(true);
+    }//GEN-LAST:event_textFldIdMouseEntered
+
+    private void textFldIdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFldIdMouseExited
+        jLabel9.setVisible(false);
+    }//GEN-LAST:event_textFldIdMouseExited
 
     /**
      * @param args the command line arguments
@@ -320,6 +346,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField textFldCategory;

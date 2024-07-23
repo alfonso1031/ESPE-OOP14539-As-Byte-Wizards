@@ -73,12 +73,18 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="textFldId" min="-2" pref="79" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel10" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="207" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel9" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="168" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,6 +98,7 @@
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFldId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -174,6 +181,8 @@
         </Component>
         <Component class="javax.swing.JTextField" name="textFldId">
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="textFldIdMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="textFldIdMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFldIdActionPerformed"/>
           </Events>
         </Component>
@@ -195,6 +204,16 @@
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel10MouseExited"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Ingrese el Id a&#xf1;adiendo un 0 primero y seguido el numero de producto&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel9.setVisible(false);"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -205,9 +224,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                   <Component id="btnAddProduct" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="287" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnUniversoFomix" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
