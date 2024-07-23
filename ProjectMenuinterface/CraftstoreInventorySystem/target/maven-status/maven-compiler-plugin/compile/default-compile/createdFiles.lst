@@ -10,11 +10,11 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$15.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen.class
-ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$18.class
 ec\edu\espe\CraftStoreInventory\model\Invoice.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmViewCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$7.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct.class
@@ -22,6 +22,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$2.class
 ec\edu\espe\CraftStoreInventory\utils\CloudDB.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$5.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$8.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash$2.class
@@ -35,6 +36,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$12.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$2.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewCustomer$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$9.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$3.class
@@ -50,7 +52,6 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$6.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInvoice.class
-ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$17.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$5.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteCustomer.class

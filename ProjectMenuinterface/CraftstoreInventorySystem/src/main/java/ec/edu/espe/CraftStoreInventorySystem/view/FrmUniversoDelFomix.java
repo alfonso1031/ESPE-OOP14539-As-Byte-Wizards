@@ -27,18 +27,16 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu4 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuUniversoDelFomix = new javax.swing.JMenu();
         mnuItemWelcome = new javax.swing.JMenuItem();
         submnuConfiguration = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         mnuItemHelp = new javax.swing.JMenuItem();
         mnuItemLogOut = new javax.swing.JMenuItem();
         mnuItemExit = new javax.swing.JMenuItem();
         mnuInvoice = new javax.swing.JMenu();
-        mnuItemInvoice = new javax.swing.JMenuItem();
-        mnuItemDeleteInvoice = new javax.swing.JMenuItem();
         mnuItemNewInvoice = new javax.swing.JMenuItem();
         mnuInventory = new javax.swing.JMenu();
         submnuManagementInventory = new javax.swing.JMenu();
@@ -56,6 +54,8 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/CraftStoreInventorySystem/view/images.jpeg"))); // NOI18N
+
         mnuUniversoDelFomix.setText("Universo del Fomix");
 
         mnuItemWelcome.setText("Bienvenido !");
@@ -67,9 +67,6 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         mnuUniversoDelFomix.add(mnuItemWelcome);
 
         submnuConfiguration.setText("Configuración");
-
-        jMenuItem7.setText("Usuario");
-        submnuConfiguration.add(jMenuItem7);
 
         jMenuItem8.setText("Cambiar Usuario");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -103,22 +100,6 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         jMenuBar1.add(mnuUniversoDelFomix);
 
         mnuInvoice.setText("Factura");
-
-        mnuItemInvoice.setText("Facturas");
-        mnuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemInvoiceActionPerformed(evt);
-            }
-        });
-        mnuInvoice.add(mnuItemInvoice);
-
-        mnuItemDeleteInvoice.setText("Eliminar Factura");
-        mnuItemDeleteInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemDeleteInvoiceActionPerformed(evt);
-            }
-        });
-        mnuInvoice.add(mnuItemDeleteInvoice);
 
         mnuItemNewInvoice.setText("Nueva Factura");
         mnuItemNewInvoice.addActionListener(new java.awt.event.ActionListener() {
@@ -222,11 +203,17 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -284,24 +271,6 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         frmDeleteProduct.setVisible(true);
     }//GEN-LAST:event_subMnuItemDeleteProductActionPerformed
 
-    private void mnuItemInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemInvoiceActionPerformed
-        FrmViewInvoice frmViewInvoice = new FrmViewInvoice();
-        this.setVisible(false);
-        frmViewInvoice.setVisible(true);
-    }//GEN-LAST:event_mnuItemInvoiceActionPerformed
-
-    private void mnuItemDeleteInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDeleteInvoiceActionPerformed
-        FrmDeleteInvoice frmDeleteInvoice = new FrmDeleteInvoice();
-        this.setVisible(false);
-        frmDeleteInvoice.setVisible(true);
-    }//GEN-LAST:event_mnuItemDeleteInvoiceActionPerformed
-
-    private void mnuItemNewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemNewInvoiceActionPerformed
-        FrmNewInvoice frmNewInvoice = new FrmNewInvoice();
-        this.setVisible(false);
-        frmNewInvoice.setVisible(true);
-    }//GEN-LAST:event_mnuItemNewInvoiceActionPerformed
-
     private void mnuAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCustomerActionPerformed
         // TODO add your handling code here:
         FrmAddCustomer frmAddCustomer = new FrmAddCustomer();
@@ -330,6 +299,12 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         frmEditCustomer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuEditCustomerActionPerformed
+
+    private void mnuItemNewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemNewInvoiceActionPerformed
+        FrmNewInvoice frmNewInvoice = new FrmNewInvoice();
+        this.setVisible(false);
+        frmNewInvoice.setVisible(true);
+    }//GEN-LAST:event_mnuItemNewInvoiceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,21 +343,19 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem mnuAddCustomer;
     private javax.swing.JMenuItem mnuDeleteCustomer;
     private javax.swing.JMenuItem mnuEditCustomer;
     private javax.swing.JMenu mnuInventory;
     private javax.swing.JMenu mnuInvoice;
-    private javax.swing.JMenuItem mnuItemDeleteInvoice;
     private javax.swing.JMenuItem mnuItemExit;
     private javax.swing.JMenuItem mnuItemHelp;
     private javax.swing.JMenuItem mnuItemInventory;
-    private javax.swing.JMenuItem mnuItemInvoice;
     private javax.swing.JMenuItem mnuItemLogOut;
     private javax.swing.JMenuItem mnuItemNewInvoice;
     private javax.swing.JMenuItem mnuItemWelcome;
