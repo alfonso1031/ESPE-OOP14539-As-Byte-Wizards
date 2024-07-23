@@ -45,6 +45,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
         textFldPrice = new javax.swing.JTextField();
         textFldSize = new javax.swing.JTextField();
         textFldQuantity = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnUniversoFomix = new javax.swing.JButton();
         btnAddProduct = new javax.swing.JButton();
@@ -68,6 +69,21 @@ public class FrmAddProduct extends javax.swing.JFrame {
 
         jLabel8.setText("Cantidad:");
 
+        textFldId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFldIdActionPerformed(evt);
+            }
+        });
+
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel10MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,15 +104,19 @@ public class FrmAddProduct extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textFldName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(textFldDescription)
-                            .addComponent(textFldCategory)
-                            .addComponent(textFldPrice)
-                            .addComponent(textFldSize)
-                            .addComponent(textFldQuantity)
-                            .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(212, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textFldName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .addComponent(textFldDescription)
+                                .addComponent(textFldCategory)
+                                .addComponent(textFldPrice)
+                                .addComponent(textFldSize)
+                                .addComponent(textFldQuantity))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +126,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -240,6 +261,18 @@ public class FrmAddProduct extends javax.swing.JFrame {
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_btnUniversoFomixActionPerformed
 
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        jLabel10.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+        jLabel10.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void textFldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFldIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFldIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,6 +312,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnUniversoFomix;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

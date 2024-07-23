@@ -63,7 +63,7 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/CraftStoreInventorySystem/view/images.jpeg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\OneDrive\\Escritorio\\REPOSITORY\\ESPE-OOP14539-As-Byte-Wizards\\ProjectMenuinterface\\CraftstoreInventorySystem\\src\\main\\java\\ec\\edu\\espe\\CraftStoreInventorySystem\\view\\images.jpeg")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

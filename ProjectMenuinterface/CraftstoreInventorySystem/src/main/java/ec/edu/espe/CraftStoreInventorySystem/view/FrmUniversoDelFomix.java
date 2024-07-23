@@ -54,7 +54,7 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/CraftStoreInventorySystem/view/images.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\OneDrive\\Escritorio\\REPOSITORY\\ESPE-OOP14539-As-Byte-Wizards\\ProjectMenuinterface\\CraftstoreInventorySystem\\src\\main\\java\\ec\\edu\\espe\\CraftStoreInventorySystem\\view\\images.jpeg")); // NOI18N
 
         mnuUniversoDelFomix.setText("Universo del Fomix");
 
