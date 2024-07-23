@@ -8,9 +8,14 @@ import com.mongodb.ServerApiVersion;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.result.DeleteResult;
+import ec.edu.espe.CraftStoreInventory.model.Customer;
 import ec.edu.espe.CraftStoreInventory.model.Product;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +24,6 @@ public class CloudDB {
 
     private MongoClient mongoClient;
     private MongoDatabase database;
-    private MongoCollection<Document> collection;
 
     public CloudDB() {
         try {
@@ -34,17 +38,20 @@ public class CloudDB {
 
             mongoClient = MongoClients.create(settings);
             database = mongoClient.getDatabase("CraftStoreDB");
-            collection = database.getCollection("product"); // Inicializa la colección aquí
 
         } catch (MongoException e) {
             System.err.println("Error initializing MongoDB: " + e.getMessage());
         }
     }
 
+    // Collection access method
+    private MongoCollection<Document> getCollection(String collectionName) {
+        return database.getCollection(collectionName);
+    }
+
+    // Product operations
     public void uploadProductData(Product product) {
-        if (collection == null) {
-            throw new IllegalStateException("MongoDB collection is not initialized.");
-        }
+        MongoCollection<Document> collection = getCollection("product");
 
         Document document = new Document("id", product.getId())
                 .append("name", product.getName())
@@ -63,18 +70,14 @@ public class CloudDB {
     }
 
     public boolean productExists(String id) {
-        if (collection == null) {
-            throw new IllegalStateException("MongoDB collection is not initialized.");
-        }
+        MongoCollection<Document> collection = getCollection("product");
 
         Document query = new Document("id", id);
         return collection.find(query).first() != null;
     }
 
     public void updateProduct(Product product) {
-        if (collection == null) {
-            throw new IllegalStateException("MongoDB collection is not initialized.");
-        }
+        MongoCollection<Document> collection = getCollection("product");
 
         Document query = new Document("id", product.getId());
         Document updatedData = new Document("$set", new Document()
@@ -94,9 +97,7 @@ public class CloudDB {
     }
 
     public List<Document> getAllProducts() {
-        if (collection == null) {
-            throw new IllegalStateException("MongoDB collection is not initialized.");
-        }
+        MongoCollection<Document> collection = getCollection("product");
 
         List<Document> products = new ArrayList<>();
         try (var cursor = collection.find().iterator()) {
@@ -108,16 +109,13 @@ public class CloudDB {
         }
         return products;
     }
- public MongoCollection<Document> getCollection(String collectionName) {
-        return database.getCollection(collectionName);
-    }
+
     public void deleteProduct(String id) {
-        
-         MongoCollection<Document> collection = getCollection("product");
+        MongoCollection<Document> collection = getCollection("product");
         Document query = new Document("id", id);
 
         try {
-            var result = collection.deleteOne(query);
+            DeleteResult result = collection.deleteOne(query);
             if (result.getDeletedCount() > 0) {
                 System.out.println("Product deleted successfully!");
             } else {
@@ -126,6 +124,92 @@ public class CloudDB {
         } catch (MongoException e) {
             System.err.println("Error deleting document: " + e.getMessage());
         }
-        
+    }
+
+    // Customer operations
+    public void uploadCustomerData(Customer customer) {
+        MongoCollection<Document> collection = getCollection("customer");
+
+        Document document = new Document("id", customer.getId())
+                .append("name", customer.getName())
+                .append("address", customer.getAddress())
+                .append("email", customer.getEmail())
+                .append("phone", customer.getPhone());
+
+<<<<<<< HEAD
+    try {
+        collection.insertOne(document);
+        System.out.println("Customer data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting document: " + e.getMessage());
+    }    }
+    public void saveInvoice(Document invoice) {
+    if (database == null) {
+        throw new IllegalStateException("MongoDB database is not initialized.");
+    }
+
+    MongoCollection<Document> invoiceCollection = database.getCollection("invoice");
+
+    try {
+        invoiceCollection.insertOne(invoice);
+        System.out.println("Invoice data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting invoice document: " + e.getMessage());
+=======
+        try {
+            collection.insertOne(document);
+            System.out.println("Customer data saved successfully!");
+        } catch (MongoException e) {
+            System.err.println("Error inserting document: " + e.getMessage());
+        }
+    }
+
+    public List<Document> searchCustomerById(String id) {
+        MongoCollection<Document> collection = getCollection("customer");
+
+        Document query = new Document("id", id);
+        List<Document> results = new ArrayList<>();
+
+        try (MongoCursor<Document> cursor = collection.find(query).iterator()) {
+            while (cursor.hasNext()) {
+                results.add(cursor.next());
+            }
+        }
+
+        return results;
+    }
+
+    public List<Document> getAllCustomers() {
+        MongoCollection<Document> collection = getCollection("customer");
+        List<Document> results = new ArrayList<>();
+
+        try (MongoCursor<Document> cursor = collection.find().iterator()) {
+            while (cursor.hasNext()) {
+                results.add(cursor.next());
+            }
+        }
+
+        return results;
+    }
+
+    public void updateCustomer(String id, Document updatedData) {
+        MongoCollection<Document> collection = getCollection("customer");
+        collection.updateOne(eq("id", id), new Document("$set", updatedData));
+    }
+
+    public boolean deleteCustomer(String id) {
+        MongoCollection<Document> collection = getCollection("customer");
+        Bson filter = eq("id", id);
+
+        try {
+            DeleteResult result = collection.deleteOne(filter);
+            return result.getDeletedCount() > 0;
+        } catch (MongoException e) {
+            e.printStackTrace();
+            return false;
+        }
+>>>>>>> 19c7a69166725b6647f465a9e9773abf18ae1906
     }
 }
+}
+

@@ -13,40 +13,15 @@ public class Customer {
     private String address;
     private String email;
     private String phone;
-    private String purchaseHistory;
 
-    public Customer(String id, String name, String address, String email, String phone, String purchaseHistory) {
+    public Customer(String id, String name, String address, String email, String phone) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
         this.phone = phone;
-        this.purchaseHistory = purchaseHistory;
-    }
-    
-    
-        public void addPurchaseToHistory(String purchase) {
-        this.purchaseHistory += purchase + ", ";
-    }
-    
-
-     public void updateInformation(String name, String address, String email, String phone) {
-        this.setName(name);
-        this.setAddress(address);
-        this.setEmail(email);
-        this.setPhone(phone);
-    }
-    
-    
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + ", phone=" + phone + ", purchaseHistory=" + purchaseHistory + '}';
     }
 
-    
-    
-    
-    
     public String getId() {
         return id;
     }
@@ -87,18 +62,13 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getPurchaseHistory() {
-        return purchaseHistory;
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + ", phone=" + phone + '}';
     }
+    
 
-    public void setPurchaseHistory(String purchaseHistory) {
-        this.purchaseHistory = purchaseHistory;
-    }
-    
-    
-    
-    
-    
+ 
     
     
     

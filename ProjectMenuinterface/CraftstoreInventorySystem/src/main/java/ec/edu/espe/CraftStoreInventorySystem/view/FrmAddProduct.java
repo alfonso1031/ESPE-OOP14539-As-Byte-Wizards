@@ -6,9 +6,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.model.Product;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
-import java.util.List;
 import javax.swing.JOptionPane;
-import org.bson.Document;
 
 
 public class FrmAddProduct extends javax.swing.JFrame {
