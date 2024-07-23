@@ -111,7 +111,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
         );
 
         btnUniversoFomix.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        btnUniversoFomix.setText("Universo del Fomix");
+        btnUniversoFomix.setText("REGRESAR");
         btnUniversoFomix.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUniversoFomixActionPerformed(evt);
@@ -125,7 +125,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUniversoFomix)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

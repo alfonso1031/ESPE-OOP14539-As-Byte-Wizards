@@ -62,17 +62,17 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textFldId" pref="200" max="32767" attributes="0"/>
-                              <Component id="textFldName" max="32767" attributes="0"/>
+                              <Component id="textFldName" pref="200" max="32767" attributes="0"/>
                               <Component id="textFldDescription" max="32767" attributes="0"/>
                               <Component id="textFldCategory" alignment="0" max="32767" attributes="0"/>
                               <Component id="textFldPrice" alignment="0" max="32767" attributes="0"/>
                               <Component id="textFldSize" alignment="0" max="32767" attributes="0"/>
                               <Component id="textFldQuantity" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFldId" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="212" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -189,7 +189,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                   <Component id="btnAddProduct" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="243" max="32767" attributes="0"/>
+                  <EmptySpace pref="287" max="32767" attributes="0"/>
                   <Component id="btnUniversoFomix" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               </Group>
@@ -211,7 +211,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnUniversoFomix">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Universo del Fomix"/>
+            <Property name="text" type="java.lang.String" value="REGRESAR"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUniversoFomixActionPerformed"/>
