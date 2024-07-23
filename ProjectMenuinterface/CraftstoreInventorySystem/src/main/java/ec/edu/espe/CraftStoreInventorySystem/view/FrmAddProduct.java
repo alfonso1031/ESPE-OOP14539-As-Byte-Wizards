@@ -190,46 +190,50 @@ public class FrmAddProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
-      Product product;
-      
-        String id = textFldId.getText();
-        String name = textFldName.getText();
-        String description = textFldDescription.getText();
-        String quantityString = textFldQuantity.getText(); // Obtén el valor como String
-        String category = textFldCategory.getText();
-        String priceString = textFldPrice.getText(); // Obtén el valor como String
-        String size = textFldSize.getText();
+       // Obtén los valores de los campos del formulario
+    String id = textFldId.getText();
+    String name = textFldName.getText();
+    String description = textFldDescription.getText();
+    String quantityString = textFldQuantity.getText(); // Obtén el valor como String
+    String category = textFldCategory.getText();
+    String priceString = textFldPrice.getText(); // Obtén el valor como String
+    String size = textFldSize.getText();
 
-        // Convertir los valores a los tipos apropiados
-        int quantity;
-        float price;
+    // Convertir los valores a los tipos apropiados
+    int quantity;
+    float price;
 
-        try {
-            quantity = Integer.parseInt(quantityString); // Convertir a int
-        } catch (NumberFormatException e) {
-            quantity = 0; // Manejar el error de conversión si el valor no es un entero válido
-            e.printStackTrace();
-        // Mostrar un mensaje al usuario o manejar el error de otra forma
+    try {
+        quantity = Integer.parseInt(quantityString); // Convertir a int
+    } catch (NumberFormatException e) {
+        quantity = 0; // Manejar el error de conversión si el valor no es un entero válido
+        JOptionPane.showMessageDialog(this, "Cantidad no válida. Se usará 0.", "Advertencia", JOptionPane.WARNING_MESSAGE);
     }
 
-        try {
-            price = Float.parseFloat(priceString); // Convertir a float
+    try {
+        price = Float.parseFloat(priceString); // Convertir a float
     } catch (NumberFormatException e) {
-            price = 0.0f; // Manejar el error de conversión si el valor no es un float válido
-            e.printStackTrace();
-        // Mostrar un mensaje al usuario o manejar el error de otra forma
-}
+        price = 0.0f; // Manejar el error de conversión si el valor no es un float válido
+        JOptionPane.showMessageDialog(this, "Precio no válido. Se usará 0.0.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    }
 
-        // Crear el objeto Product
-        product = new Product(id, name, description, quantity, category, price, size);
-        try {
-            CloudDB.uploadProductlData(product);
+    // Crear el objeto Product
+    Product product = new Product(id, name, description, quantity, category, price, size);
+
+    // Guardar el producto en la base de datos
+    CloudDB cloudDB = new CloudDB();
+    
+    try {
+        if (cloudDB.productExists(id)) {
+            cloudDB.updateProduct(product);
+            JOptionPane.showMessageDialog(this, "Producto actualizado exitosamente!");
+        } else {
+            cloudDB.uploadProductData(product);
             JOptionPane.showMessageDialog(this, "Producto añadido exitosamente!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al añadir producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        FrmEditProduct fr1 =new FrmEditProduct();
-        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al añadir producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnUniversoFomixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniversoFomixActionPerformed
