@@ -136,7 +136,6 @@ public class CloudDB {
                 .append("email", customer.getEmail())
                 .append("phone", customer.getPhone());
 
-<<<<<<< HEAD
     try {
         collection.insertOne(document);
         System.out.println("Customer data saved successfully!");
@@ -155,16 +154,15 @@ public class CloudDB {
         System.out.println("Invoice data saved successfully!");
     } catch (MongoException e) {
         System.err.println("Error inserting invoice document: " + e.getMessage());
-=======
+
         try {
             collection.insertOne(document);
             System.out.println("Customer data saved successfully!");
         } catch (MongoException e) {
             System.err.println("Error inserting document: " + e.getMessage());
         }
-    }
 
-    public List<Document> searchCustomerById(String id) {
+    public List<Document> searchCustomerById(String id){
         MongoCollection<Document> collection = getCollection("customer");
 
         Document query = new Document("id", id);
@@ -208,8 +206,7 @@ public class CloudDB {
             e.printStackTrace();
             return false;
         }
->>>>>>> 19c7a69166725b6647f465a9e9773abf18ae1906
     }
 }
-}
+
 
