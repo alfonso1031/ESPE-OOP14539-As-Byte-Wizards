@@ -136,20 +136,46 @@ public class CloudDB {
                 .append("email", customer.getEmail())
                 .append("phone", customer.getPhone());
 
+<<<<<<< HEAD
 
+=======
+    try {
+        collection.insertOne(document);
+        System.out.println("Customer data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting document: " + e.getMessage());
+    }    }
+    public void saveInvoice(Document invoice) {
+    if (database == null) {
+        throw new IllegalStateException("MongoDB database is not initialized.");
+    }
+
+    MongoCollection<Document> invoiceCollection = database.getCollection("invoice");
+
+    try {
+        invoiceCollection.insertOne(invoice);
+        System.out.println("Invoice data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting invoice document: " + e.getMessage());
+
+>>>>>>> 43731190884f85ba160f6c6731810fa417ffa895
         try {
             collection.insertOne(document);
             System.out.println("Customer data saved successfully!");
         } catch (MongoException e) {
             System.err.println("Error inserting document: " + e.getMessage());
+<<<<<<< HEAD
         }   
 }
     
     
 
 
+=======
+        }
+>>>>>>> 43731190884f85ba160f6c6731810fa417ffa895
 
-    public List<Document> searchCustomerById(String id) {
+    public List<Document> searchCustomerById(String id){
         MongoCollection<Document> collection = getCollection("customer");
 
         Document query = new Document("id", id);
@@ -193,7 +219,10 @@ public class CloudDB {
             e.printStackTrace();
             return false;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43731190884f85ba160f6c6731810fa417ffa895
     }
 }
 
