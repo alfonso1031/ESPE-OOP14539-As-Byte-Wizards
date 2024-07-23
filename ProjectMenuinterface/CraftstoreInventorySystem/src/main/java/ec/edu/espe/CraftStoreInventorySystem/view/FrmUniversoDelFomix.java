@@ -47,10 +47,10 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         subMnuItemDeleteProduct = new javax.swing.JMenuItem();
         mnuItemInventory = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mnuAddCustomer = new javax.swing.JMenuItem();
+        mnuEditCustomer = new javax.swing.JMenuItem();
+        mnuDeleteCustomer = new javax.swing.JMenuItem();
+        mnuSeeCustomer = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -182,17 +182,37 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         jMenu1.setText("Clientes");
 
-        jMenuItem1.setText("Añadir Cliente");
-        jMenu1.add(jMenuItem1);
+        mnuAddCustomer.setText("Añadir Cliente");
+        mnuAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAddCustomerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuAddCustomer);
 
-        jMenuItem2.setText("Editar Cliente");
-        jMenu1.add(jMenuItem2);
+        mnuEditCustomer.setText("Editar Cliente");
+        mnuEditCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEditCustomerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuEditCustomer);
 
-        jMenuItem3.setText("Borrar Cliente");
-        jMenu1.add(jMenuItem3);
+        mnuDeleteCustomer.setText("Borrar Cliente");
+        mnuDeleteCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDeleteCustomerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuDeleteCustomer);
 
-        jMenuItem4.setText("Ver Clientes");
-        jMenu1.add(jMenuItem4);
+        mnuSeeCustomer.setText("Ver Clientes");
+        mnuSeeCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSeeCustomerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuSeeCustomer);
 
         jMenuBar1.add(jMenu1);
 
@@ -282,6 +302,35 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
         frmNewInvoice.setVisible(true);
     }//GEN-LAST:event_mnuItemNewInvoiceActionPerformed
 
+    private void mnuAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCustomerActionPerformed
+        // TODO add your handling code here:
+        FrmAddCustomer frmAddCustomer = new FrmAddCustomer();
+        frmAddCustomer.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_mnuAddCustomerActionPerformed
+
+    private void mnuSeeCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSeeCustomerActionPerformed
+        // TODO add your handling code here:
+        FrmViewCustomer frmViewCustomer = new FrmViewCustomer();
+        frmViewCustomer.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuSeeCustomerActionPerformed
+
+    private void mnuDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDeleteCustomerActionPerformed
+        // TODO add your handling code here:
+        FrmDeleteCustomer frmDeleteCustomer = new FrmDeleteCustomer();
+        frmDeleteCustomer.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuDeleteCustomerActionPerformed
+
+    private void mnuEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEditCustomerActionPerformed
+        // TODO add your handling code here:
+        FrmEditCustomer frmEditCustomer = new FrmEditCustomer();
+        frmEditCustomer.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuEditCustomerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,12 +371,11 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem mnuAddCustomer;
+    private javax.swing.JMenuItem mnuDeleteCustomer;
+    private javax.swing.JMenuItem mnuEditCustomer;
     private javax.swing.JMenu mnuInventory;
     private javax.swing.JMenu mnuInvoice;
     private javax.swing.JMenuItem mnuItemDeleteInvoice;
@@ -338,6 +386,7 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuItemLogOut;
     private javax.swing.JMenuItem mnuItemNewInvoice;
     private javax.swing.JMenuItem mnuItemWelcome;
+    private javax.swing.JMenuItem mnuSeeCustomer;
     private javax.swing.JMenu mnuUniversoDelFomix;
     private javax.swing.JMenuItem subMnuItemAddProduct;
     private javax.swing.JMenuItem subMnuItemDeleteProduct;

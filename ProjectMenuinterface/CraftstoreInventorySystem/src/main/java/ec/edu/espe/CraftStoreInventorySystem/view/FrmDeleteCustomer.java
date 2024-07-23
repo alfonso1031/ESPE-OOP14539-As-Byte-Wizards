@@ -14,13 +14,13 @@ import org.bson.Document;
  *
  * @author Frank Alvaradom, As-Byte Wizards, DCCO-ESPE
  */
-public class FrmDelateCustomer extends javax.swing.JFrame {
+public class FrmDeleteCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmDelateCustomer
      */
     private CloudDB cloudDB;
-    public FrmDelateCustomer() {
+    public FrmDeleteCustomer() {
         initComponents();
          cloudDB = new CloudDB();
         loadAllCustomers();
@@ -170,20 +170,21 @@ public class FrmDelateCustomer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDelateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDeleteCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDelateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDeleteCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDelateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDeleteCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDelateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDeleteCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmDelateCustomer().setVisible(true);
+                new FrmDeleteCustomer().setVisible(true);
             }
         });
     }
