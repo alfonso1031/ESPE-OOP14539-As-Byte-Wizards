@@ -9,6 +9,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import ec.edu.espe.CraftStoreInventory.model.Customer;
 import org.bson.Document;
 import ec.edu.espe.CraftStoreInventory.model.Product;
 
@@ -128,4 +129,20 @@ public class CloudDB {
         }
         
     }
+
+    public void uploadCustomerData(Customer customer) {
+ MongoCollection<Document> collection = getCollection("customer");
+
+    Document document = new Document("id", customer.getId())
+            .append("name", customer.getName())
+            .append("address", customer.getAddress())
+            .append("email", customer.getEmail())
+            .append("phone", customer.getPhone());
+
+    try {
+        collection.insertOne(document);
+        System.out.println("Customer data saved successfully!");
+    } catch (MongoException e) {
+        System.err.println("Error inserting document: " + e.getMessage());
+    }    }
 }
