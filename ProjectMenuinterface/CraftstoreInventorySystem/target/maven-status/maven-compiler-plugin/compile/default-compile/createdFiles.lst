@@ -56,6 +56,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$6.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInvoice.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$5.class
+ec\edu\espe\CraftStoreInventory\model\InvoiceItem.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmPrincipalScreen$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteCustomer.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteCustomer$2.class
@@ -89,6 +90,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$9.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInvoice$2.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$11.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteProduct$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$1.class

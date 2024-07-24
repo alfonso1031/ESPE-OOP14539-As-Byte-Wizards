@@ -198,7 +198,20 @@ public class CloudDB {
     Document query = new Document("id", id);
     return collection.find(query).first();
     }
+
+
     
+    
+    public boolean saveInvoice(Document invoice) {
+    try {
+        MongoCollection<Document> collection = database.getCollection("invoices");
+        collection.insertOne(invoice);
+        return true;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 }
 
 

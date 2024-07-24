@@ -27,8 +27,9 @@ public class FrmNewInvoice extends javax.swing.JFrame {
   
     cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) tblProductsAdded.getModel();
-        txtSubtotal.setEditable(false);
-        txtTotal.setEditable(false);
+        txtSubtotal.setEditable(true);
+        txtTotal.setEditable(true);
+        
     }
 
 private void searchCustomer() {
@@ -164,6 +165,11 @@ private void searchCustomer() {
         jLabel9.setText("BUSCAR PRODUCTO");
 
         btnNewInvoice.setText("GENERAR FACTURA");
+        btnNewInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewInvoiceActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("BORRAR");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -409,32 +415,47 @@ private void searchCustomer() {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
   searchCustomer();       
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnNewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewInvoiceActionPerformed
+ saveInvoice();
+    JOptionPane.showMessageDialog(this, "Factura guardada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    // Opcional: Limpiar la interfaz para una nueva factura
+    }//GEN-LAST:event_btnNewInvoiceActionPerformed
     
    private void addProductToTable() {
-    String selectedProduct = (String) cmbProductToAdd.getSelectedItem();
-    if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
-        List<Document> products = cloudDB.getAllProducts();
-        for (Document doc : products) {
-            if (selectedProduct.equals(doc.getString("name"))) {
-                int quantity = (int) spnQuantity.getValue();
-                double price = doc.getDouble("price");
-
-                double subtotal = price * quantity;
-                double total = subtotal; // Total sin IVA
-
-                Object[] rowData = {
-                    quantity,
-                    doc.getString("name"),
-                    price,
-                    subtotal,
-                    total
-                };
-                tableModel.addRow(rowData);
-                calcularTotales(); // Llamar a la función de cálculo aquí
+  String selectedProduct = (String) cmbProductToAdd.getSelectedItem();
+if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
+    List<Document> products = cloudDB.getAllProducts();
+    for (Document doc : products) {
+        if (selectedProduct.equals(doc.getString("name"))) {
+            int quantity = (int) spnQuantity.getValue();
+            // Verificar y obtener el precio como double
+            Double price = doc.getDouble("price");
+            if (price == null) {
+                // Manejo de error si el precio es null
+                JOptionPane.showMessageDialog(null, "Error: Precio no encontrado para el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
             }
+
+            double subtotal = price * quantity;
+            double total = subtotal; // Total sin IVA
+
+            // Añadir fila a la tabla
+            Object[] rowData = {
+                quantity,
+                doc.getString("name"),
+                price,
+                subtotal,
+                total
+            };
+            tableModel.addRow(rowData);
+
+            // Llamar a la función de cálculo aquí
+            calcularTotales();
+            break;
         }
     }
+}
 }
     
 
@@ -546,17 +567,77 @@ private void calcularTotales() {
     double total = 0.0;
     double ivaRate = 0.12; // Suponiendo que el IVA es del 12%
 
+    // Iterar sobre las filas de la tabla
     for (int i = 0; i < tableModel.getRowCount(); i++) {
-        subtotal += (double) tableModel.getValueAt(i, 3); // Suma de los subtotales
+        Object value = tableModel.getValueAt(i, 3); // Obtener el valor de la celda
+        
+        // Verificar si el valor no es null y es de tipo Double
+        if (value instanceof Double) {
+            subtotal += (Double) value;
+        } else {
+            try {
+                // Intentar convertir el valor a Double si es un String
+                if (value instanceof String) {
+                    subtotal += Double.parseDouble((String) value);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir el valor en la fila " + i + " a Double: " + e.getMessage());
+                // Manejar el caso en el que la conversión falla, si es necesario
+            }
+        }
     }
 
     iva = subtotal * ivaRate;
     total = subtotal + iva;
 
+    // Mostrar los totales en los campos de texto
     txtSubtotal.setText(String.format("%.2f", subtotal));
     txtIVA.setText(String.format("%.2f", iva));
     txtTotal.setText(String.format("%.2f", total));
 }
 
+ private void saveInvoice() {
+    // Recoger los datos de la interfaz
+    String customerId = txtid.getText();
+    String customerName = txtCustomer.getText();
+    String customerAddress = txtDirection.getText();
+    String customerPhone = txtNumber.getText();
     
+    List<Document> items = new ArrayList<>();
+    for (int i = 0; i < tblProductsAdded.getRowCount(); i++) {
+        int quantity = (int) tblProductsAdded.getValueAt(i, 0);
+        String productName = (String) tblProductsAdded.getValueAt(i, 1);
+        double price = (double) tblProductsAdded.getValueAt(i, 2);
+        double subtotal = (double) tblProductsAdded.getValueAt(i, 3);
+        double total = (double) tblProductsAdded.getValueAt(i, 4);
+
+        Document item = new Document("quantity", quantity)
+                            .append("productName", productName)
+                            .append("price", price)
+                            .append("subtotal", subtotal)
+                            .append("total", total);
+        items.add(item);
+    }
+
+    Document invoice;
+        invoice = new Document("customerId", customerId)
+                .append("customerName", customerName)
+                .append("customerAddress", customerAddress)
+                .append("customerPhone", customerPhone)
+                .append("items", items)
+                .append("subtotal", Double.valueOf(txtSubtotal.getText()))
+                .append("iva", Double.valueOf(txtIVA.getText()))
+                .append("total", Double.parseDouble(txtTotal.getText()));
+
+    System.out.println("Invoice to be saved: " + invoice.toJson()); // Verificar el contenido del objeto
+
+    // Guardar el documento en la base de datos
+    boolean success = cloudDB.saveInvoice(invoice);
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Factura guardada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al guardar la factura.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+ 
 }
