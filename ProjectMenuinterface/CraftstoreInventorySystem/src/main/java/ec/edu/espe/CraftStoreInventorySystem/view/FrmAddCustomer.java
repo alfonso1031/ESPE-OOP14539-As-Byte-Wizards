@@ -4,6 +4,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 import ec.edu.espe.CraftStoreInventory.model.Customer;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -56,6 +57,12 @@ public class FrmAddCustomer extends javax.swing.JFrame {
         jLabel2.setText("DIRECCIÓN:");
 
         jLabel3.setText("CORREO ELECTRONICO:");
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("TELEFONO:");
 
@@ -200,21 +207,66 @@ public class FrmAddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      String id = txtID.getText();
+      
+        try {
+        String id = txtID.getText().trim();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
-
+        
+        if (!validaciónCedula(id)) {
+            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Customer customer = new Customer(id, name, address, email, phone);
-
-        try {
             cloudDB.uploadCustomerData(customer);
             JOptionPane.showMessageDialog(this, "Customer added successfully!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error adding customer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
+
+            
+        private boolean validaciónCedula(String cedula) {
+        if (cedula.length() !=10){
+            return false;
+        }
+
+        int provincia = Integer.parseInt(cedula.substring(0,2));
+        if (provincia < 1 || provincia > 24) {
+            return false;
+        }
+
+        int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+        if (tercerDigito < 0 || tercerDigito > 6) {
+            return false;
+        }
+
+        int suma = 0;
+        int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+        for (int i = 0; i < 9; i++) {
+            int digito = Integer.parseInt(cedula.substring(i, i + 1));
+            int producto = digito * coeficientes[i];
+            suma += (producto > 9) ? producto - 9 : producto;
+        }
+
+        int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
+        int decenaSuperior = ((suma + 9) / 10) * 10;
+        int digitoVerificador = decenaSuperior - suma;
+
+        return digitoVerificador == ultimoDigito;
+    }
+    
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        
+    }//GEN-LAST:event_txtIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,4 +322,8 @@ public class FrmAddCustomer extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validaciónCedula(JTextField txtID) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
