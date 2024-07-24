@@ -28,7 +28,7 @@ public class CloudDB {
     public CloudDB() {
         try {
             // Crear cliente de MongoDB
-            String connectionString = "mongodb+srv://ffalvarado:frank123@databsas.tuxhrit.mongodb.net/?retryWrites=true&w=majority";
+            String connectionString = "mongodb+srv://ffalvarado:frank123@databsas.tuxhrit.mongodb.net/CraftStoreDB?retryWrites=true&w=majority";
             ConnectionString connString = new ConnectionString(connectionString);
 
             MongoClientSettings settings = MongoClientSettings.builder()
