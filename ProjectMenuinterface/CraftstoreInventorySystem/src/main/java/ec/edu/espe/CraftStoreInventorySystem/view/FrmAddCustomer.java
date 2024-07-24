@@ -207,24 +207,29 @@ public class FrmAddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      String id = txtID.getText().trim();
+      
+        try {
+        String id = txtID.getText().trim();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
-
+        
+        if (!validaciónCedula(id)) {
+            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Customer customer = new Customer(id, name, address, email, phone);
-
-        try {
             cloudDB.uploadCustomerData(customer);
             JOptionPane.showMessageDialog(this, "Customer added successfully!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error adding customer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        if (!validaciónCedula(txtID)) {
-            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
