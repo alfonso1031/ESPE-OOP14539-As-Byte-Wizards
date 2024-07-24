@@ -230,7 +230,7 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuItemWelcomeActionPerformed
 
     private void mnuItemLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemLogOutActionPerformed
-        FrmLogin frmLogin = new FrmLogin();
+        FrmUniversoDelFomixSplash frmLogin = new FrmUniversoDelFomixSplash();
         this.setVisible(false);
         frmLogin.setVisible(true);
     }//GEN-LAST:event_mnuItemLogOutActionPerformed
