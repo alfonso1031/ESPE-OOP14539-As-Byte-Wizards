@@ -230,11 +230,11 @@ public class FrmAddCustomer extends javax.swing.JFrame {
 
             
         private boolean validaciónCedula(String cedula) {
-        if (cedula.length() != 10) {
+        if (cedula.length() !=10){
             return false;
         }
 
-        int provincia = Integer.parseInt(cedula.substring(0, 2));
+        int provincia = Integer.parseInt(cedula.substring(0,2));
         if (provincia < 1 || provincia > 24) {
             return false;
         }
