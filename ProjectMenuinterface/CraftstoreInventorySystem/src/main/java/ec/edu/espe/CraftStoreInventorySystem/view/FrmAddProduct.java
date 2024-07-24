@@ -292,9 +292,9 @@ public class FrmAddProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void textFldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFldIdActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_textFldIdActionPerformed
-
+   
     private void textFldIdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFldIdMouseEntered
         jLabel9.setVisible(true);
     }//GEN-LAST:event_textFldIdMouseEntered
