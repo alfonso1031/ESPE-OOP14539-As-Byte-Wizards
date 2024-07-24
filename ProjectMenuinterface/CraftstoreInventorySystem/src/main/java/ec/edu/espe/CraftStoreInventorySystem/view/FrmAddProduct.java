@@ -15,7 +15,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
     /**
      * Creates new form FrmAddProduct
      */
-    
+
     
     public FrmAddProduct() {
         initComponents();
@@ -82,6 +82,11 @@ public class FrmAddProduct extends javax.swing.JFrame {
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIDKeyReleased(evt);
             }
         });
 
@@ -300,6 +305,14 @@ public class FrmAddProduct extends javax.swing.JFrame {
     private void txtIDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseExited
         jLabel9.setVisible(false);
     }//GEN-LAST:event_txtIDMouseExited
+
+    private void txtIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyReleased
+
+        String id = txtID.getText();
+        if (!id.matches("\\d*"))
+            JOptionPane.showMessageDialog(this, "El campo ID solo puede contener números", "Entrada inválida", JOptionPane.WARNING_MESSAGE);
+            txtID.setText(id.replaceAll("[^\\d]", ""));
+    }//GEN-LAST:event_txtIDKeyReleased
 
     /**
      * @param args the command line arguments
