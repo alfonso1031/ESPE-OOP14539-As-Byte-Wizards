@@ -24,14 +24,35 @@ public class FrmNewInvoice extends javax.swing.JFrame {
 
     public FrmNewInvoice() {
         initComponents();
-        cloudDB = new CloudDB();
+  
+    cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) tblProductsAdded.getModel();
         txtSubtotal.setEditable(false);
         txtTotal.setEditable(false);
-
     }
 
+private void searchCustomer() {
+    String id = txtid.getText();
+    Document customer = cloudDB.findCustomerByID(id);
 
+    if (customer != null) {
+        txtCustomer.setText(customer.getString("name"));
+        txtDirection.setText(customer.getString("address"));
+        txtNumber.setText(customer.getString("phone"));
+    } else {
+        int response = JOptionPane.showConfirmDialog(
+            this,
+            "Cliente no encontrado. ¿Desea agregar un nuevo cliente?",
+            "Cliente no encontrado",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+        if (response == JOptionPane.YES_OPTION) {
+            FrmAddCustomer frmAddCustomer = new FrmAddCustomer();
+            frmAddCustomer.setVisible(true);
+        }
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +87,9 @@ public class FrmNewInvoice extends javax.swing.JFrame {
         txtSubtotal = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         spnQuantity = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -152,6 +176,15 @@ public class FrmNewInvoice extends javax.swing.JFrame {
 
         jLabel13.setText("IVA");
 
+        jLabel6.setText("CEDULA:");
+
+        btnSearch.setText("BUSCAR");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,20 +213,6 @@ public class FrmNewInvoice extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCustomer)
-                            .addComponent(txtNumber)
-                            .addComponent(txtDirection, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -213,7 +232,28 @@ public class FrmNewInvoice extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSerachProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4))
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCustomer)
+                                    .addComponent(txtNumber)
+                                    .addComponent(txtDirection, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                    .addComponent(txtid))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,19 +261,24 @@ public class FrmNewInvoice extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(txtDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtSerachProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,14 +382,13 @@ public class FrmNewInvoice extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblProductsAdded.getSelectedRow();
-        if (selectedRow >= 0) {
-            // Eliminar la fila seleccionada
-            tableModel.removeRow(selectedRow);
-        } else {
-            // Mostrar mensaje si no se ha seleccionado ninguna fila
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor seleccione una fila para eliminar.", "Eliminar Producto", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
+     int selectedRow = tblProductsAdded.getSelectedRow();
+    if (selectedRow >= 0) {
+        tableModel.removeRow(selectedRow);
+        calcularTotales(); // Llamar a la función de cálculo aquí
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor seleccione una fila para eliminar.", "Eliminar Producto", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtSerachProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSerachProductActionPerformed
@@ -361,33 +405,37 @@ public class FrmNewInvoice extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateProductComboBox(txtSerachProduct.getText());
     }//GEN-LAST:event_txtSerachProductKeyReleased
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+  searchCustomer();       
+    }//GEN-LAST:event_btnSearchActionPerformed
     
-    private void addProductToTable() {
-        String selectedProduct = (String) cmbProductToAdd.getSelectedItem();
-        if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
-            List<Document> products = cloudDB.getAllProducts();
-            for (Document doc : products) {
-                if (selectedProduct.equals(doc.getString("name"))) {
-                    int quantity = (int) spnQuantity.getValue();
-                    double price = doc.getDouble("price");
+   private void addProductToTable() {
+    String selectedProduct = (String) cmbProductToAdd.getSelectedItem();
+    if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
+        List<Document> products = cloudDB.getAllProducts();
+        for (Document doc : products) {
+            if (selectedProduct.equals(doc.getString("name"))) {
+                int quantity = (int) spnQuantity.getValue();
+                double price = doc.getDouble("price");
 
-                    double subtotal = price * quantity;
-                    double total = subtotal;
+                double subtotal = price * quantity;
+                double total = subtotal; // Total sin IVA
 
-                    Object[] rowData = {
-                        quantity,
-                        doc.getString("name"),
-                        price,
-
-                        subtotal,
-                        total
-                    };
-                    tableModel.addRow(rowData);
-                    break;
-                }
+                Object[] rowData = {
+                    quantity,
+                    doc.getString("name"),
+                    price,
+                    subtotal,
+                    total
+                };
+                tableModel.addRow(rowData);
+                calcularTotales(); // Llamar a la función de cálculo aquí
+                break;
             }
         }
     }
+}
     
 
     private void updateProductComboBox(String searchCriteria) {
@@ -443,6 +491,7 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnNewInvoice;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbProductToAdd;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -452,6 +501,7 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -467,6 +517,7 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     private javax.swing.JTextField txtSerachProduct;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
+    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 
     private void updateSpinnerQuantity() {
@@ -489,6 +540,23 @@ public class FrmNewInvoice extends javax.swing.JFrame {
     }
 }
 
+private void calcularTotales() {
+    double subtotal = 0.0;
+    double iva = 0.0;
+    double total = 0.0;
+    double ivaRate = 0.12; // Suponiendo que el IVA es del 12%
+
+    for (int i = 0; i < tableModel.getRowCount(); i++) {
+        subtotal += (double) tableModel.getValueAt(i, 3); // Suma de los subtotales
+    }
+
+    iva = subtotal * ivaRate;
+    total = subtotal + iva;
+
+    txtSubtotal.setText(String.format("%.2f", subtotal));
+    txtIVA.setText(String.format("%.2f", iva));
+    txtTotal.setText(String.format("%.2f", total));
+}
 
     
 }

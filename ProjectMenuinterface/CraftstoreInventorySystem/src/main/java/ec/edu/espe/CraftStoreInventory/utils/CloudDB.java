@@ -191,6 +191,14 @@ public class CloudDB {
         }
 
     }
+
+    public Document findCustomerByID(String id) {
+
+ MongoCollection<Document> collection = database.getCollection("customer");
+    Document query = new Document("id", id);
+    return collection.find(query).first();
+    }
+    
 }
 
 
