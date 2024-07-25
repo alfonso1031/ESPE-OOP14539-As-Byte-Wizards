@@ -190,6 +190,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 passTxtMousePressed(evt);
             }
         });
+        passTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passTxtActionPerformed(evt);
+            }
+        });
         panelBg.add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 410, 30));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
@@ -221,7 +226,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_userTxtMousePressed
 
     private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_userTxtActionPerformed
 
     private void passTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtMousePressed
@@ -280,6 +285,10 @@ public class FrmLogin extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectos por favor intentelo de nuevo");
        }   
     }//GEN-LAST:event_loginBtnTxt1MouseClicked
+
+    private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
+
+    }//GEN-LAST:event_passTxtActionPerformed
 
     /**
      * @param args the command line arguments
