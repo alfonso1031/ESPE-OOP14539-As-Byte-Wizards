@@ -51,7 +51,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
         priceFldText = new javax.swing.JTextField();
         sizeFldText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +96,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 .addComponent(addBtnText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        backGround.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 140, 40));
+        backGround.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 140, 40));
 
         returnBtn.setBackground(new java.awt.Color(110, 80, 159));
         returnBtn.setPreferredSize(new java.awt.Dimension(160, 50));
@@ -135,7 +135,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
         addTitle.setForeground(new java.awt.Color(255, 255, 255));
         addTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addTitle.setText("AÑADIR PRODUCTO");
-        backGround.add(addTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 340, 40));
+        backGround.add(addTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 340, 40));
 
         idText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         idText.setText("Id:");
@@ -225,8 +225,21 @@ public class FrmAddProduct extends javax.swing.JFrame {
         jLabel2.setText("Ingrese un 0 al inicio, luego el número de producto");
         backGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 290, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/CraftStoreInventorySystem/resources/astronauta en nave.jpeg"))); // NOI18N
-        backGround.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 80));
+        jPanel1.setBackground(new java.awt.Color(221, 137, 213));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        backGround.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,8 +388,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
     private javax.swing.JLabel descriptionText;
     private javax.swing.JTextField idFldText;
     private javax.swing.JLabel idText;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
