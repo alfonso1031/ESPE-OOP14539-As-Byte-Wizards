@@ -51,7 +51,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
         priceFldText = new javax.swing.JTextField();
         sizeFldText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,38 +131,39 @@ public class FrmAddProduct extends javax.swing.JFrame {
 
         backGround.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 140, 40));
 
-        addTitle.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        addTitle.setFont(new java.awt.Font("Roboto Black", 1, 30)); // NOI18N
+        addTitle.setForeground(new java.awt.Color(255, 255, 255));
         addTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addTitle.setText("AÑADIR PRODUCTO");
-        backGround.add(addTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 340, 40));
+        backGround.add(addTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 340, 40));
 
         idText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         idText.setText("Id:");
-        backGround.add(idText, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+        backGround.add(idText, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         nameText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         nameText.setText("Nombre:");
-        backGround.add(nameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+        backGround.add(nameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
 
         descriptionText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         descriptionText.setText("Descripción:");
-        backGround.add(descriptionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        backGround.add(descriptionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         categoryText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         categoryText.setText("Categoría:");
-        backGround.add(categoryText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        backGround.add(categoryText, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
         priceText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         priceText.setText("Precio:");
-        backGround.add(priceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
+        backGround.add(priceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         sizeText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         sizeText.setText("Tamaño:");
-        backGround.add(sizeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, -1, -1));
+        backGround.add(sizeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         quantityText.setFont(new java.awt.Font("Roboto Medium", 3, 15)); // NOI18N
         quantityText.setText("Cantidad:");
-        backGround.add(quantityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+        backGround.add(quantityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
 
         idFldText.setBorder(null);
         idFldText.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,66 +179,54 @@ public class FrmAddProduct extends javax.swing.JFrame {
                 idFldTextKeyReleased(evt);
             }
         });
-        backGround.add(idFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 130, -1));
+        backGround.add(idFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 130, -1));
 
         jSeparator1.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 107, 130, -1));
+        backGround.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 130, -1));
 
         jSeparator2.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 280, 10));
+        backGround.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 280, 10));
 
         jSeparator3.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 280, 10));
+        backGround.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 280, 10));
 
         jSeparator4.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 280, 10));
+        backGround.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 280, 10));
 
         jSeparator5.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 280, 10));
+        backGround.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 280, 10));
 
         jSeparator6.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 280, 10));
+        backGround.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 280, 10));
 
         jSeparator7.setForeground(new java.awt.Color(69, 32, 130));
-        backGround.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 280, 10));
+        backGround.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 280, 10));
 
         nameFldText.setBorder(null);
-        backGround.add(nameFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 280, -1));
+        backGround.add(nameFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 280, -1));
 
         quantityFldText.setBorder(null);
-        backGround.add(quantityFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 280, -1));
+        backGround.add(quantityFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 280, -1));
 
         descriptionFldText.setBorder(null);
-        backGround.add(descriptionFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 280, -1));
+        backGround.add(descriptionFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 280, -1));
 
         categoryFldText.setBorder(null);
-        backGround.add(categoryFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 280, -1));
+        backGround.add(categoryFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 280, -1));
 
         priceFldText.setBorder(null);
-        backGround.add(priceFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 280, -1));
+        backGround.add(priceFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 280, -1));
 
         sizeFldText.setBorder(null);
-        backGround.add(sizeFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 280, -1));
+        backGround.add(sizeFldText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 280, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto Thin", 2, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Ingrese un 0 al inicio, luego el número de producto");
-        backGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 290, -1));
+        backGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 290, -1));
 
-        jPanel1.setBackground(new java.awt.Color(221, 137, 213));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        backGround.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/CraftStoreInventorySystem/resources/astronauta en nave.jpeg"))); // NOI18N
+        backGround.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,8 +375,8 @@ public class FrmAddProduct extends javax.swing.JFrame {
     private javax.swing.JLabel descriptionText;
     private javax.swing.JTextField idFldText;
     private javax.swing.JLabel idText;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
