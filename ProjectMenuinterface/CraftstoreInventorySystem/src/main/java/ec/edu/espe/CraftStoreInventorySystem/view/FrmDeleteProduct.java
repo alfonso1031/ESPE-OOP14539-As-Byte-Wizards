@@ -1,6 +1,8 @@
 
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import java.awt.Color;
+
 public class FrmDeleteProduct extends javax.swing.JFrame {
 
 
@@ -17,9 +19,9 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         bckgDelete = new javax.swing.JPanel();
         deleteBtn = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        deleteFldText = new javax.swing.JLabel();
         returnBtn = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        returnFldText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -29,42 +31,50 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         deleteBtn.setBackground(new java.awt.Color(110, 80, 159));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("BORRAR");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteFldText.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        deleteFldText.setForeground(new java.awt.Color(255, 255, 255));
+        deleteFldText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteFldText.setText("BORRAR");
+        deleteFldText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteFldText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteFldTextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteFldTextMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout deleteBtnLayout = new javax.swing.GroupLayout(deleteBtn);
         deleteBtn.setLayout(deleteBtnLayout);
         deleteBtnLayout.setHorizontalGroup(
             deleteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(deleteFldText, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         deleteBtnLayout.setVerticalGroup(
             deleteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(deleteFldText, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         bckgDelete.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 140, 40));
 
         returnBtn.setBackground(new java.awt.Color(110, 80, 159));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("REGRESAR");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnFldText.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        returnFldText.setForeground(new java.awt.Color(255, 255, 255));
+        returnFldText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        returnFldText.setText("REGRESAR");
+        returnFldText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout returnBtnLayout = new javax.swing.GroupLayout(returnBtn);
         returnBtn.setLayout(returnBtnLayout);
         returnBtnLayout.setHorizontalGroup(
             returnBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(returnFldText, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         returnBtnLayout.setVerticalGroup(
             returnBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(returnFldText, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         bckgDelete.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, 40));
@@ -73,15 +83,23 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bckgDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bckgDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bckgDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bckgDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteFldTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseEntered
+        deleteBtn.setBackground(new Color(174, 58, 166));
+    }//GEN-LAST:event_deleteFldTextMouseEntered
+
+    private void deleteFldTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseExited
+        deleteBtn.setBackground(new Color(110, 80, 159));
+    }//GEN-LAST:event_deleteFldTextMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -118,8 +136,8 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bckgDelete;
     private javax.swing.JPanel deleteBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel deleteFldText;
     private javax.swing.JPanel returnBtn;
+    private javax.swing.JLabel returnFldText;
     // End of variables declaration//GEN-END:variables
 }
