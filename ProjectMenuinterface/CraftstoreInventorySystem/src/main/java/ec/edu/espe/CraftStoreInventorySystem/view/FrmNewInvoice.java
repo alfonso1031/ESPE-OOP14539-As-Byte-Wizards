@@ -4,6 +4,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -24,11 +25,11 @@ public class FrmNewInvoice extends javax.swing.JFrame {
 
     public FrmNewInvoice() {
         initComponents();
-  
-    cloudDB = new CloudDB();
-        tableModel = (DefaultTableModel) tblProductsAdded.getModel();
-        txtSubtotal.setEditable(true);
-        txtTotal.setEditable(true);
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
+        cloudDB = new CloudDB();
+            tableModel = (DefaultTableModel) tblProductsAdded.getModel();
+            txtSubtotal.setEditable(true);
+            txtTotal.setEditable(true);
         
     }
 

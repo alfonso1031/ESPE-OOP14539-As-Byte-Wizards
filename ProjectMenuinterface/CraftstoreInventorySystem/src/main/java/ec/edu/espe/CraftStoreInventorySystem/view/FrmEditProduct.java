@@ -4,6 +4,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 import ec.edu.espe.CraftStoreInventory.model.Product;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,8 +23,8 @@ public class FrmEditProduct extends javax.swing.JFrame {
      * Creates new form FrmEditProduct
      */
     private CloudDB cloudDB;
-private DefaultTableModel tableModel;
-public FrmEditProduct() {
+    private DefaultTableModel tableModel;
+    public FrmEditProduct() {
         initComponents();
         cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) tblProductTable.getModel();
@@ -45,6 +46,7 @@ public FrmEditProduct() {
                 }
             }
         });
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     private void saveProduct() {

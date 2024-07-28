@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Mario Anrrango, A-Byte Wizards, DCCO - ESPE
@@ -15,6 +17,7 @@ public class FrmPrincipalScreen extends javax.swing.JFrame {
      */
     public FrmPrincipalScreen() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**

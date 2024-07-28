@@ -1,6 +1,7 @@
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ public class FrmLogin extends javax.swing.JFrame {
     
     public FrmLogin() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
     
     /**

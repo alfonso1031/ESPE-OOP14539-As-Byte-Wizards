@@ -5,17 +5,19 @@
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 /**
  *
  * @author A-Byte Wizards, DCCO - ESPE
  */
-public class FrmUniversoDelFomix extends javax.swing.JFrame {
+public final class FrmUniversoDelFomix extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
     public FrmUniversoDelFomix() {
         initComponents();
         hideStartBtnsMenu();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**
@@ -122,10 +124,8 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         bgPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -481,9 +481,7 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
             mnuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mnuPanel1Layout.createSequentialGroup()
                 .addGroup(mnuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mnuPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                    .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(LogOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
@@ -652,16 +650,12 @@ public class FrmUniversoDelFomix extends javax.swing.JFrame {
             .addGroup(mnuPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mnuPanelLayout.createSequentialGroup()
-                        .addGroup(mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(InventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(StartBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0))
-                    .addGroup(mnuPanelLayout.createSequentialGroup()
-                        .addGroup(mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CustomerBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InvoiceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))))
+                    .addGroup(mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(InventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(StartBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(CustomerBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(InvoiceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         mnuPanelLayout.setVerticalGroup(
             mnuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

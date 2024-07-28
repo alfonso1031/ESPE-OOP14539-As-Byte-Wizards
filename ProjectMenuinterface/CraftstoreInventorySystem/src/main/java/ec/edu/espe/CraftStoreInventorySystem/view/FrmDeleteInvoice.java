@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import javax.swing.ImageIcon;
+
 
 
 public class FrmDeleteInvoice extends javax.swing.JFrame {
@@ -13,6 +15,7 @@ public class FrmDeleteInvoice extends javax.swing.JFrame {
      */
     public FrmDeleteInvoice() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**

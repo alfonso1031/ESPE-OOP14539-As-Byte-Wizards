@@ -6,6 +6,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
@@ -24,6 +25,7 @@ public class FrmViewCustomer extends javax.swing.JFrame {
         initComponents();
         cloudDB = new CloudDB();
         loadAllCustomers();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**

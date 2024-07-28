@@ -3,6 +3,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.model.Customer;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -19,6 +20,7 @@ public class FrmAddCustomer extends javax.swing.JFrame {
     public FrmAddCustomer() {
         initComponents();
         cloudDB = new CloudDB();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**

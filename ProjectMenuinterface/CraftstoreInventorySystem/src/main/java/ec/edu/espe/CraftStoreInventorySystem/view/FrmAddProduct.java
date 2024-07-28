@@ -6,7 +6,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.model.Product;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
-import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -19,6 +19,7 @@ public class FrmAddProduct extends javax.swing.JFrame {
     
     public FrmAddProduct() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
     /**

@@ -2,6 +2,7 @@
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +29,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) ID.getModel();
         loadProducts();
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
     private void loadProducts() {
         tableModel.setRowCount(0); // Limpiar la tabla
