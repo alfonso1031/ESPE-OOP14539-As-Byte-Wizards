@@ -175,6 +175,9 @@ public class FrmEditProduct extends javax.swing.JFrame {
         returnBtnText.setText("REGRESAR");
         returnBtnText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtnText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnBtnTextMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 returnBtnTextMouseEntered(evt);
             }
@@ -371,6 +374,12 @@ public class FrmEditProduct extends javax.swing.JFrame {
     private void editBtnTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnTextMouseClicked
         saveProduct();
     }//GEN-LAST:event_editBtnTextMouseClicked
+
+    private void returnBtnTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnTextMouseClicked
+        FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
+        this.setVisible(false);
+        frmUniversoDelFomix.setVisible(true);
+    }//GEN-LAST:event_returnBtnTextMouseClicked
 
     /**
      * @param args the command line arguments
