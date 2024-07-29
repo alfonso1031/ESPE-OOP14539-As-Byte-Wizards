@@ -1,8 +1,7 @@
 
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
+
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.awt.Color;
 import java.io.FileOutputStream;
