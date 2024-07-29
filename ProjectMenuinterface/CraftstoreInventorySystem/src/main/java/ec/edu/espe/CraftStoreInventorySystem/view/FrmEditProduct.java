@@ -26,6 +26,7 @@ public class FrmEditProduct extends javax.swing.JFrame {
         initComponents();
         cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) jTable1.getModel();
+        tableModel.setRowCount(0); 
         loadProducts();
 
         jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -77,20 +78,21 @@ public class FrmEditProduct extends javax.swing.JFrame {
         
         
         private void loadProducts() {
-        List<Document> products = cloudDB.getAllProducts();
-        for (Document doc : products) {
-            Object[] rowData = {
-                doc.getString("id"),
-                doc.getString("name"),
-                doc.getString("description"),
-                doc.getInteger("quantity"),
-                doc.getString("size"),
-                doc.getDouble("price"),
-                doc.getString("category")
-            };
-            tableModel.addRow(rowData);
+            tableModel.setRowCount(0); 
+            List<Document> products = cloudDB.getAllProducts();
+            for (Document doc : products) {
+                Object[] rowData = {
+                    doc.getString("id"),
+                    doc.getString("name"),
+                    doc.getString("description"),
+                    doc.getInteger("quantity"),
+                    doc.getString("size"),
+                    doc.getDouble("price"),
+                    doc.getString("category")
+                };
+                tableModel.addRow(rowData);
+            }
         }
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
