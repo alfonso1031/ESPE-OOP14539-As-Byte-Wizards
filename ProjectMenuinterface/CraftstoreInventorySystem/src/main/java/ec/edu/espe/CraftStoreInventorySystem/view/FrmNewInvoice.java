@@ -1,15 +1,20 @@
 
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.awt.Color;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
+
 
 /**
  *
@@ -486,7 +491,7 @@ private void searchCustomer() {
      int selectedRow = tblProductsAdded.getSelectedRow();
     if (selectedRow >= 0) {
         tableModel.removeRow(selectedRow);
-        calcularTotales(); // Llamar a la función de cálculo aquí
+        calculateTotal(); // Llamar a la función de cálculo aquí
     } else {
         javax.swing.JOptionPane.showMessageDialog(this, "Por favor seleccione una fila para eliminar.", "Eliminar Producto", javax.swing.JOptionPane.WARNING_MESSAGE);
     }
@@ -585,7 +590,7 @@ if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
             tableModel.addRow(rowData);
 
             // Llamar a la función de cálculo aquí
-            calcularTotales();
+            calculateTotal();
             break;
         }
     }
@@ -699,7 +704,7 @@ if (selectedProduct != null && !selectedProduct.equals("No encontrado")) {
     }
 }
 
-private void calcularTotales() {
+private void calculateTotal() {
     double subtotal = 0.0;
     double iva = 0.0;
     double total = 0.0;
@@ -728,11 +733,12 @@ private void calcularTotales() {
     iva = subtotal * ivaRate;
     total = subtotal + iva;
 
-    // Mostrar los totales en los campos de texto
-    txtSubtotal.setText(String.format("%.2f", subtotal));
-    txtIVA.setText(String.format("%.2f", iva));
-    txtTotal.setText(String.format("%.2f", total));
+    // Mostrar los totales en los campos de texto con puntos como separadores decimales
+    txtSubtotal.setText(String.format(Locale.US, "%.2f", subtotal));
+    txtIVA.setText(String.format(Locale.US, "%.2f", iva));
+    txtTotal.setText(String.format(Locale.US, "%.2f", total));
 }
+
 
  private void saveInvoice() {
     // Recoger los datos de la interfaz
@@ -777,5 +783,11 @@ private void calcularTotales() {
         JOptionPane.showMessageDialog(this, "Error al guardar la factura.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+ 
+ 
+ 
+ 
+ 
+ 
  
 }
