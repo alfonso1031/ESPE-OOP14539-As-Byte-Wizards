@@ -5,7 +5,7 @@ import java.awt.Color;
 
 public class FrmDeleteProduct extends javax.swing.JFrame {
 
-
+    int xMouse, yMouse;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,6 +22,8 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         deleteFldText = new javax.swing.JLabel();
         returnBtn = new javax.swing.JPanel();
         returnFldText = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ID = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +67,14 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         returnFldText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         returnFldText.setText("REGRESAR");
         returnFldText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnFldText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                returnFldTextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                returnFldTextMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout returnBtnLayout = new javax.swing.GroupLayout(returnBtn);
         returnBtn.setLayout(returnBtnLayout);
@@ -78,6 +88,21 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         );
 
         bckgDelete.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, 40));
+
+        ID.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "NOMBRE", "DESCRIPCIÓN", "CANTIDAD", "TAMAÑO", "PRECIO", "CATEGORÍA"
+            }
+        ));
+        jScrollPane1.setViewportView(ID);
+
+        bckgDelete.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 680, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +125,14 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     private void deleteFldTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseExited
         deleteBtn.setBackground(new Color(110, 80, 159));
     }//GEN-LAST:event_deleteFldTextMouseExited
+
+    private void returnFldTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnFldTextMouseEntered
+        returnBtn.setBackground(new Color(174, 58, 166));
+    }//GEN-LAST:event_returnFldTextMouseEntered
+
+    private void returnFldTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnFldTextMouseExited
+        returnBtn.setBackground(new Color(110, 80, 159));
+    }//GEN-LAST:event_returnFldTextMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -134,9 +167,11 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ID;
     private javax.swing.JPanel bckgDelete;
     private javax.swing.JPanel deleteBtn;
     private javax.swing.JLabel deleteFldText;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel returnBtn;
     private javax.swing.JLabel returnFldText;
     // End of variables declaration//GEN-END:variables
