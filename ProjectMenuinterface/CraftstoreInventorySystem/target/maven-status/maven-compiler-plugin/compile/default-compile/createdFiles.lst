@@ -26,7 +26,6 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$2.class
 ec\edu\espe\CraftStoreInventory\utils\CloudDB.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice.class
-ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$9.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$5.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$2.class
@@ -41,7 +40,6 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$12.class
-ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewCustomer$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$9.class
@@ -75,7 +73,6 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$8.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice$2.class
-ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$14.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomixSplash$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewInventory$3.class

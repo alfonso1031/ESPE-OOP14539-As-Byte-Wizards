@@ -226,7 +226,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     private void deleteFldTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseClicked
             int selectedRow = ID.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a product to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Porfavor selecicione un producto para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -235,9 +235,9 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         try {
             cloudDB.deleteProduct(id);
             tableModel.removeRow(selectedRow);
-            JOptionPane.showMessageDialog(this, "Product deleted successfully.");
+            JOptionPane.showMessageDialog(this, "El producto se ha eliminado.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error deleting product: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error en la eliminación: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_deleteFldTextMouseClicked
 
