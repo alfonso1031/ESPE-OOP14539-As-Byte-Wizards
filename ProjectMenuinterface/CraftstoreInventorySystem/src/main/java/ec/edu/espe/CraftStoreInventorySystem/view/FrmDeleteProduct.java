@@ -109,6 +109,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         bckgDelete.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, 40));
 
+        ID.setBackground(new java.awt.Color(221, 137, 213));
         ID.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
