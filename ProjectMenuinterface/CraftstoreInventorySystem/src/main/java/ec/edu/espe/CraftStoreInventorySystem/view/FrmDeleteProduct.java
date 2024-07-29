@@ -123,7 +123,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         ));
         productTable.setViewportView(ID);
 
-        bckgDelete.add(productTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 680, 230));
+        bckgDelete.add(productTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 680, 160));
         bckgDelete.add(searchTextFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 360, 30));
 
         searchBtn.setBackground(new java.awt.Color(110, 80, 159));
