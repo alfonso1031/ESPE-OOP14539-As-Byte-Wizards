@@ -1,11 +1,6 @@
 
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
-import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
-import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.table.DefaultTableModel;
-import org.bson.Document;
 
 /**
  *
@@ -13,18 +8,7 @@ import org.bson.Document;
  */
 public class FrmViewInventory extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmViewInventory
-     */
-    private CloudDB cloudDB;
-    private DefaultTableModel tableModel;
-    public FrmViewInventory() {
-        initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
-        cloudDB = new CloudDB();
-        tableModel = (DefaultTableModel) ID.getModel();
-        loadProducts();
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,25 +103,7 @@ public class FrmViewInventory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchProduct(String searchCriteria) {
-        tableModel.setRowCount(0); // Limpiar tabla
-        List<Document> products = cloudDB.getAllProducts();
-        for (Document doc : products) {
-            if (doc.getString("name").toLowerCase().contains(searchCriteria.toLowerCase()) || 
-                doc.getString("id").toLowerCase().contains(searchCriteria.toLowerCase())) {
-                Object[] rowData = {
-                    doc.getString("id"),
-                    doc.getString("name"),
-                    doc.getString("description"),
-                    doc.getInteger("quantity"),
-                    doc.getString("size"),
-                    doc.getDouble("price"),
-                    doc.getString("category")
-                };
-                tableModel.addRow(rowData);
-            }
-        }
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -185,21 +151,6 @@ public class FrmViewInventory extends javax.swing.JFrame {
     private javax.swing.JLabel returnBtnText;
     // End of variables declaration//GEN-END:variables
 
-    private void loadProducts() {
-        List<Document> products = cloudDB.getAllProducts();
-    for (Document doc : products) {
-        Object[] rowData = {
-            doc.getString("id"),
-            doc.getString("name"),
-            doc.getString("description"),
-            doc.getInteger("quantity"),
-            doc.getString("size"),
-            doc.getDouble("price"),
-            doc.getString("category")
-          
-        };
-        tableModel.addRow(rowData);
-    }
-}
 
-    }
+
+ }
