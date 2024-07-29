@@ -56,6 +56,7 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setLocationByPlatform(true);
         setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));

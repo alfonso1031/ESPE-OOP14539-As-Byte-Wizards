@@ -13,12 +13,14 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     
     private CloudDB cloudDB;
     private DefaultTableModel tableModel;
+    int xMouse, yMouse;
     
     public FrmDeleteProduct() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
         cloudDB = new CloudDB();
         tableModel = (DefaultTableModel) ID.getModel();
+        tableModel.setRowCount(0);
         loadProducts();
     }
     
@@ -36,16 +38,21 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         searchTextFld = new javax.swing.JTextField();
         searchBtn = new javax.swing.JPanel();
         searchBtnText = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        header4 = new javax.swing.JPanel();
+        exitBtn4 = new javax.swing.JPanel();
+        exitTxt4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
         bckgDelete.setBackground(new java.awt.Color(255, 255, 255));
         bckgDelete.setForeground(new java.awt.Color(255, 255, 255));
         bckgDelete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        deleteBtn.setBackground(new java.awt.Color(110, 80, 159));
+        deleteBtn.setBackground(new java.awt.Color(110, 37, 159));
 
         deleteFldText.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         deleteFldText.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,7 +84,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         bckgDelete.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 140, 40));
 
-        returnBtn.setBackground(new java.awt.Color(110, 80, 159));
+        returnBtn.setBackground(new java.awt.Color(110, 37, 159));
 
         returnFldText.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         returnFldText.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +116,7 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         bckgDelete.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, 40));
 
-        ID.setBackground(new java.awt.Color(221, 137, 213));
+        ID.setBackground(new java.awt.Color(110, 80, 159));
         ID.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -123,10 +130,10 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         ));
         productTable.setViewportView(ID);
 
-        bckgDelete.add(productTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 680, 160));
+        bckgDelete.add(productTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 680, 160));
         bckgDelete.add(searchTextFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 360, 30));
 
-        searchBtn.setBackground(new java.awt.Color(110, 80, 159));
+        searchBtn.setBackground(new java.awt.Color(110, 37, 159));
 
         searchBtnText.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         searchBtnText.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,30 +164,78 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
 
         bckgDelete.add(searchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, 30));
 
-        jPanel1.setBackground(new java.awt.Color(221, 137, 213));
+        header4.setBackground(new java.awt.Color(110, 37, 159));
+        header4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                header4MouseDragged(evt);
+            }
+        });
+        header4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                header4MousePressed(evt);
+            }
+        });
+
+        exitBtn4.setBackground(new java.awt.Color(110, 37, 159));
+
+        exitTxt4.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        exitTxt4.setForeground(new java.awt.Color(242, 242, 242));
+        exitTxt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitTxt4.setText("X");
+        exitTxt4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        exitTxt4.setPreferredSize(new java.awt.Dimension(40, 40));
+        exitTxt4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitTxt4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitTxt4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitTxt4MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout exitBtn4Layout = new javax.swing.GroupLayout(exitBtn4);
+        exitBtn4.setLayout(exitBtn4Layout);
+        exitBtn4Layout.setHorizontalGroup(
+            exitBtn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtn4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitTxt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        exitBtn4Layout.setVerticalGroup(
+            exitBtn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtn4Layout.createSequentialGroup()
+                .addComponent(exitTxt4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ELIMINACIÓN DE PRODUCTO");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(224, 224, 224)
+        javax.swing.GroupLayout header4Layout = new javax.swing.GroupLayout(header4);
+        header4.setLayout(header4Layout);
+        header4Layout.setHorizontalGroup(
+            header4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(header4Layout.createSequentialGroup()
+                .addContainerGap(225, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(195, 195, 195)
+                .addComponent(exitBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        header4Layout.setVerticalGroup(
+            header4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(exitBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(header4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bckgDelete.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+        bckgDelete.add(header4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,27 +252,27 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteFldTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseEntered
-        deleteBtn.setBackground(new Color(174, 58, 166));
+        deleteBtn.setBackground(new Color(110,80,159));
     }//GEN-LAST:event_deleteFldTextMouseEntered
 
     private void deleteFldTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteFldTextMouseExited
-        deleteBtn.setBackground(new Color(110, 80, 159));
+        deleteBtn.setBackground(new Color(110, 37, 159));
     }//GEN-LAST:event_deleteFldTextMouseExited
 
     private void returnFldTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnFldTextMouseEntered
-        returnBtn.setBackground(new Color(174, 58, 166));
+        returnBtn.setBackground(new Color(110,80,159));
     }//GEN-LAST:event_returnFldTextMouseEntered
 
     private void returnFldTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnFldTextMouseExited
-        returnBtn.setBackground(new Color(110, 80, 159));
+        returnBtn.setBackground(new Color(110, 37, 159));
     }//GEN-LAST:event_returnFldTextMouseExited
 
     private void searchBtnTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnTextMouseEntered
-        searchBtn.setBackground(new Color(174, 58, 166));
+        searchBtn.setBackground(new Color(110,80,159));
     }//GEN-LAST:event_searchBtnTextMouseEntered
 
     private void searchBtnTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnTextMouseExited
-        searchBtn.setBackground(new Color(110, 80, 159));
+        searchBtn.setBackground(new Color(110, 37, 159));
     }//GEN-LAST:event_searchBtnTextMouseExited
 
     private void searchBtnTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnTextMouseClicked
@@ -247,6 +302,31 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
         this.setVisible(false);
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_returnFldTextMouseClicked
+
+    private void exitTxt4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt4MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitTxt4MouseClicked
+
+    private void exitTxt4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt4MouseEntered
+        exitBtn4.setBackground(Color.red);
+        exitTxt4.setForeground(Color.white);
+    }//GEN-LAST:event_exitTxt4MouseEntered
+
+    private void exitTxt4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt4MouseExited
+        exitBtn4.setBackground(new Color(110,37,159));
+        exitTxt4.setForeground(Color.white);
+    }//GEN-LAST:event_exitTxt4MouseExited
+
+    private void header4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_header4MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_header4MouseDragged
+
+    private void header4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_header4MousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_header4MousePressed
 
         private void searchProduct(String searchCriteria) {
         tableModel.setRowCount(0); // Limpiar tabla
@@ -305,8 +385,22 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     private javax.swing.JPanel bckgDelete;
     private javax.swing.JPanel deleteBtn;
     private javax.swing.JLabel deleteFldText;
+    private javax.swing.JPanel exitBtn;
+    private javax.swing.JPanel exitBtn1;
+    private javax.swing.JPanel exitBtn2;
+    private javax.swing.JPanel exitBtn3;
+    private javax.swing.JPanel exitBtn4;
+    private javax.swing.JLabel exitTxt;
+    private javax.swing.JLabel exitTxt1;
+    private javax.swing.JLabel exitTxt2;
+    private javax.swing.JLabel exitTxt3;
+    private javax.swing.JLabel exitTxt4;
+    private javax.swing.JPanel header;
+    private javax.swing.JPanel header1;
+    private javax.swing.JPanel header2;
+    private javax.swing.JPanel header3;
+    private javax.swing.JPanel header4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane productTable;
     private javax.swing.JPanel returnBtn;
     private javax.swing.JLabel returnFldText;
@@ -316,8 +410,9 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void loadProducts() {
+        tableModel.setRowCount(0);
         List<Document> products = cloudDB.getAllProducts();
-    for (Document doc : products) {
+        for (Document doc : products) {
         Object[] rowData = {
             doc.getString("id"),
             doc.getString("name"),
@@ -329,8 +424,8 @@ public class FrmDeleteProduct extends javax.swing.JFrame {
           
         };
         tableModel.addRow(rowData);
+        }
     }
-}
 
 }
 
