@@ -10,8 +10,10 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmLogin$7.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\User.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteInvoice$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmUniversoDelFomix$15.class
+User.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$5.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditProduct$8.class
@@ -25,6 +27,7 @@ ec\edu\espe\CraftStoreInventorySystem\view\FrmNewInvoice$4.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddCustomer$1.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$6.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmEditCustomer$3.class
+ec\edu\espe\CraftStoreInventorySystem\view\FrmUser$2.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmViewCustomer$3.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmAddProduct$9.class
 ec\edu\espe\CraftStoreInventorySystem\view\FrmDeleteProduct$4.class
