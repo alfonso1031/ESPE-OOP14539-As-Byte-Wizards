@@ -6,6 +6,7 @@ package ec.edu.espe.CraftStoreInventorySystem.view;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -17,6 +18,7 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
     public FrmUniversoDelFomixSplash() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
+        startProgressBar();
     }
     
 
@@ -37,6 +39,8 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         title2 = new javax.swing.JLabel();
         GetInBtn = new javax.swing.JPanel();
         GetInTxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,6 +168,24 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
                     .addContainerGap(9, Short.MAX_VALUE)))
         );
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel1.setText("©As-Byte Wizards Developer Team");
+
+        progressBar.setBackground(new java.awt.Color(110, 37, 159));
+        progressBar.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        progressBar.setForeground(new java.awt.Color(110, 37, 159));
+        progressBar.setBorder(null);
+        progressBar.setEnabled(false);
+        progressBar.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                progressBarAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -175,14 +197,21 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
                         .addGap(148, 148, 148)
                         .addComponent(title1)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(title2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(323, 323, 323)
                         .addComponent(GetInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(title2)))
+                        .addGap(298, 298, 298)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,9 +222,13 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
                 .addComponent(title1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(title2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(GetInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,6 +285,36 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         GetInBtn.setBackground(new Color(110, 80, 159));
     }//GEN-LAST:event_GetInBtnMouseEntered
 
+    private void progressBarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_progressBarAncestorAdded
+        
+        progressBar.setMaximum(100);
+        progressBar.setStringPainted(true);
+    }//GEN-LAST:event_progressBarAncestorAdded
+
+    private void startProgressBar() {
+        
+        // Crear un SwingWorker para actualizar la barra de progreso
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                for (int i = 0; i <= 100; i++) {
+                    Thread.sleep(19); // Simula la carga
+                    progressBar.setValue(i);
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                FrmLogin frmLogin = new FrmLogin();
+                setVisible(false);
+                frmLogin.setVisible(true);
+                dispose();
+            }
+        };
+
+        worker.execute(); // Inicia la tarea en segundo plano
+    }
     /**
      * @param args the command line arguments
      */
@@ -294,8 +357,10 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
     private javax.swing.JPanel exitBtn;
     private javax.swing.JLabel exitTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JLabel title2;
