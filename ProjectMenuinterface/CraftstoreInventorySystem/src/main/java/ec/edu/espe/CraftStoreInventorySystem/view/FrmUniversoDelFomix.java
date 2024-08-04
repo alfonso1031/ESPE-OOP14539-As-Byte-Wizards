@@ -442,7 +442,6 @@ public final class FrmUniversoDelFomix extends javax.swing.JFrame {
         HelpBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         HelpBtnTxt.setText("Ayuda");
         HelpBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        HelpBtnTxt.setEnabled(false);
         HelpBtnTxt.setMaximumSize(new java.awt.Dimension(38, 19));
         HelpBtnTxt.setMinimumSize(new java.awt.Dimension(38, 19));
         HelpBtnTxt.setPreferredSize(new java.awt.Dimension(38, 19));
@@ -1043,7 +1042,10 @@ public final class FrmUniversoDelFomix extends javax.swing.JFrame {
     }//GEN-LAST:event_StartBtnMouseClicked
 
     private void HelpBtnTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpBtnTxtMouseClicked
-        // TODO add your handling code here:
+        FrmHelp frmHelp = new FrmHelp();
+        this.setVisible(false);
+        frmHelp.setVisible(true);
+        dispose();
     }//GEN-LAST:event_HelpBtnTxtMouseClicked
 
     private void HelpBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpBtnTxtMouseEntered

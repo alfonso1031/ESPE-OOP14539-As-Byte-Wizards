@@ -37,8 +37,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         exitTxt = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
         title2 = new javax.swing.JLabel();
-        GetInBtn = new javax.swing.JPanel();
-        GetInTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
@@ -130,44 +128,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         title2.setFont(new java.awt.Font("Roboto Black", 1, 36)); // NOI18N
         title2.setText("UNIVERSO DEL FOMIX");
 
-        GetInBtn.setBackground(new java.awt.Color(110, 37, 159));
-        GetInBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                GetInBtnMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                GetInBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                GetInBtnMouseExited(evt);
-            }
-        });
-
-        GetInTxt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        GetInTxt.setForeground(new java.awt.Color(255, 255, 255));
-        GetInTxt.setText("INGRESAR");
-
-        javax.swing.GroupLayout GetInBtnLayout = new javax.swing.GroupLayout(GetInBtn);
-        GetInBtn.setLayout(GetInBtnLayout);
-        GetInBtnLayout.setHorizontalGroup(
-            GetInBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
-            .addGroup(GetInBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(GetInBtnLayout.createSequentialGroup()
-                    .addGap(33, 33, 33)
-                    .addComponent(GetInTxt)
-                    .addContainerGap(33, Short.MAX_VALUE)))
-        );
-        GetInBtnLayout.setVerticalGroup(
-            GetInBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-            .addGroup(GetInBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(GetInBtnLayout.createSequentialGroup()
-                    .addGap(8, 8, 8)
-                    .addComponent(GetInTxt)
-                    .addContainerGap(9, Short.MAX_VALUE)))
-        );
-
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel1.setText("©As-Byte Wizards Developer Team");
 
@@ -207,9 +167,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
                         .addGap(206, 206, 206)
                         .addComponent(title2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(GetInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(298, 298, 298)
                         .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -224,9 +181,7 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
                 .addComponent(title2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(GetInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(114, 114, 114)
                 .addComponent(jLabel1)
                 .addGap(16, 16, 16))
         );
@@ -269,21 +224,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
-
-    private void GetInBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GetInBtnMouseClicked
-        // TODO add your handling code here:
-        FrmLogin frmLogin = new FrmLogin();
-        this.setVisible(false);
-        frmLogin.setVisible(true);
-    }//GEN-LAST:event_GetInBtnMouseClicked
-
-    private void GetInBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GetInBtnMouseExited
-        GetInBtn.setBackground(new Color(110,37,159));
-    }//GEN-LAST:event_GetInBtnMouseExited
-
-    private void GetInBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GetInBtnMouseEntered
-        GetInBtn.setBackground(new Color(110, 80, 159));
-    }//GEN-LAST:event_GetInBtnMouseEntered
 
     private void progressBarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_progressBarAncestorAdded
         
@@ -352,8 +292,6 @@ public class FrmUniversoDelFomixSplash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel GetInBtn;
-    private javax.swing.JLabel GetInTxt;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JLabel exitTxt;
     private javax.swing.JPanel header;
