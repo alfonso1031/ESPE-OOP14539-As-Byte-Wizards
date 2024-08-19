@@ -1,6 +1,7 @@
 
 package ec.edu.espe.CraftStoreInventorySystem.view;
 
+import ec.edu.espe.CraftStoreInventory.controller.CustomerController;
 import ec.edu.espe.CraftStoreInventory.model.Customer;
 import ec.edu.espe.CraftStoreInventory.utils.CloudDB;
 import java.awt.Color;
@@ -19,10 +20,12 @@ public class FrmAddCustomer extends javax.swing.JFrame {
      */
     private CloudDB cloudDB;
     int xMouse, yMouse;
+    private CustomerController customerController;
     
     public FrmAddCustomer() {
         initComponents();
         cloudDB = new CloudDB();
+        customerController = new CustomerController();
         setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
     }
 
@@ -271,68 +274,35 @@ public class FrmAddCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-    FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
+        FrmUniversoDelFomix frmUniversoDelFomix = new FrmUniversoDelFomix();
         this.setVisible(false);
         frmUniversoDelFomix.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      
         try {
-        String id = txtID.getText().trim();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        String phone = txtPhone.getText();
-        
-        if (!validaciónCedula(id)) {
-            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-            JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        Customer customer = new Customer(id, name, address, email, phone);
-            cloudDB.uploadCustomerData(customer);
-            JOptionPane.showMessageDialog(this, "Customer added successfully!");
+            String id = txtID.getText().trim();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            String phone = txtPhone.getText();
+
+            if (!customerController.IdentityCardValidation(id)) {
+                JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Customer customerr = new Customer(id, name, address, email, phone);
+            customerController.addCustomerToDB(customerr);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error adding customer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error adding customer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
-            
-        private boolean validaciónCedula(String cedula) {
-        if (cedula.length() !=10){
-            return false;
-        }
-
-        int provincia = Integer.parseInt(cedula.substring(0,2));
-        if (provincia < 1 || provincia > 24) {
-            return false;
-        }
-
-        int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
-        if (tercerDigito < 0 || tercerDigito > 6) {
-            return false;
-        }
-
-        int suma = 0;
-        int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
-        for (int i = 0; i < 9; i++) {
-            int digito = Integer.parseInt(cedula.substring(i, i + 1));
-            int producto = digito * coeficientes[i];
-            suma += (producto > 9) ? producto - 9 : producto;
-        }
-
-        int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
-        int decenaSuperior = ((suma + 9) / 10) * 10;
-        int digitoVerificador = decenaSuperior - suma;
-
-        return digitoVerificador == ultimoDigito;
-    }
     
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         
